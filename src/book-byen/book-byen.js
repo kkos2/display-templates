@@ -37,35 +37,44 @@ function BookByen({ slide, content = {}, run, slideDone }) {
 
   }, [])
 
-  // Add Hours to Date Object
-  function addHours(date, hours) {
-    const newDate = new Date(date);
-    newDate.setHours(newDate.getHours() + hours);
-    return newDate;
-  }
-
-
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
+  // Get total pages
+  const totalPages = Math.ceil(subslides.length / postsPerPage)
+
+  // Split elements on pages logic
   const indexOfLastPost = currentPage * postsPerPage;
-  console.log("🚀 ~ file: book-byen.js ~ line 53 ~ BookByen ~ indexOfLastPost", indexOfLastPost)
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = subslides.slice(indexOfFirstPost, indexOfLastPost);
 
-  // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
 
+
+  // loop across the pages and switch to the next slide after the last page is show
   useEffect(() => {
-    setInterval(() => {
+    if (currentPage >= totalPages) {
+      console.log("next slide");
+      slideDone(slide)
+      return
+    }
 
-    }, 500);
-  }, [])
+    const intervalID = setInterval(() => {
+      console.log("change page");
+      setCurrentPage(currentPage + 1)
+
+    }, 10);
+
+    return function cleanup() {
+      console.log("clearInterval");
+      clearInterval(intervalID)
+    }
+  }, [currentPage, totalPages])
+
+
 
 
 
   const CurrentItems = ({ items = [] }) => {
-    console.log("🚀 ~ file: book-byen.js ~ line 63 ~ Items ~ items", items)
     return (
       <>
         {items.map(item => {
@@ -80,8 +89,8 @@ function BookByen({ slide, content = {}, run, slideDone }) {
               <td>{item?.activity?.name}</td>
               <td>{item?.bookingNote}</td>
               <td>{item?.team?.name}</td>
-              {/* TODO: teamleaders is an array */}
               <td>{item?.user?.name}</td>
+              {/* TODO: teamleaders is an array */}
               <td>{item?.team?.teamleaders}</td>
             </tr>
           )
@@ -137,7 +146,7 @@ function BookByen({ slide, content = {}, run, slideDone }) {
           <div className="bookbyen__divider">
             <div className="bookbyen__pager"
               style={{ color: bgColor }}>
-              $index +  af {subslides?.length}
+              {currentPage} af {totalPages}
             </div>
           </div>
           <table className="bookbyen-bookings">
@@ -171,6 +180,14 @@ function BookByen({ slide, content = {}, run, slideDone }) {
 }
 
 export default BookByen;
+
+
+// // Add Hours to Date Object
+// function addHours(date, hours) {
+//   const newDate = new Date(date);
+//   newDate.setHours(newDate.getHours() + hours);
+//   return newDate;
+// }
 
 
 // {
