@@ -8,7 +8,12 @@ const formatTime = (date) => {
 }
 
 const filterEvents = (item) => {
-  return item?.isDeleted !== true
+  if (item?.isDeleted) {
+    // Filter the item away.
+    return false
+  }
+  // Keep.
+  return true
 }
 
 const formatEvents = (item) => {
@@ -24,8 +29,8 @@ const formatEvents = (item) => {
     teamName: item?.team?.name,
     // teamleaders is an array, and i dont know whats in it
     teamleaders: item?.team?.teamleaders[0] || "",
-    userName: item?.user?.name
-
+    userName: item?.user?.name,
+    isDeleted: item.isDeleted
   };
 }
 
