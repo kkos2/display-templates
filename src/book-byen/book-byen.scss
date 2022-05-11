@@ -103,6 +103,12 @@ $colors-white: #ffF;
   &__date {
     font-size: .6em;
     text-align: center;
+
+    p:first-letter {
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+
   }
 
   &__time {

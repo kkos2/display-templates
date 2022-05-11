@@ -3,6 +3,32 @@ import "./book-byen.scss";
 import { ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
 
+const formatTime = (date) => {
+  return new Date(date).toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' })
+}
+
+const filterEvents = (item) => {
+  return item?.isDeleted !== true
+}
+
+const formatEvents = (item) => {
+  return {
+    // next line: add/get original objects
+    // ...item,
+    id: item?.id,
+    startTime: formatTime(item?.start),
+    endTime: formatTime(item?.end),
+    facility: item?.facility?.name,
+    activity: item?.activity?.name,
+    bookingNote: item?.bookingNote,
+    teamName: item?.team?.name,
+    // teamleaders is an array, and i dont know whats in it
+    teamleaders: item?.team?.teamleaders[0] || "",
+    userName: item?.user?.name
+
+  };
+}
+
 /**
  * BookByen component.
  *
@@ -17,9 +43,17 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   // Content from content
   const {
     bgColor = "#000c2e",
+    showDayName,
     subslides = [],
-    isOdd = true,
-    logo = "https://admin.kkos2display.dk/bundles/kkos2displayintegration/assets/img/kbh-logo.png"
+    logo,
+    pageIntervalTime = 10000,
+    showTime = true,
+    showFacility = true,
+    showActivity = true,
+    showBookingNote = true,
+    showTeam = true,
+    showTeamleaders = false,
+    showUserName = true,
   } = content;
 
   // ADMIN stuff start here
@@ -28,82 +62,95 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   // Styling objects
   const rootStyle = {};
 
+  // remove delete events and clean data
+  const cleanEvents = subslides.filter(filterEvents).map(formatEvents)
+
   // Makes a watch that is updated live
   const [timeNow, setTimeNow] = useState(null)
   useEffect(() => {
-    setInterval(() => {
-      setTimeNow(new Date().toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' }))
+    const timer = setInterval(() => {
+      setTimeNow(formatTime(new Date()))
     }, 1000);
+
+    return function cleanup() {
+      clearInterval(timer)
+    }
 
   }, [])
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
+  const [totalPages, setTotalPages] = useState(null)
 
-  // Get total pages
-  const totalPages = Math.ceil(subslides.length / postsPerPage)
+  // Set total pages
+  useEffect(() => {
+    setTotalPages(Math.ceil(cleanEvents.length / postsPerPage))
+  }, [cleanEvents, postsPerPage])
 
   // Split elements on pages logic
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = subslides.slice(indexOfFirstPost, indexOfLastPost);
-
-
+  const indexOfLastEvent = currentPage * postsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
+  const currentEvents = cleanEvents.slice(indexOfFirstEvent, indexOfLastEvent);
 
   // loop across the pages and switch to the next slide after the last page is show
   useEffect(() => {
+    if (!totalPages) {
+      return
+    }
+
     if (currentPage >= totalPages) {
       console.log("next slide");
       slideDone(slide)
       return
     }
 
-    const intervalID = setInterval(() => {
+    const pageInterval = setInterval(() => {
       console.log("change page");
       setCurrentPage(currentPage + 1)
-
-    }, 10);
+    }, pageIntervalTime);
 
     return function cleanup() {
       console.log("clearInterval");
-      clearInterval(intervalID)
+      clearInterval(pageInterval)
     }
   }, [currentPage, totalPages])
 
 
-
-
-
-  const CurrentItems = ({ items = [] }) => {
+  const PageItems = ({ items = [] }) => {
     return (
       <>
         {items.map(item => {
-          //  Format start time on event
-          const formattedStartTime = new Date(item?.start).toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' });
           return (
             <tr key={item.id} className={`{'is-odd': $odd, 'bookbyen-bookings__body': true}`}>
-              <td className="bookbyen-bookings__time">
-                {formattedStartTime}
-              </td>
-              <td>{item?.facility?.name}</td>
-              <td>{item?.activity?.name}</td>
-              <td>{item?.bookingNote}</td>
-              <td>{item?.team?.name}</td>
-              <td>{item?.user?.name}</td>
-              {/* TODO: teamleaders is an array */}
-              <td>{item?.team?.teamleaders}</td>
+              {showTime && (
+                <td className="bookbyen-bookings__time">
+                  {item.startTime} - {item.endTime}
+                </td>
+              )}
+              {showFacility && (
+                <td>{item.facility}</td>
+              )}
+              {showActivity && (
+                <td>{item.activity}</td>
+              )}
+              {showBookingNote && (
+                <td>{item.bookingNote}</td>
+              )}
+              {showTeam && (
+                <td>{item.teamName}</td>
+              )}
+              {showTeamleaders && (
+                <td>{item.teamleaders}</td>
+              )}
+              {showUserName && (
+                <td>{item.userName}</td>
+              )}
             </tr>
           )
         })}
       </>
     )
   }
-
-
-
-
-
-
 
   return (
     <>
@@ -114,6 +161,9 @@ function BookByen({ slide, content = {}, run, slideDone }) {
             style={{ backgroundColor: bgColor }}
           >
             <div className="bookbyen-top__date">
+              {showDayName && (
+                <p>{new Date().toLocaleString("da-DK", { weekday: 'long', day: 'numeric', month: 'short' })}</p>
+              )}
               <div className="bookbyen-top__time">
                 {timeNow?.split(".")[0]} <span className="bookbyen-top__time-separator">:</span> {timeNow?.split(".")[1]}
               </div>
@@ -134,11 +184,13 @@ function BookByen({ slide, content = {}, run, slideDone }) {
               )}
             </div>
             <div className="bookbyen-top__logo">
-              <img
-                src={logo}
-                className="bookbyen-top__logo"
-                alt="Logo"
-              />
+              {logo && (
+                <img
+                  src={logo}
+                  className="bookbyen-top__logo"
+                  alt="Logo"
+                />
+              )}
             </div>
           </header>
         </div>
@@ -155,17 +207,17 @@ function BookByen({ slide, content = {}, run, slideDone }) {
                 className="bookbyen-bookings__head"
                 style={{ backgroundColor: bgColor }}
               >
-                <th className="bookbyen-bookings__time">Tid</th>
-                <th>Facilitet</th>
-                <th>Aktivitet</th>
-                <th>Note</th>
-                <th>Hold</th>
-                <th>Holdleder</th>
-                <th className="bookbyen-bookings__username">Brugernavn</th>
+                {showTime && (<th className="bookbyen-bookings__time">Tid</th>)}
+                {showFacility && (<th>Facilitet</th>)}
+                {showActivity && (<th>Aktivitet</th>)}
+                {showBookingNote && (<th>Note</th>)}
+                {showTeam && (<th>Hold</th>)}
+                {showTeamleaders && (<th>Holdleder</th>)}
+                {showUserName && (<th className="bookbyen-bookings__username">Brugernavn</th>)}
               </tr>
             </thead>
             <tbody>
-              <CurrentItems items={currentPosts} />
+              <PageItems items={currentEvents} />
             </tbody>
           </table>
         </div>
@@ -180,59 +232,3 @@ function BookByen({ slide, content = {}, run, slideDone }) {
 }
 
 export default BookByen;
-
-
-// // Add Hours to Date Object
-// function addHours(date, hours) {
-//   const newDate = new Date(date);
-//   newDate.setHours(newDate.getHours() + hours);
-//   return newDate;
-// }
-
-
-// {
-//   items?.map(item, index => (
-//     <tr key={index} className={`{'is-odd': $odd, 'bookbyen-bookings__body': true}`}>
-//       <td className="bookbyen-bookings__time">
-//         {formattedStartTime}
-//       </td>
-//       <td>{item?.facility?.name}</td>
-//       <td>{item?.activity?.name}</td>
-//       <td>{item?.bookingNote}</td>
-//       <td>{item?.team?.name}</td>
-//       {/* TODO: teamleaders is an array */}
-//       <td>{item?.team?.teamleaders}</td>
-//       <td>{item?.user?.name}</td>
-//     </tr>
-//   ))
-// }
-
-
-
-// {
-//   subslides?.map((item, index) => {
-//   Format start time on event
-//     const formattedStartTime = new Date(item?.start).toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' });
-//   Adds 1 hour to event start time and format it.
-//     const convertedDate = addHours(item?.start, 1).toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' })
-//   Remove past events
-//     if (convertedDate < timeNow) {
-//       return null
-//     }
-
-//     return (
-//       <tr key={index} className={`{'is-odd': $odd, 'bookbyen-bookings__body': true}`}>
-//         <td className="bookbyen-bookings__time">
-//           {formattedStartTime}
-//         </td>
-//         <td>{item?.facility?.name}</td>
-//         <td>{item?.activity?.name}</td>
-//         <td>{item?.bookingNote}</td>
-//         <td>{item?.team?.name}</td>
-//         {/* TODO: teamleaders is an array */}
-//         <td>{item?.team?.teamleaders}</td>
-//         <td>{item?.user?.name}</td>
-//       </tr>
-//     )
-//   })
-// }
