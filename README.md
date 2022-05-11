@@ -21,6 +21,7 @@ The docker setup serves the files in the `build/` (see build for production) fol
 ## Add a new template
 
 To add a template:
+
 * Create a folder in src with the name of the template, e.g. `my-template` that contains the following files:
   * `my-template.js` - The React component to render.
   * `my-template.json` - The file describing the where to find the files required for the template.
@@ -35,7 +36,7 @@ To compile the template it is necessary to add it to the webpack setup.
 
 Add it to `const entry = {}`:
 
-```
+```javascript
 {
   "my-template": path.resolve(__dirname, "./src/my-template/my-template.js")
 }
@@ -72,6 +73,6 @@ docker-compose run node npm run apply-coding-standards
 
 Run tests
 
-```sh
+```bash
 docker-compose run node npm run test-ci
 ```
