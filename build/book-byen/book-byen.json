@@ -1,12 +1,12 @@
 {
-    "title": "TwentyThreeVideo",
+    "title": "book-byen",
     "icon": "",
     "id": "01ARZ3NDEKTSV4RRFFQ69G5FAK",
-    "description": "Skabelon til twenty-three-video.",
+    "description": "Skabelon til book-byen.",
     "resources": {
-      "component": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/twentyThreeVideo.js",
-      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/twenty-three-video/twenty-three-video-admin.json",
-      "schema": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/twenty-three-video/twenty-three-video-schema.json",
+      "component": "https://raw.githubusercontent.com/kkos2/display-templates/kb-bookbyen/build/book-byen.js",
+      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kb-bookbyen/build/book-byen/book-byen-admin.json",
+      "schema": "",
       "assets": [],
       "options": {},
       "content": {}

@@ -1,13 +1,13 @@
 [
     {
-      "key": "video-form-1",
+      "key": "bookbyen-form-1",
       "input": "header",
       "text": "Skabelon: book-byen",
       "name": "header1",
       "formGroupClasses": "h4 mb-3"
     },
     {
-      "key": "video-form-2",
+      "key": "bookbyen-form-2",
       "input": "header-h3",
       "text": "Indhold",
       "name": "header2",
