@@ -31,7 +31,10 @@ const entry = devMode
   : {
     "book-byen": path.resolve(__dirname, "./src/book-byen/book-byen.js"),
     twentyThreeVideo: path.resolve(__dirname, "./src/twenty-three-video/twenty-three-video.js"),
-    "book-review": path.resolve(__dirname, "./src/book-review/book-review.js"),
+    "book-review": path.resolve(
+      __dirname,
+      "./src/book-review/book-review.js"
+    ),
     calendar: path.resolve(__dirname, "./src/calendar/calendar.js"),
     contacts: path.resolve(__dirname, "./src/contacts/contacts.js"),
     "image-text": path.resolve(__dirname, "./src/image-text/image-text.js"),
@@ -45,6 +48,7 @@ const entry = devMode
     iframe: path.resolve(__dirname, "./src/iframe/iframe.js"),
     table: path.resolve(__dirname, "./src/table/table.js"),
     video: path.resolve(__dirname, "./src/video/video.js"),
+    travel: path.resolve(__dirname, "./src/travel/travel.js"),
   };
 
 const plugins = devMode
