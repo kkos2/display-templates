@@ -1,17 +1,16 @@
 [
-    {
-      "key": "bookbyen-form-1",
-      "input": "header",
-      "text": "Skabelon: book-byen",
-      "name": "header1",
-      "formGroupClasses": "h4 mb-3"
-    },
-    {
-      "key": "bookbyen-form-2",
-      "input": "header-h3",
-      "text": "Indhold",
-      "name": "header2",
-      "formGroupClasses": "h5 mb-3"
-    }
-
+  {
+    "key": "bookbyen-form-1",
+    "input": "header",
+    "text": "Skabelon: book-byen",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "bookbyen-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  }
 ]

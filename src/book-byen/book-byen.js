@@ -4,17 +4,20 @@ import { ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
 
 const formatTime = (date) => {
-  return new Date(date).toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' })
-}
+  return new Date(date).toLocaleTimeString("da-DK", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
 
 const filterEvents = (item) => {
   if (item?.isDeleted) {
     // Filter the item away.
-    return false
+    return false;
   }
   // Keep.
-  return true
-}
+  return true;
+};
 
 const formatEvents = (item) => {
   return {
@@ -30,9 +33,9 @@ const formatEvents = (item) => {
     // teamleaders is an array, and i dont know whats in it
     teamleaders: item?.team?.teamleaders[0] || "",
     userName: item?.user?.name,
-    isDeleted: item.isDeleted
+    isDeleted: item.isDeleted,
   };
-}
+};
 
 /**
  * BookByen component.
@@ -68,29 +71,28 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   const rootStyle = {};
 
   // remove delete events and clean data
-  const cleanEvents = subslides.filter(filterEvents).map(formatEvents)
+  const cleanEvents = subslides.filter(filterEvents).map(formatEvents);
 
   // Makes a watch that is updated live
-  const [timeNow, setTimeNow] = useState(null)
+  const [timeNow, setTimeNow] = useState(null);
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeNow(formatTime(new Date()))
+      setTimeNow(formatTime(new Date()));
     }, 1000);
 
     return function cleanup() {
-      clearInterval(timer)
-    }
-
-  }, [])
+      clearInterval(timer);
+    };
+  }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-  const [totalPages, setTotalPages] = useState(null)
+  const [totalPages, setTotalPages] = useState(null);
 
   // Set total pages
   useEffect(() => {
-    setTotalPages(Math.ceil(cleanEvents.length / postsPerPage))
-  }, [cleanEvents, postsPerPage])
+    setTotalPages(Math.ceil(cleanEvents.length / postsPerPage));
+  }, [cleanEvents, postsPerPage]);
 
   // Split elements on pages logic
   const indexOfLastEvent = currentPage * postsPerPage;
@@ -100,83 +102,80 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   // loop across the pages and switch to the next slide after the last page is show
   useEffect(() => {
     if (!totalPages) {
-      return
+      return;
     }
 
     if (currentPage >= totalPages) {
       console.log("next slide");
-      slideDone(slide)
-      return
+      slideDone(slide);
+      return;
     }
 
     const pageInterval = setInterval(() => {
       console.log("change page");
-      setCurrentPage(currentPage + 1)
+      setCurrentPage(currentPage + 1);
     }, pageIntervalTime);
 
     return function cleanup() {
       console.log("clearInterval");
-      clearInterval(pageInterval)
-    }
-  }, [currentPage, totalPages])
-
+      clearInterval(pageInterval);
+    };
+  }, [currentPage, totalPages]);
 
   const PageItems = ({ items = [] }) => {
     return (
       <>
-        {items.map(item => {
+        {items.map((item) => {
           return (
-            <tr key={item.id} className={`{'is-odd': $odd, 'bookbyen-bookings__body': true}`}>
+            <tr
+              key={item.id}
+              className={`{'is-odd': $odd, 'bookbyen-bookings__body': true}`}
+            >
               {showTime && (
                 <td className="bookbyen-bookings__time">
                   {item.startTime} - {item.endTime}
                 </td>
               )}
-              {showFacility && (
-                <td>{item.facility}</td>
-              )}
-              {showActivity && (
-                <td>{item.activity}</td>
-              )}
-              {showBookingNote && (
-                <td>{item.bookingNote}</td>
-              )}
-              {showTeam && (
-                <td>{item.teamName}</td>
-              )}
-              {showTeamleaders && (
-                <td>{item.teamleaders}</td>
-              )}
-              {showUserName && (
-                <td>{item.userName}</td>
-              )}
+              {showFacility && <td>{item.facility}</td>}
+              {showActivity && <td>{item.activity}</td>}
+              {showBookingNote && <td>{item.bookingNote}</td>}
+              {showTeam && <td>{item.teamName}</td>}
+              {showTeamleaders && <td>{item.teamleaders}</td>}
+              {showUserName && <td>{item.userName}</td>}
             </tr>
-          )
+          );
         })}
       </>
-    )
-  }
+    );
+  };
 
   return (
     <>
       <div className="bookbyen kk-ratio-{{ratio}} kk-slide-body font-kbh">
         <div className={rootClasses.join(" ")} style={rootStyle}>
-          <header
-            className="bookbyen-top"
-            style={{ backgroundColor: bgColor }}
-          >
+          <header className="bookbyen-top" style={{ backgroundColor: bgColor }}>
             <div className="bookbyen-top__date">
               {showDayName && (
-                <p>{new Date().toLocaleString("da-DK", { weekday: 'long', day: 'numeric', month: 'short' })}</p>
+                <p>
+                  {new Date().toLocaleString("da-DK", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "short",
+                  })}
+                </p>
               )}
               <div className="bookbyen-top__time">
-                {timeNow?.split(".")[0]} <span className="bookbyen-top__time-separator">:</span> {timeNow?.split(".")[1]}
+                {timeNow?.split(".")[0]}{" "}
+                <span className="bookbyen-top__time-separator">:</span>{" "}
+                {timeNow?.split(".")[1]}
               </div>
             </div>
             <div className="{{placeClass}}">
-              {true && <div className="bookbyen-top__place__item bookbyen-top__place-name">
-                ikSlide.options.place
-              </div>}
+              {true && (
+                <div className="bookbyen-top__place__item bookbyen-top__place-name">
+                  ikSlide.options.place
+                </div>
+              )}
               {false && (
                 <div className="bookbyen-top__place__item bookbyen-top__place-area">
                   ikSlide.options.area
@@ -190,19 +189,14 @@ function BookByen({ slide, content = {}, run, slideDone }) {
             </div>
             <div className="bookbyen-top__logo">
               {logo && (
-                <img
-                  src={logo}
-                  className="bookbyen-top__logo"
-                  alt="Logo"
-                />
+                <img src={logo} className="bookbyen-top__logo" alt="Logo" />
               )}
             </div>
           </header>
         </div>
         <div className="bookbyen__subslide">
           <div className="bookbyen__divider">
-            <div className="bookbyen__pager"
-              style={{ color: bgColor }}>
+            <div className="bookbyen__pager" style={{ color: bgColor }}>
               {currentPage} af {totalPages}
             </div>
           </div>
@@ -212,13 +206,15 @@ function BookByen({ slide, content = {}, run, slideDone }) {
                 className="bookbyen-bookings__head"
                 style={{ backgroundColor: bgColor }}
               >
-                {showTime && (<th className="bookbyen-bookings__time">Tid</th>)}
-                {showFacility && (<th>Facilitet</th>)}
-                {showActivity && (<th>Aktivitet</th>)}
-                {showBookingNote && (<th>Note</th>)}
-                {showTeam && (<th>Hold</th>)}
-                {showTeamleaders && (<th>Holdleder</th>)}
-                {showUserName && (<th className="bookbyen-bookings__username">Brugernavn</th>)}
+                {showTime && <th className="bookbyen-bookings__time">Tid</th>}
+                {showFacility && <th>Facilitet</th>}
+                {showActivity && <th>Aktivitet</th>}
+                {showBookingNote && <th>Note</th>}
+                {showTeam && <th>Hold</th>}
+                {showTeamleaders && <th>Holdleder</th>}
+                {showUserName && (
+                  <th className="bookbyen-bookings__username">Brugernavn</th>
+                )}
               </tr>
             </thead>
             <tbody>
@@ -227,10 +223,7 @@ function BookByen({ slide, content = {}, run, slideDone }) {
           </table>
         </div>
       </div>
-      <ThemeStyles
-        name="template-book-byen"
-        css={slide?.themeData?.css}
-      />
+      <ThemeStyles name="template-book-byen" css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );

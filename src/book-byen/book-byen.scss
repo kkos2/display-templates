@@ -1,13 +1,11 @@
 $colors-dark-blue: rgb(0, 12, 46);
-$colors-white: #ffF;
+$colors-white: #fff;
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
-
-
 
 .kk-slide-body {
   background-size: cover;
@@ -18,36 +16,38 @@ $colors-white: #ffF;
   overflow: hidden;
 }
 
-
 // @import "../../../assets/scss/kff";
 // Convert points to px. The design from KFF came with pts.
 @function pt2Px($pt) {
-  @return 0px+($pt * 96 / 72);
+  @return 0px+ ($pt * 96 / 72);
 }
 
 // Convert points to %. The design from KFF came with pts.
 @function pt2pct($pt) {
-  @return 0%+($pt * 100 / 12);
+  @return 0%+ ($pt * 100 / 12);
 }
 
 // https://css-tricks.com/books/volume-i/scale-typography-screen-size/
 @mixin stretchyEms($property, $min, $max) {
-  #{$property}: calc(#{$min}em + (#{$max} - #{$min}) * ((100vw - 300px) / (1920 - 300)));
+  #{$property}: calc(
+    #{$min}em + (#{$max} - #{$min}) * ((100vw - 300px) / (1920 - 300))
+  );
 }
 
 // https://css-tricks.com/books/volume-i/scale-typography-screen-size/
 @mixin stretchyPx($property, $min, $max) {
-  #{$property}: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 300px) / (1920 - 300)));
+  #{$property}: calc(
+    #{$min}px + (#{$max} - #{$min}) * ((100vw - 300px) / (1920 - 300))
+  );
 }
 
 @mixin scalableFont($min, $max) {
-  @include stretchyPx('font-size', $min, $max);
+  @include stretchyPx("font-size", $min, $max);
 
   .half-split & {
-    @include stretchyPx('font-size', $min/2.5, $max/2.5);
+    @include stretchyPx("font-size", $min/2.5, $max/2.5);
   }
 }
-
 
 // This will be compiled to all style sheets, but there is no way to reuse smarter.
 .kk-backend-data-error {
@@ -101,14 +101,13 @@ $colors-white: #ffF;
   padding: 0.5em 1em;
 
   &__date {
-    font-size: .6em;
+    font-size: 0.6em;
     text-align: center;
 
     p:first-letter {
       text-transform: uppercase;
-      margin-bottom: .25rem;
+      margin-bottom: 0.25rem;
     }
-
   }
 
   &__time {
@@ -143,7 +142,6 @@ $colors-white: #ffF;
   .bookbyen-top__place-name {
     font-size: 0.6em;
   }
-
 }
 
 .bookbyen__subslide {
@@ -171,7 +169,7 @@ $colors-white: #ffF;
   text-align: left;
   border-collapse: collapse;
   table-layout: fixed;
-  font-size: .7em;
+  font-size: 0.7em;
 
   .kk-ratio-vertical & {
     font-size: 1.1em;
