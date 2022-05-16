@@ -4,8 +4,8 @@
     "id": "01ARZ3NDEKTSV4RRFFQ69G5FAK",
     "description": "Skabelon til book-byen.",
     "resources": {
-      "component": "https://raw.githubusercontent.com/kkos2/display-templates/kb-bookbyen/build/book-byen.js",
-      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kb-bookbyen/build/book-byen/book-byen-admin.json",
+      "component": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/book-byen.js",
+      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/book-byen/book-byen-admin.json",
       "schema": "",
       "assets": [],
       "options": {},
