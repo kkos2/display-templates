@@ -50,18 +50,20 @@ const formatEvents = (item) => {
 function BookByen({ slide, content = {}, run, slideDone }) {
   // Content from content
   const {
+    title, // title from slide (admin)
     bgColor = "#000c2e",
     showDayName,
     subslides = [],
     logo,
     pageIntervalTime = 10000,
-    showTime = true,
-    showFacility = true,
-    showActivity = true,
-    showBookingNote = true,
-    showTeam = true,
+    showTime = false,
+    showFacility = false,
+    showActivity = false,
+    showBookingNote = false,
+    showTeam = false,
     showTeamleaders = false,
-    showUserName = true,
+    showUserName = false,
+    jsonSubslides = null,
   } = content;
 
   // ADMIN stuff start here
@@ -71,7 +73,10 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   const rootStyle = {};
 
   // remove delete events and clean data
-  const cleanEvents = subslides.filter(filterEvents).map(formatEvents);
+  //  jsonSubslides is only for testing with stringify data from text fields from admin
+  const cleanEvents = jsonSubslides
+    ? JSON.parse(jsonSubslides).filter(filterEvents).map(formatEvents)
+    : subslides.filter(filterEvents).map(formatEvents);
 
   // Makes a watch that is updated live
   const [timeNow, setTimeNow] = useState(null);
@@ -171,7 +176,13 @@ function BookByen({ slide, content = {}, run, slideDone }) {
               </div>
             </div>
             <div className="{{placeClass}}">
-              {true && (
+              {/* find out where the headline is coming from  */}
+              {title && (
+                <div className="bookbyen-top__place__item bookbyen-top__place-name">
+                  {title}
+                </div>
+              )}
+              {false && (
                 <div className="bookbyen-top__place__item bookbyen-top__place-name">
                   ikSlide.options.place
                 </div>
