@@ -80,10 +80,7 @@ function CalendarMultiple({
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
-      style={{
-        "--bg-image": templateRootStyle.backgroundImage,
-        "--bg-color": templateRootStyle.backgroundColor,
-      }}
+      style={templateRootStyle}
     >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
@@ -154,7 +151,7 @@ function CalendarMultiple({
                   {entry.endTime && (
                     <>
                       <span> - </span>
-                      {dayjs(entry.startTime * 1000)
+                      {dayjs(entry.endTime * 1000)
                         .locale(localeDa)
                         .format("LT")}
                     </>
@@ -169,7 +166,7 @@ function CalendarMultiple({
                   )}
                 </ContentItem>
                 <ContentItem
-                  className="content-item-resouce"
+                  className="content-item-resource"
                   style={borderStyle}
                 >
                   {entry.resourceTitle ?? entry.resourceId ?? ""}
@@ -184,6 +181,8 @@ function CalendarMultiple({
 
 const Wrapper = styled.div`
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  overflow: hidden;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
