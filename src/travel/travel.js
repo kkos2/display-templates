@@ -4,10 +4,11 @@ import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
-import { getFirstMediaUrlFromField } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
 import da from "./lang/da.json";
+import "../global-styles.css";
 import "./travel.scss";
+
 /**
  * Travel component.
  *
@@ -16,25 +17,28 @@ import "./travel.scss";
  * @param {object} props.content The slide content.
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function Travel({ slide, content, run, slideDone }) {
+function Travel({ slide, content, run, slideDone, executionId }) {
   const {
     station,
-    time_fast,
-    time_moderate,
+    timeFast,
+    timeModerate,
     title,
     text,
     image,
     distance,
-    iframe_title,
-    number_of_journeys,
+    iframeTitle,
+    numberOfJourneys,
+    busOrTram,
     duration = 15000,
   } = content;
   let infoBoxClass = "info-box";
   let iFrameClass = "iframe";
 
   const [translations, setTranslations] = useState();
+  const [iframeSrc, setIframeSrc] = useState("");
 
   // Rich text input sanitized
   const sanitizedtext = text ? parse(DOMPurify.sanitize(text, {})) : "";
@@ -54,7 +58,7 @@ function Travel({ slide, content, run, slideDone }) {
     infoBoxClass = "info-box grow";
   }
   // If there is no text entries for the info box, the iframe takes the space
-  if (!title && !sanitizedtext && !distance && !time_fast && !time_moderate) {
+  if (!title && !sanitizedtext && !distance && !timeFast && !timeModerate) {
     iFrameClass = "iframe grow";
   }
 
@@ -70,6 +74,23 @@ function Travel({ slide, content, run, slideDone }) {
     };
   }, [run]);
 
+  /** Create url */
+  useEffect(() => {
+    if (busOrTram === "tram") {
+      setIframeSrc(
+        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
+          numberOfJourneys || 1
+        }&enableHIM=1&p2=letbane&p2title=${iframeTitle || ""}&p2icons=&`
+      );
+    } else {
+      setIframeSrc(
+        `https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
+          numberOfJourneys || 1
+        }&enableHIM=1&p1=bus&p1title=${iframeTitle || ""}&p1icons`
+      );
+    }
+  }, [busOrTram, stationId]);
+
   /** Imports language strings. */
   useEffect(() => {
     setTranslations(da);
@@ -78,7 +99,7 @@ function Travel({ slide, content, run, slideDone }) {
   return (
     <IntlProvider messages={translations} locale="da" defaultLocale="da">
       <div className="grid">
-        {(title || sanitizedtext || distance || time_fast || time_moderate) && (
+        {(title || sanitizedtext || distance || timeFast || timeModerate) && (
           <div className={infoBoxClass}>
             <div className="header">
               <h1>{title}</h1>
@@ -94,7 +115,7 @@ function Travel({ slide, content, run, slideDone }) {
               <div>
                 <FormattedMessage id="time_fast" defaultMessage="time_fast" />
               </div>
-              <div className="text">{time_fast}</div>
+              <div className="text">{timeFast}</div>
             </div>
             <div className="time-moderat">
               <div>
@@ -103,16 +124,14 @@ function Travel({ slide, content, run, slideDone }) {
                   defaultMessage="time_moderate"
                 />
               </div>
-              <div className="text"> {time_moderate}</div>
+              <div className="text"> {timeModerate}</div>
             </div>
           </div>
         )}
         {imageStyle &&
-          (title ||
-            sanitizedtext ||
-            distance ||
-            time_fast ||
-            time_moderate) && <div className="map" style={imageStyle} />}
+          (title || sanitizedtext || distance || timeFast || timeModerate) && (
+            <div className="map" style={imageStyle} />
+          )}
         {stationId && (
           <div className={iFrameClass}>
             <iframe
@@ -120,18 +139,15 @@ function Travel({ slide, content, run, slideDone }) {
               sandbox="allow-same-origin allow-scripts"
               frameBorder="0"
               scrolling="no"
-              src={`https://webapp.rejseplanen.dk/bin/help.exe/mn?L=vs_tus.vs_new&station=${stationId}&tpl=monitor&stopFrequency=low&preview=50&offsetTime=1&maxJourneys=${
-                number_of_journeys || 1
-              }&enableHIM=1&p1=bus&p1title=${
-                iframe_title || ""
-              }&p1icons=&p2icons=&`}
+              src={iframeSrc}
               width="100%"
               height="100%"
             />
           </div>
         )}
       </div>
-      <GlobalStyles />
+
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
     </IntlProvider>
   );
 }
@@ -139,14 +155,14 @@ function Travel({ slide, content, run, slideDone }) {
 Travel.defaultProps = {
   content: PropTypes.shape({
     station: "",
-    time_fast: 0,
-    time_moderate: 0,
+    timeFast: 0,
+    timeModerate: 0,
     title: "",
     text: "",
     image: 0,
     distance: 0,
-    iframe_title: "",
-    number_of_journeys: 1,
+    iframeTitle: "",
+    numberOfJourneys: 1,
     duration: 15000,
   }),
 };
@@ -157,19 +173,24 @@ Travel.propTypes = {
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
     mediaData: PropTypes.objectOf(PropTypes.any),
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number,
     station: PropTypes.arrayOf(PropTypes.any),
-    time_fast: PropTypes.string,
-    time_moderate: PropTypes.string,
+    timeFast: PropTypes.string,
+    timeModerate: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
     distance: PropTypes.string,
-    iframe_title: PropTypes.string,
-    number_of_journeys: PropTypes.number,
+    iframeTitle: PropTypes.string,
+    busOrTram: PropTypes.string,
+    numberOfJourneys: PropTypes.number,
   }),
+  executionId: PropTypes.string.isRequired,
 };
 
 export default Travel;
