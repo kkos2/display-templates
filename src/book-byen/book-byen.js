@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import "./book-byen.scss";
 import { ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
-import PropTypes from "prop-types";
 
 const formatTime = (date) => {
   return new Date(date).toLocaleTimeString("da-DK", {
@@ -105,28 +105,21 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
   const currentEvents = cleanEvents.slice(indexOfFirstEvent, indexOfLastEvent);
 
-  // loop across the pages and switch to the next slide after the last page is show
   useEffect(() => {
-    if (!totalPages) {
-      return;
-    }
-
-    if (currentPage >= totalPages) {
-      console.log("next slide");
+    if (totalPages && currentPage >= totalPages) {
       slideDone(slide);
-      return;
     }
+  }, [currentPage, totalPages]);
 
+  useEffect(() => {
     const pageInterval = setInterval(() => {
-      console.log("change page");
       setCurrentPage(currentPage + 1);
     }, pageIntervalTime);
 
     return function cleanup() {
-      console.log("clearInterval");
       clearInterval(pageInterval);
     };
-  }, [currentPage, totalPages]);
+  });
 
   const PageItems = ({ items = [] }) => {
     return (
@@ -266,13 +259,13 @@ BookByen.propTypes = {
         bookingNote: PropTypes.string.isRequired,
         team: PropTypes.shape({
           teamName: PropTypes.string.isRequired,
-          teamleaders: PropTypes.arrayOf(PropTypes.string)
+          teamleaders: PropTypes.arrayOf(PropTypes.string),
         }),
         user: PropTypes.shape({
           name: PropTypes.string.isRequired,
         }),
         isDeleted: PropTypes.bool.isRequired,
-      }),
+      })
     ),
     logo: PropTypes.string,
     pageIntervalTime: PropTypes.number,
