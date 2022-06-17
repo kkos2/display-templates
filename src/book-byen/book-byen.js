@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./book-byen.scss";
 import { ThemeStyles } from "../slide-util";
 import GlobalStyles from "../GlobalStyles";
+import PropTypes from "prop-types";
 
 const formatTime = (date) => {
   return new Date(date).toLocaleTimeString("da-DK", {
@@ -239,5 +240,51 @@ function BookByen({ slide, content = {}, run, slideDone }) {
     </>
   );
 }
+
+BookByen.propTypes = {
+  run: PropTypes.string.isRequired,
+  slideDone: PropTypes.func.isRequired,
+  slide: PropTypes.shape({
+    themeData: PropTypes.shape({
+      css: PropTypes.string,
+    }),
+  }).isRequired,
+  content: PropTypes.shape({
+    bgColor: PropTypes.string,
+    showDayName: PropTypes.string,
+    subslides: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        startTime: PropTypes.string.isRequired,
+        endTime: PropTypes.string.isRequired,
+        facility: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+        }),
+        activity: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+        }),
+        bookingNote: PropTypes.string.isRequired,
+        team: PropTypes.shape({
+          teamName: PropTypes.string.isRequired,
+          teamleaders: PropTypes.arrayOf(PropTypes.string)
+        }),
+        user: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+        }),
+        isDeleted: PropTypes.bool.isRequired,
+      }),
+    ),
+    logo: PropTypes.string,
+    pageIntervalTime: PropTypes.number,
+    showTime: PropTypes.bool.isRequired,
+    showFacility: PropTypes.bool.isRequired,
+    showActivity: PropTypes.bool.isRequired,
+    showBookingNote: PropTypes.bool.isRequired,
+    showTeam: PropTypes.bool.isRequired,
+    showTeamleaders: PropTypes.bool.isRequired,
+    showUserName: PropTypes.bool.isRequired,
+    jsonSubslides: PropTypes.string,
+  }).isRequired,
+};
 
 export default BookByen;
