@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import "./rss.scss";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
-import GlobalStyles from "../GlobalStyles";
+import "../global-styles.css";
+import "./rss.scss";
 
 /**
  * RSS component.
@@ -15,9 +15,10 @@ import GlobalStyles from "../GlobalStyles";
  * @param {object} props.content The slide content.
  * @param {number} props.run Timestamp of when to start run.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
+ * @param {string} props.executionId Unique id for the instance.
  * @returns {object} The component.
  */
-function RSS({ slide, content, run, slideDone }) {
+function RSS({ slide, content, run, slideDone, executionId }) {
   const [entryIndex, setEntryIndex] = useState(0);
   const [currentEntry, setCurrentEntry] = useState(null);
   const timeoutRef = useRef(null);
@@ -102,8 +103,8 @@ function RSS({ slide, content, run, slideDone }) {
           </>
         )}
       </div>
-      <ThemeStyles name="template-rss" css={slide?.themeData?.css} />
-      <GlobalStyles />
+
+      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
     </>
   );
 }
@@ -146,6 +147,7 @@ RSS.propTypes = {
     image: PropTypes.arrayOf(PropTypes.string),
     fontSize: PropTypes.string,
   }).isRequired,
+  executionId: PropTypes.string.isRequired,
 };
 
 export default RSS;
