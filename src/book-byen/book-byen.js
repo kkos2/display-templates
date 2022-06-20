@@ -51,7 +51,6 @@ const formatEvents = (item) => {
 function BookByen({ slide, content = {}, run, slideDone }) {
   // Content from content
   const {
-    title, // title from slide (admin)
     bgColor = "#000c2e",
     showDayName,
     subslides = [],
@@ -82,6 +81,8 @@ function BookByen({ slide, content = {}, run, slideDone }) {
 
   // Makes a watch that is updated live
   const [timeNow, setTimeNow] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeNow(formatTime(new Date()));
@@ -92,18 +93,11 @@ function BookByen({ slide, content = {}, run, slideDone }) {
     };
   }, []);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
-
-  // Set total pages
-  useEffect(() => {
-    setTotalPages(Math.ceil(cleanEvents.length / postsPerPage));
-  }, [cleanEvents, postsPerPage]);
-
   // Split elements on pages logic
   const indexOfLastEvent = currentPage * postsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
   const currentEvents = cleanEvents.slice(indexOfFirstEvent, indexOfLastEvent);
+  const totalPages = Math.ceil(cleanEvents.length / postsPerPage);
 
   useEffect(() => {
     const pageInterval = setInterval(
@@ -167,11 +161,13 @@ function BookByen({ slide, content = {}, run, slideDone }) {
                   })}
                 </p>
               )}
-              <div className="bookbyen-top__time">
-                {timeNow?.split(".")[0]}{" "}
-                <span className="bookbyen-top__time-separator">:</span>{" "}
-                {timeNow?.split(".")[1]}
-              </div>
+              {timeNow && (
+                <div className="bookbyen-top__time">
+                  {timeNow?.split(".")[0]}{" "}
+                  <span className="bookbyen-top__time-separator">:</span>{" "}
+                  {timeNow?.split(".")[1]}
+                </div>
+              )}
             </div>
             <div className="bookbyen-top__logo">
               {logo && (
