@@ -57,6 +57,7 @@ function BookByen({ slide, content = {}, run, slideDone }) {
     subslides = [],
     logo,
     pageIntervalTime = 10000,
+    postsPerPage = 10,
     showTime = false,
     showFacility = false,
     showActivity = false,
@@ -92,7 +93,6 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
   const [totalPages, setTotalPages] = useState(null);
 
   // Set total pages
