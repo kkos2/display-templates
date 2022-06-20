@@ -106,15 +106,19 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   const currentEvents = cleanEvents.slice(indexOfFirstEvent, indexOfLastEvent);
 
   useEffect(() => {
-    if (totalPages && currentPage >= totalPages) {
-      slideDone(slide);
-    }
-  }, [currentPage, totalPages]);
-
-  useEffect(() => {
-    const pageInterval = setInterval(() => {
-      setCurrentPage(currentPage + 1);
-    }, pageIntervalTime);
+    const pageInterval = setInterval(
+      () => {
+        if (currentPage < totalPages) {
+          setCurrentPage(currentPage + 1);
+        } else {
+          slideDone(slide);
+          setCurrentPage(1);
+        }
+      },
+      pageIntervalTime,
+      currentPage,
+      totalPages
+    );
 
     return function cleanup() {
       clearInterval(pageInterval);
@@ -168,29 +172,6 @@ function BookByen({ slide, content = {}, run, slideDone }) {
                 <span className="bookbyen-top__time-separator">:</span>{" "}
                 {timeNow?.split(".")[1]}
               </div>
-            </div>
-            <div className="{{placeClass}}">
-              {/* find out where the headline is coming from  */}
-              {title && (
-                <div className="bookbyen-top__place__item bookbyen-top__place-name">
-                  {title}
-                </div>
-              )}
-              {false && (
-                <div className="bookbyen-top__place__item bookbyen-top__place-name">
-                  ikSlide.options.place
-                </div>
-              )}
-              {false && (
-                <div className="bookbyen-top__place__item bookbyen-top__place-area">
-                  ikSlide.options.area
-                </div>
-              )}
-              {false && (
-                <div className="bookbyen-top__place__item bookbyen-top__place-facility">
-                  ikSlide.options.facility
-                </div>
-              )}
             </div>
             <div className="bookbyen-top__logo">
               {logo && (
