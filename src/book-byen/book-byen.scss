@@ -89,6 +89,26 @@ $colors-white: #fff;
   &.kk-ratio-vertical {
     @include scalableFont(12, 48);
   }
+
+  &__subslide {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: right;
+  }
+
+  &__divider {
+    height: 1.5em;
+    display: grid;
+    align-items: center;
+  }
+
+  &__pager {
+    font-size: 0.5em;
+    color: #000;
+    margin-right: 1em;
+    font-weight: 700;
+  }
 }
 
 .bookbyen-top {
@@ -142,26 +162,6 @@ $colors-white: #fff;
   .bookbyen-top__place-name {
     font-size: 0.6em;
   }
-}
-
-.bookbyen__subslide {
-  width: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: right;
-}
-
-.bookbyen__divider {
-  height: 1.5em;
-  display: grid;
-  align-items: center;
-}
-
-.bookbyen__pager {
-  font-size: 0.5em;
-  color: #000;
-  margin-right: 1em;
-  font-weight: 700;
 }
 
 .bookbyen-bookings {
