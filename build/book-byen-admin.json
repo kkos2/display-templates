@@ -1,0 +1,96 @@
+[
+  {
+    "key": "book-byen-form-1",
+    "input": "header",
+    "text": "Skabelon: Book Byen",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "book-byen-form-2",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "book-byen-form-3",
+    "input": "textarea",
+    "name": "title",
+    "label": "Overskrift på slide",
+    "helpText": "Her kan du skrive overskriften til slidet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "book-byen-form-showDayName",
+    "input": "checkbox",
+    "label": "showDayName",
+    "name": "showDayName",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-bgColor",
+    "input": "input",
+    "name": "bgColor",
+    "type": "text",
+    "label": "bgColor",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "book-byen-form-4",
+    "input": "textarea",
+    "name": "jsonSubslides",
+    "label": "JSON INDHOLD",
+    "helpText": "Her kan du skrive JSON til slidet",
+    "formGroupClasses": "col-md"
+  },
+  {
+    "key": "book-byen-form-showTime",
+    "input": "checkbox",
+    "label": "showTime",
+    "name": "showTime",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-form-showFacility",
+    "input": "checkbox",
+    "label": "showFacility",
+    "name": "showFacility",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-form-showActivity",
+    "input": "checkbox",
+    "label": "showActivity",
+    "name": "showActivity",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-form-showBookingNote",
+    "input": "checkbox",
+    "label": "showBookingNote",
+    "name": "showBookingNote",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-form-showTeam",
+    "input": "checkbox",
+    "label": "showTeam",
+    "name": "showTeam",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-form-showTeamleaders",
+    "input": "checkbox",
+    "label": "showTeamleaders",
+    "name": "showTeamleaders",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-form-showUserName",
+    "input": "checkbox",
+    "label": "showUserName",
+    "name": "showUserName",
+    "formGroupClasses": "col-md-6 mb-3"
+  }
+]

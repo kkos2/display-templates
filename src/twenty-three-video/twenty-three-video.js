@@ -13,10 +13,10 @@ import GlobalStyles from "../GlobalStyles";
  * @returns {object} The component.
  */
 function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
-  const iframeId = slide["@id"]
+  const iframeId = slide["@id"];
 
   // TODO: This has to be dynamic
-  const videoUrl = "video.kk.dk"
+  const videoUrl = "video.kk.dk";
 
   // Content from content
   const {
@@ -24,15 +24,14 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
     autoPlay = true,
     showTray = false,
     mutedAutoPlay = true,
-    autoMute = false
+    autoMute = false,
   } = content;
 
   // change boolean to number
-  const convertedAutoplay = autoPlay === true ? "1" : "0"
-  const convertedShowtray = showTray === true ? "1" : "0"
-  const convertedMutedAutoPlay = mutedAutoPlay === true ? "1" : "0"
-  const convertedAutoMute = autoMute === true ? "1" : "0"
-
+  const convertedAutoplay = autoPlay === true ? "1" : "0";
+  const convertedShowtray = showTray === true ? "1" : "0";
+  const convertedMutedAutoPlay = mutedAutoPlay === true ? "1" : "0";
+  const convertedAutoMute = autoMute === true ? "1" : "0";
 
   // This fix normal typing errors and cleans the array for empty items
   const formattedVideoList = videoList
@@ -41,28 +40,25 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
     .map((item) => item.trim())
     .filter(Boolean);
 
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [videoId, setVideoId] = useState(formattedVideoList[currentVideoIndex]);
 
+  /** @param e */
   function videoEndedEvent(e) {
     // EventListener function for player:video:ended message
     if (e.data.includes("player:video:ended")) {
       console.log("player:video:ended");
       // check if there is a next video id in formatted Video List
       if (formattedVideoList[currentVideoIndex + 1] === undefined) {
-        slideDone(slide)
-        return
+        slideDone(slide);
+        return;
       }
-      setCurrentVideoIndex(currentVideoIndex + 1)
+      setCurrentVideoIndex(currentVideoIndex + 1);
     }
   }
 
   useEffect(() => {
-    window.addEventListener(
-      "message",
-      videoEndedEvent,
-      false
-    );
+    window.addEventListener("message", videoEndedEvent, false);
 
     // This activate player:video:ended message
     setTimeout(() => {
@@ -80,14 +76,9 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
     };
   }, [videoId]);
 
-
-
   useEffect(() => {
-    setVideoId(
-      formattedVideoList[currentVideoIndex]
-    );
-  }, [currentVideoIndex])
-
+    setVideoId(formattedVideoList[currentVideoIndex]);
+  }, [currentVideoIndex]);
 
   // ADMIN stuff start here
   const rootClasses = ["template-twenty-three-video"];

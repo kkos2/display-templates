@@ -1,0 +1,194 @@
+$colors-dark-blue: rgb(0, 12, 46);
+$colors-white: #fff;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.kk-slide-body {
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+// @import "../../../assets/scss/kff";
+// Convert points to px. The design from KFF came with pts.
+@function pt2Px($pt) {
+  @return 0px+ ($pt * 96 / 72);
+}
+
+// Convert points to %. The design from KFF came with pts.
+@function pt2pct($pt) {
+  @return 0%+ ($pt * 100 / 12);
+}
+
+// https://css-tricks.com/books/volume-i/scale-typography-screen-size/
+@mixin stretchyEms($property, $min, $max) {
+  #{$property}: calc(
+    #{$min}em + (#{$max} - #{$min}) * ((100vw - 300px) / (1920 - 300))
+  );
+}
+
+// https://css-tricks.com/books/volume-i/scale-typography-screen-size/
+@mixin stretchyPx($property, $min, $max) {
+  #{$property}: calc(
+    #{$min}px + (#{$max} - #{$min}) * ((100vw - 300px) / (1920 - 300))
+  );
+}
+
+@mixin scalableFont($min, $max) {
+  @include stretchyPx("font-size", $min, $max);
+
+  .half-split & {
+    @include stretchyPx("font-size", $min/2.5, $max/2.5);
+  }
+}
+
+// This will be compiled to all style sheets, but there is no way to reuse smarter.
+.kk-backend-data-error {
+  background-color: deeppink;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  padding: 0.2em;
+
+  .create-slide--content-inner & {
+    font-size: 1.2em;
+    padding: 0.5em;
+  }
+}
+
+@keyframes blinking {
+  0% {
+    visibility: hidden;
+  }
+
+  50% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: visible;
+  }
+}
+
+.bookbyen {
+  background-color: $colors-white;
+  width: 100%;
+  height: 100%;
+  //  override the text color from V1
+  color: #000;
+
+  @include scalableFont(12, 38);
+
+  &.kk-ratio-vertical {
+    @include scalableFont(12, 48);
+  }
+
+  &__subslide {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: right;
+  }
+
+  &__divider {
+    height: 1.5em;
+    display: grid;
+    align-items: center;
+  }
+
+  &__pager {
+    font-size: 0.5em;
+    color: #000;
+    margin-right: 1em;
+    font-weight: 700;
+  }
+}
+
+.bookbyen-top {
+  color: $colors-white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 13% auto 13%;
+  align-items: center;
+
+  padding: 0.5em 1em;
+
+  &__date {
+    font-size: 0.6em;
+    text-align: center;
+
+    p:first-letter {
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &__time {
+    font-size: 1.3em;
+    line-height: 1.8em;
+  }
+
+  &__time-separator {
+    animation: 2s linear infinite blinking;
+  }
+
+  &__place {
+    font-size: 1.7em;
+    text-transform: uppercase;
+    font-weight: 700;
+    justify-self: center;
+
+    &__item {
+      text-align: center;
+    }
+  }
+
+  &__logo {
+    width: 3em;
+    justify-self: right;
+  }
+}
+
+.bookbyen-top__place--with-filters {
+  font-size: 1.2em;
+
+  .bookbyen-top__place-name {
+    font-size: 0.6em;
+  }
+}
+
+.bookbyen-bookings {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.7em;
+
+  .kk-ratio-vertical & {
+    font-size: 1.1em;
+  }
+
+  th,
+  td {
+    padding: 0.6em;
+  }
+
+  &__head {
+    color: $colors-white;
+  }
+
+  &__body {
+    color: #000;
+  }
+
+  &__time {
+    width: 9em;
+  }
+}

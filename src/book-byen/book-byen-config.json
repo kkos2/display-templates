@@ -1,0 +1,14 @@
+{
+  "title": "book-byen",
+  "icon": "",
+  "id": "01ARZ3NDEKTSV4RRFFQ69G5FAK",
+  "description": "Skabelon til book-byen.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/book-byen.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/book-byen-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/book-byen-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}
