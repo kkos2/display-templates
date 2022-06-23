@@ -12,12 +12,7 @@ const formatTime = (date) => {
 };
 
 const filterEvents = (item) => {
-  if (item?.isDeleted) {
-    // Filter the item away.
-    return false;
-  }
-  // Keep.
-  return true;
+  return item?.isDeleted;
 };
 
 const formatEvents = (item) => {
