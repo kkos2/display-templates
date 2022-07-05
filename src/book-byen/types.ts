@@ -1,4 +1,4 @@
-import {SlideBaseProp} from "../types/SlideBaseProp";
+import { SlideBaseProp } from "../types/SlideBaseProp";
 
 export interface BookByenItem {
   id: number;
@@ -11,7 +11,7 @@ export interface BookByenItem {
   teamName: string;
   teamleaders: string;
   userName: string;
-};
+}
 
 export interface BookByenContent {
   bgColor: string;

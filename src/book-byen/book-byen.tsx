@@ -1,8 +1,8 @@
-import React, {ReactElement, useEffect, useState} from "react";
+import React, { FC, useEffect, useState } from "react";
 import "./book-byen.scss";
 import { ThemeStyles } from "../slide-util-ts";
 import GlobalStyles from "../GlobalStyles";
-import {BookByenItem, BookByenProps} from "./types";
+import { BookByenItem, BookByenProps } from "./types";
 
 const formatTime = (date: string | Date): string => {
   return new Date(date).toLocaleTimeString("da-DK", {
@@ -39,11 +39,10 @@ const formatEvents = (item: any): BookByenItem => {
  * @param {object} props Props.
  * @param {object} props.slide The slide.
  * @param {object} props.content The slide content.
- * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @returns {object} The component.
  */
-const BookByen: React.FC<BookByenProps> = ({ slide, content, slideDone }) => {
+const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
   // Content from content
   const {
     bgColor = "#000c2e",
@@ -106,7 +105,7 @@ const BookByen: React.FC<BookByenProps> = ({ slide, content, slideDone }) => {
     };
   });
 
-  const PageItems = ({ items }: {items: BookByenItem[]} ) => {
+  const PageItems = ({ items }: { items: BookByenItem[] }) => {
     return (
       <>
         {items.map((item) => {
@@ -192,10 +191,10 @@ const BookByen: React.FC<BookByenProps> = ({ slide, content, slideDone }) => {
           </table>
         </div>
       </div>
-      <ThemeStyles id="template-book-byen" css={slide?.themeData?.css}/>
+      <ThemeStyles id="template-book-byen" css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
-}
+};
 
 export default BookByen;

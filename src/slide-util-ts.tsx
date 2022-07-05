@@ -1,5 +1,5 @@
-import {createGlobalStyle} from "styled-components";
 import React from "react";
+import { createGlobalStyle } from "styled-components";
 
 /**
  * Create a theme style for a slide.
@@ -9,7 +9,7 @@ import React from "react";
  * @param {string | null} props.css Css as a string.
  * @returns {object} The component.
  */
-function ThemeStyles({ id, css }: {id: string, css?: string}): JSX.Element {
+function ThemeStyles({ id, css }: { id: string; css?: string }): JSX.Element {
   if (!css) {
     return <></>;
   }
@@ -18,5 +18,9 @@ function ThemeStyles({ id, css }: {id: string, css?: string}): JSX.Element {
   const ThemeComponent = createGlobalStyle`${slideCss}`;
   return <ThemeComponent />;
 }
+
+ThemeStyles.defaultProps = {
+  css: null,
+};
 
 export { ThemeStyles };
