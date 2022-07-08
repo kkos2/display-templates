@@ -32,9 +32,9 @@
   {
     "key": "book-byen-form-bgColor",
     "input": "input",
-    "name": "Baggrundsfarve i header",
+    "name": "bgColor",
     "type": "text",
-    "label": "bgColor",
+    "label": "Baggrundsfarve i header",
     "formGroupClasses": "col-md-6"
   },
   {
