@@ -1,9 +1,9 @@
 [
   {
-    "key": "book-byen-form-header",
+    "key": "book-byen-form-ui-title",
     "input": "header",
-    "text": "Header",
-    "name": "header",
+    "text": "Book Byen indstillinger",
+    "name": "ui-title",
     "formGroupClasses": "h4 mb-3"
   },
   {
@@ -13,6 +13,13 @@
     "type": "text",
     "label": "Feed ID",
     "helpText": "Angiv ID'et på det feed som skal bruges til at hente slides",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "book-byen-form-header",
+    "input": "input",
+    "text": "Header",
+    "name": "header",
     "formGroupClasses": "col-md-6"
   },
   {
