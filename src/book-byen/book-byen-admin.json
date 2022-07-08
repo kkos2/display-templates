@@ -18,8 +18,9 @@
   {
     "key": "book-byen-form-header",
     "input": "input",
-    "text": "Header",
     "name": "header",
+    "type": "text",
+    "label": "Header",
     "formGroupClasses": "col-md-6"
   },
   {
