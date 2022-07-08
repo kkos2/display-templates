@@ -1,96 +1,90 @@
 [
   {
-    "key": "book-byen-form-1",
+    "key": "book-byen-form-header",
     "input": "header",
-    "text": "Skabelon: Book Byen",
-    "name": "header1",
+    "text": "Header",
+    "name": "header",
     "formGroupClasses": "h4 mb-3"
   },
   {
-    "key": "book-byen-form-2",
-    "input": "header-h3",
-    "text": "Indhold",
-    "name": "header2",
-    "formGroupClasses": "h5 mb-3"
-  },
-  {
-    "key": "book-byen-form-3",
-    "input": "textarea",
-    "name": "title",
-    "label": "Overskrift på slide",
-    "helpText": "Her kan du skrive overskriften til slidet",
+    "key": "book-byen-form-feed-id",
+    "input": "input",
+    "name": "feedId",
+    "type": "text",
+    "label": "Feed ID",
+    "helpText": "Angiv ID'et på det feed som skal bruges til at hente slides",
     "formGroupClasses": "col-md-6"
   },
   {
     "key": "book-byen-form-showDayName",
     "input": "checkbox",
-    "label": "showDayName",
+    "label": "Vis dato og tid i header",
     "name": "showDayName",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
-    "key": "book-byen-bgColor",
+    "key": "book-byen-form-bgColor",
     "input": "input",
-    "name": "bgColor",
+    "name": "Baggrundsfarve i header",
     "type": "text",
     "label": "bgColor",
     "formGroupClasses": "col-md-6"
   },
   {
-    "key": "book-byen-form-4",
-    "input": "textarea",
-    "name": "jsonSubslides",
-    "label": "JSON INDHOLD",
-    "helpText": "Her kan du skrive JSON til slidet",
-    "formGroupClasses": "col-md"
-  },
-  {
     "key": "book-byen-form-showTime",
     "input": "checkbox",
-    "label": "showTime",
+    "label": "Vis tidspunkt i tabel",
     "name": "showTime",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "book-byen-form-showFacility",
     "input": "checkbox",
-    "label": "showFacility",
+    "label": "Vis facilitet i tabel",
     "name": "showFacility",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "book-byen-form-showActivity",
     "input": "checkbox",
-    "label": "showActivity",
+    "label": "Vis aktivitet i tabel",
     "name": "showActivity",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "book-byen-form-showBookingNote",
     "input": "checkbox",
-    "label": "showBookingNote",
+    "label": "Vis booking kommentar i tabel",
     "name": "showBookingNote",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "book-byen-form-showTeam",
     "input": "checkbox",
-    "label": "showTeam",
+    "label": "Vis hold i tabel",
     "name": "showTeam",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "book-byen-form-showTeamleaders",
     "input": "checkbox",
-    "label": "showTeamleaders",
+    "label": "Vis holdleder i tabel",
     "name": "showTeamleaders",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "book-byen-form-showUserName",
     "input": "checkbox",
-    "label": "showUserName",
+    "label": "Vis brugernavn i tabel",
     "name": "showUserName",
     "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "book-byen-form-jsonData",
+    "input": "textarea",
+    "name": "jsonData",
+    "label": "JSON data",
+    "helpText": "Her kan du skrive JSON til slidet",
+    "formGroupClasses": "col-md"
   }
 ]
