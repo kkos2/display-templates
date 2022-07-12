@@ -16,6 +16,24 @@
     "formGroupClasses": "col-md-6"
   },
   {
+    "key": "book-byen-form-facility-id",
+    "input": "input",
+    "name": "facilityId",
+    "type": "text",
+    "label": "Facilitets ID",
+    "helpText": "Angiv ID'et på den facilitet som der slal vises data fra i feedet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "book-byen-form-area-id",
+    "input": "input",
+    "name": "areaId",
+    "type": "text",
+    "label": "Område ID",
+    "helpText": "Angiv ID'et på det område som der slal vises data fra i feedet",
+    "formGroupClasses": "col-md-6"
+  },
+  {
     "key": "book-byen-form-header",
     "input": "input",
     "name": "header",

@@ -11,10 +11,6 @@ const formatTime = (date: string | Date): string => {
   });
 };
 
-const filterEvents = (item: BookByenItem): boolean => {
-  return item.isDeleted;
-};
-
 const formatEvents = (item: any): BookByenItem => {
   return {
     // next line: add/get original objects
@@ -45,6 +41,7 @@ const formatEvents = (item: any): BookByenItem => {
 const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
   // Content from content
   const {
+    header,
     bgColor = "#000c2e",
     showDayName,
     logo,
@@ -62,8 +59,14 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
 
   // ADMIN stuff start here
   const rootClasses: string[] = ["template-book-byen"];
-  const itemList: any[] = JSON.parse(jsonData);
-  const cleanEvents = itemList.map(formatEvents).filter(filterEvents);
+  let itemList: any[] = [];
+  try {
+    itemList = JSON.parse(jsonData);
+  } catch(e) {
+    slideDone(slide);
+  }
+
+  const cleanEvents = itemList.map(formatEvents);
 
   // Makes a watch that is updated live
   const [timeNow, setTimeNow] = useState<string | null>(null);
@@ -152,6 +155,13 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
                   {timeNow?.split(".")[0]}{" "}
                   <span className="bookbyen-top__time-separator">:</span>{" "}
                   {timeNow?.split(".")[1]}
+                </div>
+              )}
+            </div>
+            <div className="bookbyen-top__place">
+              {header && (
+                <div className="bookbyen-top__place_header">
+                  {header}
                 </div>
               )}
             </div>

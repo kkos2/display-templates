@@ -14,6 +14,7 @@ export interface BookByenItem {
 }
 
 export interface BookByenContent {
+  header: string;
   bgColor: string;
   showDayName: boolean;
   logo: string;
