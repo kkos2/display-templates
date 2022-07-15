@@ -31,7 +31,7 @@ const entry = devMode
     }
   : {
      "book-byen": path.resolve(__dirname, "./src/book-byen/book-byen.tsx"),
-     "twenty-three-video": path.resolve(__dirname, "./src/twenty-three-video/twenty-three-video.js"),
+     "twenty-three-video": path.resolve(__dirname, "./src/twenty-three-video/twenty-three-video.tsx"),
       "book-review": path.resolve(
         __dirname,
         "./src/book-review/book-review.js"

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $colors-dark-blue: rgb(0, 12, 46);
 $colors-white: #fff;
 
@@ -45,7 +47,7 @@ $colors-white: #fff;
   @include stretchyPx("font-size", $min, $max);
 
   .half-split & {
-    @include stretchyPx("font-size", $min/2.5, $max/2.5);
+    @include stretchyPx("font-size", math.div($min, 2.5), math.div($max, 2.5));
   }
 }
 

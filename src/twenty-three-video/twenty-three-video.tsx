@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { ThemeStyles } from "../slide-util";
+import React, {FC, useEffect, useState} from "react";
+import { ThemeStyles } from "../slide-util-ts";
 import GlobalStyles from "../GlobalStyles";
+import { TwentyThreeVideoProps } from "./types";
+
+const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
+  input !== null && input.tagName === 'IFRAME';
 
 /**
  * TwentyThreeVideo component.
@@ -12,7 +16,7 @@ import GlobalStyles from "../GlobalStyles";
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @returns {object} The component.
  */
-function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
+const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({ slide, content, slideDone }) => {
   const iframeId = slide["@id"];
 
   // TODO: This has to be dynamic
@@ -20,11 +24,11 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
 
   // Content from content
   const {
-    videoList = "",
     autoPlay = true,
     showTray = false,
     mutedAutoPlay = true,
     autoMute = false,
+    jsonData
   } = content;
 
   // change boolean to number
@@ -32,24 +36,22 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
   const convertedShowtray = showTray === true ? "1" : "0";
   const convertedMutedAutoPlay = mutedAutoPlay === true ? "1" : "0";
   const convertedAutoMute = autoMute === true ? "1" : "0";
-
-  // This fix normal typing errors and cleans the array for empty items
-  const formattedVideoList = videoList
-    .replaceAll(".", ",")
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
+  let videoList: any[] = [];
+  try {
+    videoList = JSON.parse(jsonData);
+  } catch(e) {
+    slideDone(slide);
+  }
 
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [videoId, setVideoId] = useState(formattedVideoList[currentVideoIndex]);
 
   /** @param e */
-  function videoEndedEvent(e) {
+  function videoEndedEvent(e: MessageEvent) {
     // EventListener function for player:video:ended message
     if (e.data.includes("player:video:ended")) {
       console.log("player:video:ended");
       // check if there is a next video id in formatted Video List
-      if (formattedVideoList[currentVideoIndex + 1] === undefined) {
+      if (videoList[currentVideoIndex + 1] === undefined) {
         slideDone(slide);
         return;
       }
@@ -62,22 +64,21 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
 
     // This activate player:video:ended message
     setTimeout(() => {
-      document.getElementById(iframeId)?.contentWindow.postMessage(
-        JSON.stringify({
-          f: "bind",
-          args: ["player:video:ended"],
-        }),
-        "*"
-      );
+      const element = document.getElementById(iframeId);
+      if (isIFrame(element) && element.contentWindow) {
+        element.contentWindow.postMessage(
+          JSON.stringify({
+            f: "bind",
+            args: ["player:video:ended"],
+          }),
+          "*"
+        );
+      }
     }, 1000);
 
     return function cleanup() {
       window.removeEventListener("message", videoEndedEvent);
     };
-  }, [videoId]);
-
-  useEffect(() => {
-    setVideoId(formattedVideoList[currentVideoIndex]);
   }, [currentVideoIndex]);
 
   // ADMIN stuff start here
@@ -86,37 +87,29 @@ function TwentyThreeVideo({ slide, content = {}, run, slideDone }) {
   // Styling objects
   const rootStyle = {};
 
-  const Video23 = ({ videoId }) => {
-    if (!videoId) return <div className="">No ID</div>;
-    return (
-      <iframe
-        id={iframeId}
-        src={`https://${videoUrl}/v.ihtml/player.html?source=site&photo%5fid=${videoId}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          top: 0,
-          left: 0,
-        }}
-        frameBorder={0}
-        border={0}
-        scrolling="no"
-        mozallowfullscreen={1}
-        webkitallowfullscreen={1}
-        allowFullScreen={1}
-        allow="autoplay; fullscreen"
-      />
-    );
-  };
-
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        <Video23 videoId={videoId} />
+        {videoList[currentVideoIndex] &&
+          <iframe
+            id={iframeId}
+            src={`https://${videoUrl}/v.ihtml/player.html?source=site&photo%5fid=${videoList[currentVideoIndex]}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+            }}
+            frameBorder={0}
+            scrolling="no"
+            allowFullScreen
+            allow="autoplay; fullscreen"
+          />
+        }
       </div>
       <ThemeStyles
-        name="template-twenty-three-video"
+        id="template-twenty-three-video"
         css={slide?.themeData?.css}
       />
       <GlobalStyles />

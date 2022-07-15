@@ -14,7 +14,11 @@ const Template: ComponentStory<typeof BookByen> = ({ ...args }: any) => {
   const props: BookByenProps = {
     run: args.run,
     slideDone: args.slideDone,
+    slide: {
+      "@id": "test",
+    },
     content: {
+      header: args.header,
       bgColor: args.bgColor,
       showDayName: args.showDayName,
       logo: args.logo,
@@ -39,6 +43,10 @@ export const example1 = Template.bind({});
 example1.args = {
   run: "test",
   slideDone: () => {},
+  slide: {
+    "@id": "test",
+  },
+  header: "Test",
   bgColor: "#000c2e",
   showDayName: false,
   logo: "https://admin.kkos2display.dk/bundles/kkos2displayintegration/assets/img/kbh-logo.png",
