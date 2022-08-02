@@ -27,7 +27,8 @@
     "moduleNameMapper": {
       "^.+\\.(css|less|scss)$": "babel-jest"
     },
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "testMatch": ["**/?(*.)(spec|test).js?(x)"]
   },
   "keywords": [],
   "author": "",

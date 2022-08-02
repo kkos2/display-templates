@@ -14,6 +14,7 @@ test("Test that basic image-text loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
+      executionId={'test-image-text'}
     />
   );
 
