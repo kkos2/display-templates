@@ -23,7 +23,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${COMPOSE_DOMAIN}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${COMPOSE_DOMAIN_TEMPLATES}`)"
 
   node:
     image: node:14
@@ -36,3 +36,23 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
+
+  # Run a storybook instance, exposed as storybook.${COMPOSE_DOMAIN} via traefik.
+  storybook:
+    image: node:14
+    command: npm run storybook
+    ports:
+      - '6006'
+    networks:
+      - app
+      # make the container accessible to traefik.
+      - frontend
+    working_dir: /app
+    volumes:
+      - ./:/app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      # Make storybook available on http as well as https.
+      - "traefik.http.routers.storybook_${COMPOSE_PROJECT_NAME}.tls=true"
+      - "traefik.http.routers.storybook_${COMPOSE_PROJECT_NAME}.rule=Host(`${COMPOSE_DOMAIN_STORYBOOK}`)"
