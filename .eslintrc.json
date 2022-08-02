@@ -1,5 +1,5 @@
 {
-  "plugins": ["@typescript-eslint" ,"react", "prettier", "only-warn"],
+  "plugins": ["@typescript-eslint", "jest", "react", "prettier", "only-warn"],
   "extends": [
     "airbnb",
     "prettier",
@@ -43,5 +43,8 @@
   },
   "globals": {
     "JSX": true
+  },
+  "env": {
+    "jest/globals": true
   }
 }
