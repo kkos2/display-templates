@@ -209,6 +209,7 @@ Table.propTypes = {
     }),
   }).isRequired,
   content: PropTypes.shape({
+    separator: PropTypes.bool,
     duration: PropTypes.number.isRequired,
     fontSize: PropTypes.string,
     fontPlacement: PropTypes.string,

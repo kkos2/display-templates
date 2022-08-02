@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
@@ -139,6 +139,7 @@ Calendar.propTypes = {
     ),
   }).isRequired,
   content: PropTypes.shape({
+    fontSize: PropTypes.string,
     duration: PropTypes.number.isRequired,
     layout: PropTypes.string,
     backgroundColor: PropTypes.string,
