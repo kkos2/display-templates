@@ -13,25 +13,20 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          # Matched up with /docker-compose.yml
+          node-version: "14"
+          cache: 'npm'
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
+      # Get storybook installed ant built
       - run: npm install
-
       - run: npm run build-storybook
 
+      # Store result as artifact so that the next job can publish it.
       - name: Archive artifact
         shell: bash
         run: |
@@ -46,6 +41,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
+          # This name is required by the deploy-pages action.
           name: github-pages
           path: ${{ runner.temp }}/artifact.tar
           retention-days: 7

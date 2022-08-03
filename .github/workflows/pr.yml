@@ -4,20 +4,12 @@ jobs:
   templates-build:
     name: Templates build
     runs-on: ubuntu-latest
-    container: node:14
     steps:
-      - uses: actions/checkout@v2
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          path: ~/.yarn
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: '14'
+          cache: 'npm'
       - name: install
         run: npm install
 
@@ -27,21 +19,12 @@ jobs:
   templates-coding-standards:
     name: Templates coding standards
     runs-on: ubuntu-latest
-    container: node:14
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          path: ~/.yarn
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: '14'
+          cache: 'npm'
       - name: install
         run: npm install
 
@@ -53,9 +36,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '14'
+          cache: 'npm'
       - name: Cache node modules
         uses: actions/cache@v2
         env:
