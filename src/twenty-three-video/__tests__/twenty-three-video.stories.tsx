@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { TwentyThreeVideoProps } from "../types";
 import TwentyThreeVideo from "../twenty-three-video";
 
+// See TwentyThreeVideoProps doc for details.
 const mockData = require("./mock.json");
 
 export default {
@@ -10,7 +11,9 @@ export default {
   component: TwentyThreeVideo,
 } as ComponentMeta<typeof TwentyThreeVideo>;
 
-const Template: ComponentStory<typeof TwentyThreeVideo> = ({ ...args }: any) => {
+const Template: ComponentStory<typeof TwentyThreeVideo> = ({
+  ...args
+}: any) => {
   const props: TwentyThreeVideoProps = {
     run: args.run,
     slideDone: args.slideDone,

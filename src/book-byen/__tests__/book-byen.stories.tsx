@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import BookByen from "../book-byen";
 import { BookByenProps } from "../types";
 
+// See BookByenProps doc for details.
 const mockData = require("./mock.json");
 
 export default {

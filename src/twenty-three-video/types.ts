@@ -5,6 +5,8 @@ export interface TwentyThreeVideoContent {
   showTray: boolean;
   mutedAutoPlay: boolean;
   autoMute: boolean;
+  // String representation of JSON array of numbers. It's expected that this
+  // data is provided by an external API.
   jsonData: string;
 }
 

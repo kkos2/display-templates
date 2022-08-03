@@ -62,7 +62,7 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
   let itemList: any[] = [];
   try {
     itemList = JSON.parse(jsonData);
-  } catch(e) {
+  } catch (e) {
     slideDone(slide);
   }
 
@@ -160,9 +160,7 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
             </div>
             <div className="bookbyen-top__place">
               {header && (
-                <div className="bookbyen-top__place_header">
-                  {header}
-                </div>
+                <div className="bookbyen-top__place_header">{header}</div>
               )}
             </div>
             <div className="bookbyen-top__logo">

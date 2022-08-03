@@ -19,7 +19,7 @@ test("Test that instagram-feed loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
-      executionId={'test-instagram-feed'}
+      executionId="test-instagram-feed"
     />
   );
   expect(wrapper.find(".template-instagram-feed").exists()).toBeTruthy();

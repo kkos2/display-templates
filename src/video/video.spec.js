@@ -14,7 +14,7 @@ test("Test that basic table loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
-      executionId={'test-video'}
+      executionId="test-video"
     />
   );
 });

@@ -13,13 +13,19 @@ export interface BookByenItem {
   userName: string;
 }
 
+/** Interface for the content attribute on the props for BookByen component. */
 export interface BookByenContent {
+  // Header content.
   header: string;
+  // Color hex code.
   bgColor: string;
-  showDayName: boolean;
+  // Url to logo.
   logo: string;
+  // Time in ms before slide goes to next page.
   pageIntervalTime: number;
   postsPerPage: number;
+  // Various feature flags below, controlling appearance of slide.
+  showDayName: boolean;
   showTime: boolean;
   showFacility: boolean;
   showActivity: boolean;
@@ -27,6 +33,9 @@ export interface BookByenContent {
   showTeam: boolean;
   showTeamleaders: boolean;
   showUserName: boolean;
+  // List of items to see as JSON string, should be converted to BookByenItem[]
+  // It's expected that this data is provided by an external API called
+  // bookbyen.
   jsonData: string;
 }
 

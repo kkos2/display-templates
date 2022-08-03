@@ -1,10 +1,10 @@
-import React, {FC, useEffect, useState} from "react";
+import React, { FC, useEffect, useState } from "react";
 import { ThemeStyles } from "../slide-util-ts";
 import GlobalStyles from "../GlobalStyles";
 import { TwentyThreeVideoProps } from "./types";
 
 const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
-  input !== null && input.tagName === 'IFRAME';
+  input !== null && input.tagName === "IFRAME";
 
 /**
  * TwentyThreeVideo component.
@@ -12,11 +12,14 @@ const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
  * @param {object} props Props.
  * @param {object} props.slide The slide.
  * @param {object} props.content The slide content.
- * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @returns {object} The component.
  */
-const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({ slide, content, slideDone }) => {
+const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({
+  slide,
+  content,
+  slideDone,
+}) => {
   const iframeId = slide["@id"];
 
   // TODO: This has to be dynamic
@@ -28,7 +31,7 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({ slide, content, slideDone
     showTray = false,
     mutedAutoPlay = true,
     autoMute = false,
-    jsonData
+    jsonData,
   } = content;
 
   // change boolean to number
@@ -39,17 +42,20 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({ slide, content, slideDone
   let videoList: any[] = [];
   try {
     videoList = JSON.parse(jsonData);
-  } catch(e) {
+  } catch (e) {
     slideDone(slide);
   }
 
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
-  /** @param e */
+  /**
+   * Callback for when video has ended.
+   *
+   * @param {MessageEvent} e The message event.
+   */
   function videoEndedEvent(e: MessageEvent) {
     // EventListener function for player:video:ended message
     if (e.data.includes("player:video:ended")) {
-      console.log("player:video:ended");
       // check if there is a next video id in formatted Video List
       if (videoList[currentVideoIndex + 1] === undefined) {
         slideDone(slide);
@@ -90,7 +96,7 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({ slide, content, slideDone
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        {videoList[currentVideoIndex] &&
+        {videoList[currentVideoIndex] && (
           <iframe
             id={iframeId}
             src={`https://${videoUrl}/v.ihtml/player.html?source=site&photo%5fid=${videoList[currentVideoIndex]}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
@@ -106,7 +112,7 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({ slide, content, slideDone
             allowFullScreen
             allow="autoplay; fullscreen"
           />
-        }
+        )}
       </div>
       <ThemeStyles
         id="template-twenty-three-video"
@@ -115,6 +121,6 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({ slide, content, slideDone
       <GlobalStyles />
     </>
   );
-}
+};
 
 export default TwentyThreeVideo;

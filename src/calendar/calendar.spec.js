@@ -14,7 +14,7 @@ test("Test that calendar loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
-      executionId={'test-calendar'}
+      executionId="test-calendar"
     />
   );
 
