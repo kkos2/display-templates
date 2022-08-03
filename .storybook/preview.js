@@ -17,6 +17,13 @@ export const parameters = {
           height: "720px",
         },
       },
+      landscape: {
+        name: "9/16",
+        styles: {
+          width: "720px",
+          height: "1280px",
+        },
+      },
     },
   },
 };
