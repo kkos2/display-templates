@@ -25,7 +25,7 @@
     {
       "key": "twenty-three-video-form-tags",
       "input": "input",
-      "name": "album_id",
+      "name": "tags",
       "type": "text",
       "label": "Tags",
       "helpText": "Vælg det eller de tags som der skal vises videoer fra. Brug mellem for at adskilde tags og gåseøjne (\") for at vælge et tag der består af flere ord.",
