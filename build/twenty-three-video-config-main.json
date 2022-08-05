@@ -5,8 +5,8 @@
     "description": "Skabelon til twenty-three-video.",
     "resources": {
       "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video.js",
-      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video/twenty-three-video-admin.json",
-      "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video/twenty-three-video-schema.json",
+      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video-admin.json",
+      "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video-schema.json",
       "assets": [],
       "options": {},
       "content": {}
