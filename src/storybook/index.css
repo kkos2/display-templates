@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sb-show-main.sb-main-padded {
+  padding: 0;
+}
+
+.sb-show-main.sb-main-padded > #root {
+  height: 100%;
+}

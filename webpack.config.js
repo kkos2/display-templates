@@ -1,3 +1,4 @@
+const transform = require('@formatjs/ts-transformer');
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -29,8 +30,8 @@ const entry = devMode
       examples: path.resolve(__dirname, "./src/index.js"),
     }
   : {
-     "book-byen": path.resolve(__dirname, "./src/book-byen/book-byen.js"),
-     "twenty-three-video": path.resolve(__dirname, "./src/twenty-three-video/twenty-three-video.js"),
+     "book-byen": path.resolve(__dirname, "./src/book-byen/book-byen.tsx"),
+     "twenty-three-video": path.resolve(__dirname, "./src/twenty-three-video/twenty-three-video.tsx"),
       "book-review": path.resolve(
         __dirname,
         "./src/book-review/book-review.js"
@@ -134,6 +135,9 @@ module.exports = {
   entry,
   output,
   externals,
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
   module: {
     rules: [
       {
@@ -149,9 +153,27 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: "ts-loader",
+          options: {
+            getCustomTransformers() {
+              return {
+                before: [
+                  transform.transform({
+                    overrideIdFn: '[sha512:contenthash:base64:6]',
+                  }),
+                ],
+              }
+            },
+          }
+        }],
       },
       {
         test: /\.(sa|sc|c)ss$/,

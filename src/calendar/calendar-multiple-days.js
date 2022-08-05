@@ -1,3 +1,5 @@
+// Remove the line below when this file has been converted to Typescript.
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { Fragment, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";

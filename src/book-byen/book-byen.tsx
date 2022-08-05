@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { FC, useEffect, useState } from "react";
 import "./book-byen.scss";
-import { ThemeStyles } from "../slide-util";
+import { ThemeStyles } from "../slide-util-ts";
 import GlobalStyles from "../GlobalStyles";
+import { BookByenItem, BookByenProps } from "./types";
 
-const formatTime = (date) => {
+const formatTime = (date: string | Date): string => {
   return new Date(date).toLocaleTimeString("da-DK", {
     hour: "2-digit",
     minute: "2-digit",
   });
 };
 
-const filterEvents = (item) => {
-  return item?.isDeleted;
-};
-
-const formatEvents = (item) => {
+const formatEvents = (item: any): BookByenItem => {
   return {
     // next line: add/get original objects
     // ...item,
@@ -39,16 +35,15 @@ const formatEvents = (item) => {
  * @param {object} props Props.
  * @param {object} props.slide The slide.
  * @param {object} props.content The slide content.
- * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @returns {object} The component.
  */
-function BookByen({ slide, content = {}, run, slideDone }) {
+const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
   // Content from content
   const {
+    header,
     bgColor = "#000c2e",
     showDayName,
-    subslides = [],
     logo,
     pageIntervalTime = 10000,
     postsPerPage = 10,
@@ -59,23 +54,22 @@ function BookByen({ slide, content = {}, run, slideDone }) {
     showTeam = false,
     showTeamleaders = false,
     showUserName = false,
-    jsonSubslides = null,
+    jsonData,
   } = content;
 
   // ADMIN stuff start here
-  const rootClasses = ["template-book-byen"];
+  const rootClasses: string[] = ["template-book-byen"];
+  let itemList: any[] = [];
+  try {
+    itemList = JSON.parse(jsonData);
+  } catch (e) {
+    slideDone(slide);
+  }
 
-  // Styling objects
-  const rootStyle = {};
-
-  // remove delete events and clean data
-  //  jsonSubslides is only for testing with stringify data from text fields from admin
-  const cleanEvents = jsonSubslides
-    ? JSON.parse(jsonSubslides).filter(filterEvents).map(formatEvents)
-    : subslides.filter(filterEvents).map(formatEvents);
+  const cleanEvents = itemList.map(formatEvents);
 
   // Makes a watch that is updated live
-  const [timeNow, setTimeNow] = useState(null);
+  const [timeNow, setTimeNow] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -114,7 +108,7 @@ function BookByen({ slide, content = {}, run, slideDone }) {
     };
   });
 
-  const PageItems = ({ items = [] }) => {
+  const PageItems = ({ items }: { items: BookByenItem[] }) => {
     return (
       <>
         {items.map((item) => {
@@ -144,7 +138,7 @@ function BookByen({ slide, content = {}, run, slideDone }) {
   return (
     <>
       <div className="bookbyen kk-ratio-{{ratio}} kk-slide-body font-kbh">
-        <div className={rootClasses.join(" ")} style={rootStyle}>
+        <div className={rootClasses.join(" ")}>
           <header className="bookbyen-top" style={{ backgroundColor: bgColor }}>
             <div className="bookbyen-top__date">
               {showDayName && (
@@ -162,6 +156,11 @@ function BookByen({ slide, content = {}, run, slideDone }) {
                   <span className="bookbyen-top__time-separator">:</span>{" "}
                   {timeNow?.split(".")[1]}
                 </div>
+              )}
+            </div>
+            <div className="bookbyen-top__place">
+              {header && (
+                <div className="bookbyen-top__place_header">{header}</div>
               )}
             </div>
             <div className="bookbyen-top__logo">
@@ -200,56 +199,10 @@ function BookByen({ slide, content = {}, run, slideDone }) {
           </table>
         </div>
       </div>
-      <ThemeStyles name="template-book-byen" css={slide?.themeData?.css} />
+      <ThemeStyles id="template-book-byen" css={slide?.themeData?.css} />
       <GlobalStyles />
     </>
   );
-}
-
-BookByen.propTypes = {
-  run: PropTypes.string.isRequired,
-  slideDone: PropTypes.func.isRequired,
-  slide: PropTypes.shape({
-    themeData: PropTypes.shape({
-      css: PropTypes.string,
-    }),
-  }).isRequired,
-  content: PropTypes.shape({
-    bgColor: PropTypes.string,
-    showDayName: PropTypes.string,
-    subslides: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        startTime: PropTypes.string.isRequired,
-        endTime: PropTypes.string.isRequired,
-        facility: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-        }),
-        activity: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-        }),
-        bookingNote: PropTypes.string.isRequired,
-        team: PropTypes.shape({
-          teamName: PropTypes.string.isRequired,
-          teamleaders: PropTypes.arrayOf(PropTypes.string),
-        }),
-        user: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-        }),
-        isDeleted: PropTypes.bool.isRequired,
-      })
-    ),
-    logo: PropTypes.string,
-    pageIntervalTime: PropTypes.number,
-    showTime: PropTypes.bool.isRequired,
-    showFacility: PropTypes.bool.isRequired,
-    showActivity: PropTypes.bool.isRequired,
-    showBookingNote: PropTypes.bool.isRequired,
-    showTeam: PropTypes.bool.isRequired,
-    showTeamleaders: PropTypes.bool.isRequired,
-    showUserName: PropTypes.bool.isRequired,
-    jsonSubslides: PropTypes.string,
-  }).isRequired,
 };
 
 export default BookByen;

@@ -1,0 +1,409 @@
+[
+  {
+    "id": 1733422,
+    "importID": null,
+    "start": "2022-07-03T06:00:00",
+    "end": "2022-07-03T00:00:00",
+    "totalMinutes": -360.0,
+    "bookingNote": null,
+    "infoscreenNote": "Sommer Lukket",
+    "createdBy": "Serdar Aslan",
+    "system": "BookByen",
+    "createdOn": "2022-02-04T08:41:48",
+    "isDeleted": true,
+    "deletedBy": "Serdar Aslan",
+    "deletedOn": "2022-02-04T08:45:49",
+    "team": null,
+    "activity": null,
+    "parent": { "id": null, "importID": null },
+    "user": {
+      "id": 11546,
+      "name": "Serdar Aslan",
+      "userType": { "id": 84, "name": "Administrator (bydel-område)" }
+    },
+    "facility": {
+      "id": 1388,
+      "importID": "42770",
+      "name": "Nørrebrohallen",
+      "number": 0,
+      "type": null,
+      "limitedBooking": false,
+      "active": true,
+      "facilitytype": { "id": 0, "importID": null, "name": null },
+      "area": {
+        "id": 0,
+        "importID": null,
+        "name": null,
+        "number": 0,
+        "active": false,
+        "location": {
+          "id": 71,
+          "importID": "395D23FB-9819-4DA1-A4E4-7833F5DF4D50",
+          "name": "Nørrebrohallen",
+          "address": "Nørrebrogade 208",
+          "zipcode": "2200",
+          "city": "København N ",
+          "account": null,
+          "psp": null,
+          "active": true
+        }
+      }
+    }
+  },
+  {
+    "id": 1733432,
+    "importID": null,
+    "start": "2022-07-03T06:00:00",
+    "end": "2022-07-03T23:30:00",
+    "totalMinutes": 1050.0,
+    "bookingNote": null,
+    "infoscreenNote": "Sommer Lukket",
+    "createdBy": "Serdar Aslan",
+    "system": "BookByen",
+    "createdOn": "2022-02-04T08:51:22",
+    "isDeleted": false,
+    "deletedBy": null,
+    "deletedOn": null,
+    "team": null,
+    "activity": null,
+    "parent": { "id": null, "importID": null },
+    "user": {
+      "id": 11546,
+      "name": "Serdar Aslan",
+      "userType": { "id": 84, "name": "Administrator (bydel-område)" }
+    },
+    "facility": {
+      "id": 1388,
+      "importID": "42770",
+      "name": "Nørrebrohallen",
+      "number": 0,
+      "type": null,
+      "limitedBooking": false,
+      "active": true,
+      "facilitytype": { "id": 0, "importID": null, "name": null },
+      "area": {
+        "id": 0,
+        "importID": null,
+        "name": null,
+        "number": 0,
+        "active": false,
+        "location": {
+          "id": 71,
+          "importID": "395D23FB-9819-4DA1-A4E4-7833F5DF4D50",
+          "name": "Nørrebrohallen",
+          "address": "Nørrebrogade 208",
+          "zipcode": "2200",
+          "city": "København N ",
+          "account": null,
+          "psp": null,
+          "active": true
+        }
+      }
+    }
+  },
+  {
+    "id": 1712056,
+    "importID": null,
+    "start": "2022-07-03T07:00:00",
+    "end": "2022-07-03T23:00:00",
+    "totalMinutes": 960.0,
+    "bookingNote": null,
+    "infoscreenNote": "Serdar Aslan",
+    "createdBy": "Serdar Aslan",
+    "system": "BookByen",
+    "createdOn": "2021-12-27T09:27:32",
+    "isDeleted": true,
+    "deletedBy": "Serdar Aslan",
+    "deletedOn": "2021-12-27T09:48:42",
+    "team": null,
+    "activity": {
+      "id": 326,
+      "importID": null,
+      "name": "Lille mødelokale op til 15 personer",
+      "parent": {
+        "id": 120,
+        "importID": "47DF88AF-C9E2-4091-A149-C288D9A77A97",
+        "name": "Møde",
+        "parent": null
+      }
+    },
+    "parent": { "id": null, "importID": null },
+    "user": {
+      "id": 11546,
+      "name": "Serdar Aslan",
+      "userType": { "id": 84, "name": "Administrator (bydel-område)" }
+    },
+    "facility": {
+      "id": 1358,
+      "importID": "*",
+      "name": "Mødelokale ",
+      "number": 23660081,
+      "type": null,
+      "limitedBooking": false,
+      "active": false,
+      "facilitytype": { "id": 33, "importID": null, "name": "Mødelokale" },
+      "area": {
+        "id": 1357,
+        "importID": "*",
+        "name": "Mødelokale",
+        "number": 2366008,
+        "active": false,
+        "location": {
+          "id": 71,
+          "importID": "395D23FB-9819-4DA1-A4E4-7833F5DF4D50",
+          "name": "Nørrebrohallen",
+          "address": "Nørrebrogade 208",
+          "zipcode": "2200",
+          "city": "København N ",
+          "account": null,
+          "psp": null,
+          "active": true
+        }
+      }
+    }
+  },
+  {
+    "id": 1712056,
+    "importID": null,
+    "start": "2022-07-03T07:00:00",
+    "end": "2022-07-03T23:00:00",
+    "totalMinutes": 960.0,
+    "bookingNote": null,
+    "infoscreenNote": "Ny Info",
+    "createdBy": "Serdar Aslan",
+    "system": "BookByen",
+    "createdOn": "2021-12-27T09:27:32",
+    "isDeleted": true,
+    "deletedBy": "Serdar Aslan",
+    "deletedOn": "2021-12-27T09:48:42",
+    "team": null,
+    "activity": {
+      "id": 326,
+      "importID": null,
+      "name": "Lille mødelokale op til 15 personer",
+      "parent": {
+        "id": 120,
+        "importID": "47DF88AF-C9E2-4091-A149-C288D9A77A97",
+        "name": "Møde",
+        "parent": null
+      }
+    },
+    "parent": { "id": null, "importID": null },
+    "user": {
+      "id": 11546,
+      "name": "Serdar Aslan",
+      "userType": { "id": 84, "name": "Administrator (bydel-område)" }
+    },
+    "facility": {
+      "id": 1358,
+      "importID": "*",
+      "name": "Mødelokale ",
+      "number": 23660081,
+      "type": null,
+      "limitedBooking": false,
+      "active": false,
+      "facilitytype": { "id": 33, "importID": null, "name": "Mødelokale" },
+      "area": {
+        "id": 1357,
+        "importID": "*",
+        "name": "Mødelokale",
+        "number": 2366008,
+        "active": false,
+        "location": {
+          "id": 71,
+          "importID": "395D23FB-9819-4DA1-A4E4-7833F5DF4D50",
+          "name": "Nørrebrohallen",
+          "address": "Nørrebrogade 208",
+          "zipcode": "2200",
+          "city": "København N ",
+          "account": null,
+          "psp": null,
+          "active": true
+        }
+      }
+    }
+  },
+  {
+    "id": 1712081,
+    "importID": null,
+    "start": "2022-07-03T09:00:00",
+    "end": "2022-07-03T21:00:00",
+    "totalMinutes": 720.0,
+    "bookingNote": null,
+    "infoscreenNote": "Ny Info",
+    "createdBy": "Serdar Aslan",
+    "system": "BookByen",
+    "createdOn": "2021-12-27T10:07:10",
+    "isDeleted": true,
+    "deletedBy": "Serdar Aslan",
+    "deletedOn": "2021-12-30T10:49:01",
+    "team": null,
+    "activity": {
+      "id": 326,
+      "importID": null,
+      "name": "Lille mødelokale op til 15 personer",
+      "parent": {
+        "id": 120,
+        "importID": "47DF88AF-C9E2-4091-A149-C288D9A77A97",
+        "name": "Møde",
+        "parent": null
+      }
+    },
+    "parent": { "id": null, "importID": null },
+    "user": {
+      "id": 11546,
+      "name": "Serdar Aslan",
+      "userType": { "id": 84, "name": "Administrator (bydel-område)" }
+    },
+    "facility": {
+      "id": 1358,
+      "importID": "*",
+      "name": "Mødelokale ",
+      "number": 23660081,
+      "type": null,
+      "limitedBooking": false,
+      "active": false,
+      "facilitytype": { "id": 33, "importID": null, "name": "Mødelokale" },
+      "area": {
+        "id": 1357,
+        "importID": "*",
+        "name": "Mødelokale",
+        "number": 2366008,
+        "active": false,
+        "location": {
+          "id": 71,
+          "importID": "395D23FB-9819-4DA1-A4E4-7833F5DF4D50",
+          "name": "Nørrebrohallen",
+          "address": "Nørrebrogade 208",
+          "zipcode": "2200",
+          "city": "København N ",
+          "account": null,
+          "psp": null,
+          "active": true
+        }
+      }
+    }
+  },
+  {
+    "id": 1713554,
+    "importID": null,
+    "start": "2022-07-03T09:00:00",
+    "end": "2022-07-03T21:00:00",
+    "totalMinutes": 720.0,
+    "bookingNote": null,
+    "infoscreenNote": "Ombygning",
+    "createdBy": "Serdar Aslan",
+    "system": "BookByen",
+    "createdOn": "2021-12-30T12:31:40",
+    "isDeleted": true,
+    "deletedBy": "Serdar Aslan",
+    "deletedOn": "2022-01-03T10:57:44",
+    "team": null,
+    "activity": {
+      "id": 326,
+      "importID": null,
+      "name": "Lille mødelokale op til 15 personer",
+      "parent": {
+        "id": 120,
+        "importID": "47DF88AF-C9E2-4091-A149-C288D9A77A97",
+        "name": "Møde",
+        "parent": null
+      }
+    },
+    "parent": { "id": null, "importID": null },
+    "user": {
+      "id": 11546,
+      "name": "Serdar Aslan",
+      "userType": { "id": 84, "name": "Administrator (bydel-område)" }
+    },
+    "facility": {
+      "id": 1358,
+      "importID": "*",
+      "name": "Mødelokale ",
+      "number": 23660081,
+      "type": null,
+      "limitedBooking": false,
+      "active": false,
+      "facilitytype": { "id": 33, "importID": null, "name": "Mødelokale" },
+      "area": {
+        "id": 1357,
+        "importID": "*",
+        "name": "Mødelokale",
+        "number": 2366008,
+        "active": false,
+        "location": {
+          "id": 71,
+          "importID": "395D23FB-9819-4DA1-A4E4-7833F5DF4D50",
+          "name": "Nørrebrohallen",
+          "address": "Nørrebrogade 208",
+          "zipcode": "2200",
+          "city": "København N ",
+          "account": null,
+          "psp": null,
+          "active": true
+        }
+      }
+    }
+  },
+  {
+    "id": 1714817,
+    "importID": null,
+    "start": "2022-07-03T09:00:00",
+    "end": "2022-07-03T23:30:00",
+    "totalMinutes": 870.0,
+    "bookingNote": null,
+    "infoscreenNote": "Ombygning",
+    "createdBy": "Serdar Aslan",
+    "system": "BookByen",
+    "createdOn": "2022-01-03T11:07:02",
+    "isDeleted": false,
+    "deletedBy": null,
+    "deletedOn": null,
+    "team": null,
+    "activity": {
+      "id": 326,
+      "importID": null,
+      "name": "Lille mødelokale op til 15 personer",
+      "parent": {
+        "id": 120,
+        "importID": "47DF88AF-C9E2-4091-A149-C288D9A77A97",
+        "name": "Møde",
+        "parent": null
+      }
+    },
+    "parent": { "id": null, "importID": null },
+    "user": {
+      "id": 11546,
+      "name": "Serdar Aslan",
+      "userType": { "id": 84, "name": "Administrator (bydel-område)" }
+    },
+    "facility": {
+      "id": 1358,
+      "importID": "*",
+      "name": "Mødelokale ",
+      "number": 23660081,
+      "type": null,
+      "limitedBooking": false,
+      "active": false,
+      "facilitytype": { "id": 33, "importID": null, "name": "Mødelokale" },
+      "area": {
+        "id": 1357,
+        "importID": "*",
+        "name": "Mødelokale",
+        "number": 2366008,
+        "active": false,
+        "location": {
+          "id": 71,
+          "importID": "395D23FB-9819-4DA1-A4E4-7833F5DF4D50",
+          "name": "Nørrebrohallen",
+          "address": "Nørrebrogade 208",
+          "zipcode": "2200",
+          "city": "København N ",
+          "account": null,
+          "psp": null,
+          "active": true
+        }
+      }
+    }
+  }
+]

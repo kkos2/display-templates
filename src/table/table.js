@@ -1,3 +1,5 @@
+// Remove the line below when this file has been converted to Typescript.
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -207,6 +209,7 @@ Table.propTypes = {
     }),
   }).isRequired,
   content: PropTypes.shape({
+    separator: PropTypes.bool,
     duration: PropTypes.number.isRequired,
     fontSize: PropTypes.string,
     fontPlacement: PropTypes.string,

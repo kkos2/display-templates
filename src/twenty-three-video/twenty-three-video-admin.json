@@ -1,24 +1,42 @@
 [
     {
-      "key": "video-form-1",
+      "key": "twenty-three-video-form-header",
       "input": "header",
       "text": "Skabelon: 23Video",
-      "name": "header1",
+      "name": "header",
       "formGroupClasses": "h4 mb-3"
     },
     {
-      "key": "video-form-2",
+      "key": "twenty-three-video-form-sub-header",
       "input": "header-h3",
       "text": "Indhold",
-      "name": "header2",
+      "name": "subHeader",
       "formGroupClasses": "h5 mb-3"
     },
     {
-      "key": "video-form-form-3",
-      "input": "textarea",
-      "name": "videoList",
-      "label": "VideoList",
-      "helpText": "Kommasepareret liste med id's fra 23video",
+      "key": "twenty-three-video-form-album-id",
+      "input": "input",
+      "name": "album_id",
+      "type": "text",
+      "label": "Album ID",
+      "helpText": "Angiv ID'et på det album som der skal vises videoer fra",
       "formGroupClasses": "col-md-6"
+    },
+    {
+      "key": "twenty-three-video-form-tags",
+      "input": "input",
+      "name": "album_id",
+      "type": "text",
+      "label": "Tags",
+      "helpText": "Vælg det eller de tags som der skal vises videoer fra. Brug mellem for at adskilde tags og gåseøjne (\") for at vælge et tag der består af flere ord.",
+      "formGroupClasses": "col-md-6"
+    },
+    {
+      "key": "twenty-three-video-form-jsonData",
+      "input": "textarea",
+      "name": "jsonData",
+      "label": "JSON data",
+      "helpText": "Her kan du skrive JSON til slidet",
+      "formGroupClasses": "col-md"
     }
 ]
