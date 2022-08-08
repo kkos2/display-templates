@@ -46,7 +46,9 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({
     slideDone(slide);
   }
 
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  // When index is null, it means that we need to reset the index to 0 and
+  // start playing the list of videos all over again.
+  const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(0);
 
   /**
    * Callback for when video has ended.
@@ -54,10 +56,15 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({
    * @param {MessageEvent} e The message event.
    */
   function videoEndedEvent(e: MessageEvent) {
+    // This will never happen, but need to make typescript happy.
+    if (currentVideoIndex === null) {
+      return;
+    }
     // EventListener function for player:video:ended message
     if (e.data.includes("player:video:ended")) {
       // check if there is a next video id in formatted Video List
       if (videoList[currentVideoIndex + 1] === undefined) {
+        setCurrentVideoIndex(null);
         slideDone(slide);
         return;
       }
@@ -87,6 +94,16 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({
     };
   }, [currentVideoIndex]);
 
+  // Use null to reset the loop of videos. We need to do it with setTimeout for
+  // the special case that we only display one video and need React to render
+  // the slide without video, so it can re-render with the same video which
+  // will trigger the video to start playing.
+  if (currentVideoIndex === null) {
+    setTimeout(function callback() {
+      setCurrentVideoIndex(0);
+    });
+  }
+
   // ADMIN stuff start here
   const rootClasses = ["template-twenty-three-video"];
 
@@ -96,7 +113,7 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({
   return (
     <>
       <div className={rootClasses.join(" ")} style={rootStyle}>
-        {videoList[currentVideoIndex] && (
+        {currentVideoIndex !== null && videoList[currentVideoIndex] && (
           <iframe
             id={iframeId}
             src={`https://${videoUrl}/v.ihtml/player.html?source=site&photo%5fid=${videoList[currentVideoIndex]}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
