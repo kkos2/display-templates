@@ -1,0 +1,14 @@
+{
+  "title": "Servicemeddelelse",
+  "icon": "",
+  "id": "01FP2SNGFN0BZFPPFKCBXHKYHG",
+  "description": "Skabelon til servicemeddelelser.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/service-message.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/service-message-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/service-message-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

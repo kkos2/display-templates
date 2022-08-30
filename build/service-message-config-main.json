@@ -1,0 +1,14 @@
+{
+  "title": "Servicemeddelelse",
+  "icon": "",
+  "id": "01FP2SNGFN0BZFPPFKCBXHKYHG",
+  "description": "Skabelon til servicemeddelelser.",
+  "resources": {
+    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message.js",
+    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message-admin.json",
+    "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}
