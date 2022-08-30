@@ -1,0 +1,13 @@
+{
+  "title": "Event",
+  "icon": "",
+  "id": "01ARZ3NDEKTSV4RREYQ69G5FAK",
+  "description": "Skabelon til event.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/event.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/event-admin.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

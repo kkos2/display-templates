@@ -38,6 +38,7 @@ const entry = devMode
       ),
       calendar: path.resolve(__dirname, "./src/calendar/calendar.js"),
       contacts: path.resolve(__dirname, "./src/contacts/contacts.js"),
+      event: path.resolve(__dirname, "./src/event/event.tsx"),
       "image-text": path.resolve(__dirname, "./src/image-text/image-text.js"),
       poster: path.resolve(__dirname, "./src/poster/poster.js"),
       rss: path.resolve(__dirname, "./src/rss/rss.js"),
