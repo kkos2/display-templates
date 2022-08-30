@@ -1,0 +1,60 @@
+[
+  {
+    "key": "service-message-form-ui-title",
+    "input": "header",
+    "text": "Skabelon: Servicemeddelelse",
+    "name": "ui-title",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "service-message-form-nid",
+    "input": "input",
+    "name": "nid",
+    "type": "text",
+    "label": "External ID",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "service-message-form-title",
+    "input": "textarea",
+    "name": "title",
+    "type": "text",
+    "label": "Titel",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "service-message-form-text",
+    "input": "textarea",
+    "name": "text",
+    "type": "text",
+    "label": "Tekst",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "service-message-form-display-institution",
+    "input": "input",
+    "name": "displayInstitution",
+    "type": "text",
+    "label": "Afsender",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "service-message-form-bgColor",
+    "input": "input",
+    "name": "bgColor",
+    "type": "text",
+    "label": "Baggrundsfarve",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "service-message-form-duration",
+    "input": "duration",
+    "name": "duration",
+    "min": "1",
+    "type": "number",
+    "label": "Varighed (i sekunder)",
+    "helpText": "Her skal du skrive varigheden på slidet.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  }
+]

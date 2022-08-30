@@ -1,0 +1,39 @@
+.service-message {
+  color: #fff;
+  padding: 4rem 2rem 4rem 6rem;
+  height: 100%;
+
+  // Font size based on the element's ratio.
+  font-size: calc(var(--width) * 0.01px);
+  &.layout-vertical {
+    font-size: calc(var(--height) * 0.012px);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__display-institution {
+    font-size: 2.5em;
+    font-family: "KBH Tekst", sans-serif;
+  }
+
+  &__title {
+    font-family: "KBH", sans-serif;
+    font-size: 7em;
+    margin: 1rem 0;
+    word-break: break-word;
+  }
+
+  &__text {
+    font-size: 3.2em;
+    font-family: "KBH Tekst", sans-serif;
+    max-width: 80%;
+  }
+
+  &__logo {
+    width: 10em;
+    height: 10em;
+  }
+}

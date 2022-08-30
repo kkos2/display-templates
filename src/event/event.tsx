@@ -1,11 +1,12 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import "./event.scss";
 import { ThemeStyles } from "../slide-util-ts";
 import GlobalStyles from "../GlobalStyles";
-import { EventDetailsProps, EventProps, Dimensions } from "./types";
+import { EventDetailsProps, EventProps } from "./types";
 import BaseSlideExecution from "../base-slide-execution";
 import Logo from "../kk/Logo/Logo";
 import "../kk/Font/font.scss";
+import { useDimensions } from "../kk/utils/useDimensions";
 
 /**
  * Event details component.
@@ -52,32 +53,11 @@ const EventDetails: FC<EventDetailsProps> = ({
 const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const getDimensions = (): Dimensions => ({
-    width: ref.current?.offsetWidth || 0,
-    height: ref.current?.offsetHeight || 0,
-  });
-
-  const [dimensions, setDimensions] = useState<Dimensions>({
-    width: 0,
-    height: 0,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setDimensions(getDimensions());
-    };
-
-    if (ref.current) {
-      handleResize();
-    }
-
-    // The resize event will probably never occur in real life, but there's not
-    // reason to not support it.
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [ref]);
+  const dimensions = useDimensions(ref);
+  let layout = "horizontal";
+  if (dimensions.height > dimensions.width) {
+    layout = "vertical";
+  }
 
   // Content from content.
   const {
@@ -92,11 +72,6 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
 
   const bgColor = content.bgColor || "#000c2e";
   const textColor = content.textColor || "#fff";
-
-  let layout = "horizontal";
-  if (dimensions.height > dimensions.width) {
-    layout = "vertical";
-  }
 
   const rootClasses: string[] = [
     "template-event",
