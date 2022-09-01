@@ -7,9 +7,9 @@
     "formGroupClasses": "h4 mb-3"
   },
   {
-    "key": "service-message-form-nid",
+    "key": "service-message-form-external-id",
     "input": "input",
-    "name": "nid",
+    "name": "externalId",
     "type": "text",
     "label": "External ID",
     "formGroupClasses": "col-md-6"
