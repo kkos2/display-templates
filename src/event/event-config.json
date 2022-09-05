@@ -6,6 +6,7 @@
   "resources": {
     "component": "https://display-templates.local.itkdev.dk/build/event.js",
     "admin": "https://display-templates.local.itkdev.dk/build/event-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/event-schema.json",
     "assets": [],
     "options": {},
     "content": {}
