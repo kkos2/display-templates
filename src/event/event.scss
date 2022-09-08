@@ -4,12 +4,6 @@
   height: 100%;
   font-family: "KBH Tekst", sans-serif;
 
-  // Font size based on the element's ratio.
-  font-size: calc(var(--width) * 0.01px);
-  &.layout-vertical {
-    font-size: calc(var(--height) * 0.012px);
-  }
-
   &__image {
     width: 55%;
     img {
@@ -29,7 +23,10 @@
     flex-shrink: 0;
   }
 
+  // Font size based on the element's ratio.
+  font-size: calc(var(--width) * 0.01px);
   &.layout-vertical {
+    font-size: calc(var(--height) * 0.012px);
     display: flex;
     flex-direction: column;
     padding: 5em;
@@ -78,7 +75,7 @@
   &__title {
     font-size: 2.25em;
     font-family: "KBH", sans-serif;
-    margin: 1em 0 .25em;
+    margin: 1em 0 0.25em;
     word-break: break-word;
 
     h1 {
