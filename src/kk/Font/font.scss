@@ -1,7 +1,20 @@
+/**
+ We need to specify the absolute url for fonts. The reason for this is how
+  remote components work. In short the urls for the fonts is created as
+  relative which is fine, but when included as a remote component that path is
+  relative to the client JS including the remote component and not the remote
+  component js file, which means that fonts doesn't work. By manually
+  specifying src twice, webpack will use the first to compile the file and the
+  second will be used.
+  This is not a great solution, but more a work around due to the defect of
+  remote component library which is used by the display client.
+ */
+$absolute_url: "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/fonts";
 /** KBH font definition */
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Thin.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Thin.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }
@@ -9,6 +22,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-ThinItalic.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-ThinItalic.woff") format("woff");
   font-weight: 100;
   font-style: italic;
 }
@@ -16,6 +30,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Light.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
@@ -23,6 +38,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-LightItalic.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-LightItalic.woff") format("woff");
   font-weight: 300;
   font-style: italic;
 }
@@ -30,6 +46,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Regular.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -37,6 +54,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Italic.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
 }
@@ -44,6 +62,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Medium.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
@@ -51,6 +70,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-MediumItalic.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-MediumItalic.woff") format("woff");
   font-weight: 500;
   font-style: italic;
 }
@@ -58,6 +78,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Demibold.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Demibold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -65,6 +86,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-DemiboldItalic.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-DemiboldItalic.woff") format("woff");
   font-weight: 600;
   font-style: italic;
 }
@@ -72,6 +94,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Bold.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -79,6 +102,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-BoldItalic.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
 }
@@ -86,6 +110,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-Black.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
 }
@@ -93,6 +118,7 @@
 @font-face {
   font-family: "KBH";
   src: url("./KBH/KBH-BlackItalic.woff") format("woff");
+  src: url("#{$absolute_url}/KBH-BlackItalic.woff") format("woff");
   font-weight: 900;
   font-style: italic;
 }
@@ -101,6 +127,7 @@
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst.woff") format("woff");
+  src: url("#{$absolute_url}/KBHTekst.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -108,6 +135,7 @@
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst-Italic.woff") format("woff");
+  src: url("#{$absolute_url}/KBHTekst-Italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
 }
@@ -115,6 +143,7 @@
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst-Bold.woff") format("woff");
+  src: url("#{$absolute_url}/KBHTekst-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -122,6 +151,7 @@
 @font-face {
   font-family: "KBH Tekst";
   src: url("./KBH Tekst/KBHTekst-BoldItalic.woff") format("woff");
+  src: url("#{$absolute_url}/KBHTekst-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
 }
