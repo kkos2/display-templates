@@ -82,6 +82,8 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
   const rootStyle: Record<string, string | number> = {
     backgroundColor: bgColor,
     color: textColor,
+    "--width": dimensions.width,
+    "--height": dimensions.height,
   };
 
   /** Setup slide run function. */
