@@ -23,6 +23,7 @@ const Template: ComponentStory<typeof ServiceMessage> = ({ ...args }: any) => {
     },
   };
 
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <ServiceMessage {...props} />;
 };
 

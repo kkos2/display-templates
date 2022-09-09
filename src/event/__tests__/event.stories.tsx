@@ -27,6 +27,7 @@ const Template: ComponentStory<typeof Event> = ({ ...args }: any) => {
     },
   };
 
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <Event {...props} />;
 };
 
