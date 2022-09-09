@@ -1,11 +1,10 @@
 import { SlideBaseProp } from "../types/SlideBaseProp";
 
-/** Interface for the content attribute on the props for Event component. */
-export interface EventContent {
+export interface Event {
   // Color hex code.
   bgColor: string;
   // Color hex code.
-  textColor: string;
+  textColor?: string;
   // Url to logo.
   host: string;
   date: string;
@@ -13,6 +12,10 @@ export interface EventContent {
   title: string;
   subTitle: string;
   image: string;
+}
+
+/** Interface for the content attribute on the props for Event component. */
+export interface EventContent extends Event {
   duration?: number;
 }
 

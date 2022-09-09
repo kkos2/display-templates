@@ -1,0 +1,13 @@
+{
+  "title": "Event List",
+  "icon": "",
+  "id": "01RAZ3NDEKTSV4RREYQ69G5FAK",
+  "description": "Skabelon til event lists.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/event-list.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/event-list-admin.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

@@ -1,0 +1,61 @@
+.event-list {
+  color: #fff;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-family: "KBH Tekst", sans-serif;
+  padding: 6em 3em 6em 6em;
+
+  // Font size based on the element's ratio.
+  font-size: calc(var(--width) * 0.01px);
+  &.layout-vertical {
+    font-size: calc(var(--height) * 0.012px);
+  }
+
+  &__logo {
+    width: 10em;
+    height: 10em;
+    flex-shrink: 0;
+    margin-left: 2em;
+  }
+
+  img {
+    width: 45%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__items {
+    width: 100%;
+  }
+}
+
+.event-list-item {
+  display: flex;
+  margin-bottom: 1.5em;
+  height: 30%;
+  width: 100%;
+
+  &__content {
+    padding: 2em;
+    color: #000;
+    background-color: #fff;
+    overflow: hidden;
+    width: 55%;
+  }
+
+  &__date {
+    font-size: 1.2em;
+  }
+
+  &__title {
+    margin: 0.5em 0 0.25em;
+    font-size: 1.8em;
+    font-weight: 800;
+    font-family: "KBH", sans-serif;
+  }
+
+  &__sub-title {
+    font-size: 1.25em;
+  }
+}

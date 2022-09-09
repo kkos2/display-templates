@@ -36,6 +36,7 @@ const Template: ComponentStory<typeof BookByen> = ({ ...args }: any) => {
     },
   };
 
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <BookByen {...props} />;
 };
 
