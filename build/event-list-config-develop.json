@@ -1,0 +1,13 @@
+{
+  "title": "Event List",
+  "icon": "",
+  "id": "01RAZ3NDEKTSV4RREYQ69G5FAK",
+  "description": "Skabelon til event lists.",
+  "resources": {
+    "component": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/event-list.js",
+    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/event-list-admin.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}
