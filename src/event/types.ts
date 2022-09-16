@@ -7,8 +7,8 @@ export interface Event {
   textColor?: string;
   // Url to logo.
   host: string;
-  date: string;
-  time: string;
+  startDate: string;
+  endDate: string;
   title: string;
   subTitle: string;
   image: string;
@@ -26,6 +26,6 @@ export interface EventProps extends SlideBaseProp {
 export interface EventDetailsProps {
   title: string;
   subTitle: string;
-  date: string;
-  time: string;
+  startDate: string;
+  endDate: string;
 }
