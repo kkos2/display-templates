@@ -12,9 +12,7 @@ const EventListItem: FC<EventListItemProps> = ({ event }) => (
   <div className="event-list-item">
     <img src={event.image} alt="" />
     <div className="event-list-item__content">
-      <div className="event-list-item__date">
-        {event.date} {event.time}
-      </div>
+      <div className="event-list-item__date">{event.startDate}</div>
       <h3 className="event-list-item__title">{event.title}</h3>
       <div className="event-list-item__sub-title">{event.subTitle}</div>
     </div>

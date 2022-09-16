@@ -12,29 +12,29 @@ import { useDimensions } from "../kk/utils/useDimensions";
  * Event details component.
  *
  * @param {object} props Props.
- * @param {object} props.date The date.
- * @param {boolean} props.time The time.
- * @param {object} props.title The title.
- * @param {Function} props.subTitle The subtitle.
+ * @param {string} props.startDate The start date.
+ * @param {string} props.endDate The end date.
+ * @param {string} props.title The title.
+ * @param {string} props.subTitle The subtitle.
  * @returns {object} The component.
  */
 const EventDetails: FC<EventDetailsProps> = ({
-  date,
-  time,
+  startDate,
+  endDate,
   title,
   subTitle,
 }) => {
   return (
     <div className="event-details">
-      <div className="event-details__date">
-        <span>{date}</span>
-        <span>{time}</span>
-      </div>
       <div className="event-details__title">
         <h1>{title}</h1>
       </div>
       <div className="event-details__sub-title">
         <h2>{subTitle}</h2>
+      </div>
+      <div className="event-details__date">
+        <span>{startDate}</span>
+        {endDate && <span>{endDate}</span>}
       </div>
     </div>
   );
@@ -62,8 +62,8 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
   // Content from content.
   const {
     host,
-    date,
-    time,
+    startDate,
+    endDate,
     title,
     subTitle,
     image,
@@ -114,8 +114,8 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
           <EventDetails
             title={title}
             subTitle={subTitle}
-            date={date}
-            time={time}
+            startDate={startDate}
+            endDate={endDate}
           />
         </div>
         <ThemeStyles id="template-event" css={slide?.themeData?.css} />
@@ -138,8 +138,8 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
           <EventDetails
             title={title}
             subTitle={subTitle}
-            date={date}
-            time={time}
+            startDate={startDate}
+            endDate={endDate}
           />
         </div>
       </div>

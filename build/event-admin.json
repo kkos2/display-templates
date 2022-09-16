@@ -31,19 +31,19 @@
     "formGroupClasses": "col-md-6"
   },
   {
-    "key": "event-form-date",
+    "key": "event-form-start-date",
     "input": "input",
-    "name": "date",
+    "name": "startDate",
     "type": "text",
-    "label": "Dato",
+    "label": "Startdato",
     "formGroupClasses": "col-md-6"
   },
   {
-    "key": "event-form-time",
+    "key": "event-form-end-date",
     "input": "input",
-    "name": "time",
+    "name": "endDate",
     "type": "text",
-    "label": "Tidspunkt",
+    "label": "Slutdato",
     "formGroupClasses": "col-md-6"
   },
   {
