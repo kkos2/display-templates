@@ -47,7 +47,6 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
     logo,
     pageIntervalTime = 10000,
     postsPerPage = 10,
-    showTime = false,
     showFacility = false,
     showActivity = false,
     showBookingNote = false,
@@ -117,11 +116,9 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
               key={item.id}
               className={`{'is-odd': $odd, 'bookbyen-bookings__body': true}`}
             >
-              {showTime && (
-                <td className="bookbyen-bookings__time">
-                  {item.startTime} - {item.endTime}
-                </td>
-              )}
+              <td className="bookbyen-bookings__time">
+                {item.startTime} - {item.endTime}
+              </td>
               {showFacility && <td>{item.facility}</td>}
               {showActivity && <td>{item.activity}</td>}
               {showBookingNote && <td>{item.bookingNote}</td>}
@@ -182,7 +179,7 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
                 className="bookbyen-bookings__head"
                 style={{ backgroundColor: bgColor }}
               >
-                {showTime && <th className="bookbyen-bookings__time">Tid</th>}
+                <th className="bookbyen-bookings__time">Tid</th>
                 {showFacility && <th>Facilitet</th>}
                 {showActivity && <th>Aktivitet</th>}
                 {showBookingNote && <th>Note</th>}

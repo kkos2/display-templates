@@ -26,7 +26,6 @@ export interface BookByenContent {
   postsPerPage: number;
   // Various feature flags below, controlling appearance of slide.
   showDayName: boolean;
-  showTime: boolean;
   showFacility: boolean;
   showActivity: boolean;
   showBookingNote: boolean;
