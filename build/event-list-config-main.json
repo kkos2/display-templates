@@ -6,6 +6,7 @@
   "resources": {
     "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/event-list.js",
     "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/event-list-admin.json",
+    "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/event-list-schema.json",
     "assets": [],
     "options": {},
     "content": {}
