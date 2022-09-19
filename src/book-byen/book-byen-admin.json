@@ -34,6 +34,24 @@
     "formGroupClasses": "col-md-6"
   },
   {
+    "key": "book-byen-form-area-id",
+    "input": "input",
+    "name": "pageIntervalTime,",
+    "type": "text",
+    "label": "Tid per side",
+    "helpText": "Tiden angives i ms, altså 1000 = 1 sek.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
+    "key": "book-byen-form-area-id",
+    "input": "input",
+    "name": "postsPerPage,",
+    "type": "text",
+    "label": "Antal rækker per side",
+    "helpText": "Angiv hvor mange rækker der skal vises på hver side.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
     "key": "book-byen-form-header",
     "input": "input",
     "name": "header",
@@ -44,7 +62,7 @@
   {
     "key": "book-byen-form-showDayName",
     "input": "checkbox",
-    "label": "Vis dato og tid i header",
+    "label": "Vis ugenavn sammen med tid i header",
     "name": "showDayName",
     "formGroupClasses": "col-md-6 mb-3"
   },
@@ -55,13 +73,6 @@
     "type": "text",
     "label": "Baggrundsfarve i header",
     "formGroupClasses": "col-md-6"
-  },
-  {
-    "key": "book-byen-form-showTime",
-    "input": "checkbox",
-    "label": "Vis tidspunkt i tabel",
-    "name": "showTime",
-    "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "book-byen-form-showFacility",
