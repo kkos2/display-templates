@@ -67,7 +67,7 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
     title,
     subTitle,
     image,
-    duration = 15000,
+    duration = 10000,
   } = content;
 
   const bgColor = content.bgColor || "#000c2e";
