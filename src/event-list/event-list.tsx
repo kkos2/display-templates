@@ -12,9 +12,12 @@ const EventListItem: FC<EventListItemProps> = ({ event }) => (
   <div className="event-list-item">
     <img src={event.image} alt="" />
     <div className="event-list-item__content">
+      <div className="event-list-item__top">
+        <h3 className="event-list-item__title">{event.title}</h3>
+        <div className="event-list-item__sub-title">{event.subTitle}</div>
+        {event.host && <div className="event-list-item__host">{event.host}</div>}
+      </div>
       <div className="event-list-item__date">{event.startDate}</div>
-      <h3 className="event-list-item__title">{event.title}</h3>
-      <div className="event-list-item__sub-title">{event.subTitle}</div>
     </div>
   </div>
 );
@@ -56,7 +59,7 @@ const EventList: FC<EventListProps> = ({ slide, content, slideDone }) => {
   };
 
   // Split elements on pages logic.
-  const postsPerPage = 3;
+  const postsPerPage = layout === "vertical" ? 4 : 3;
   const cleanEvents: Event[] = JSON.parse(jsonData);
   const indexOfLastEvent = currentPage * postsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
@@ -85,6 +88,22 @@ const EventList: FC<EventListProps> = ({ slide, content, slideDone }) => {
       clearInterval(pageInterval);
     };
   });
+
+  if (layout === "vertical") {
+    return (
+      <>
+        <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
+          <Logo className="event-list__logo" />
+          <div className="event-list__items">
+            {currentEvents.length &&
+              currentEvents.map((event) => <EventListItem event={event} />)}
+          </div>
+        </div>
+        <ThemeStyles id="template-event-list" css={slide?.themeData?.css} />
+        <GlobalStyles />
+      </>
+    );
+  }
 
   return (
     <>

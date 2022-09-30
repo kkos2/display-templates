@@ -16,7 +16,7 @@
   &__host {
     font-size: 1.875em;
     font-weight: 700;
-    margin-top: -1em;
+    margin-top: 1em;
   }
 
   &__logo {
@@ -49,10 +49,19 @@
       }
 
       &__host {
-        margin-bottom: 3em;
+        margin-bottom: 2.5em;
         margin-top: 0;
       }
     }
+  }
+
+  &__date {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.75em;
+    gap: 0.25em;
+    position: absolute;
+    bottom: 5em;
   }
 }
 
@@ -69,14 +78,6 @@
 }
 
 .event-details {
-  &__date {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.75em;
-    margin-top: 1.25rem;
-    gap: 0.25em;
-  }
-
   &__title {
     font-size: 2.25em;
     font-family: "KBH", sans-serif;

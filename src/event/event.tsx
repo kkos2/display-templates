@@ -25,18 +25,20 @@ const EventDetails: FC<EventDetailsProps> = ({
   subTitle,
 }) => {
   return (
-    <div className="event-details">
-      <div className="event-details__title">
-        <h1>{title}</h1>
+    <>
+      <div className="event-details">
+        <div className="event-details__title">
+          <h1>{title}</h1>
+        </div>
+        <div className="event-details__sub-title">
+          <h2>{subTitle}</h2>
+        </div>
       </div>
-      <div className="event-details__sub-title">
-        <h2>{subTitle}</h2>
-      </div>
-      <div className="event-details__date">
+      <div className="event__date">
         <span>{startDate}</span>
         {endDate && <span>{endDate}</span>}
       </div>
-    </div>
+    </>
   );
 };
 
