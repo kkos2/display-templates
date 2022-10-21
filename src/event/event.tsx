@@ -105,13 +105,11 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
       <>
         <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
           <div className="event-top">
-            <div>
-              <div className="event__host event-top__host">{host}</div>
-              <div className="event-top__image">
-                <img src={image} alt="" />
-              </div>
-            </div>
+            <div className="event__host event-top__host">{host}</div>
             <Logo className="event__logo event-top__logo" />
+          </div>
+          <div className="event-top__image">
+            <img src={image} alt="" />
           </div>
           <EventDetails
             title={title}
