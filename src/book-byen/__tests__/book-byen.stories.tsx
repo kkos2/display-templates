@@ -29,8 +29,7 @@ const Template: ComponentStory<typeof BookByen> = ({ ...args }: any) => {
       showActivity: args.showActivity,
       showBookingNote: args.showBookingNote,
       showTeam: args.showTeam,
-      showTeamleaders: args.showTeamleaders,
-      showUserName: args.showUserName,
+      showWho: args.showWho,
       jsonData: args.jsonData,
     },
   };
@@ -57,7 +56,6 @@ example1.args = {
   showActivity: true,
   showBookingNote: false,
   showTeam: false,
-  showTeamleaders: false,
-  showUserName: true,
+  showWho: true,
   jsonData: JSON.stringify(mockData),
 };

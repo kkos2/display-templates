@@ -30,8 +30,7 @@ export interface BookByenContent {
   showActivity: boolean;
   showBookingNote: boolean;
   showTeam: boolean;
-  showTeamleaders: boolean;
-  showUserName: boolean;
+  showWho: boolean;
   // List of items to see as JSON string, should be converted to BookByenItem[]
   // It's expected that this data is provided by an external API called
   // bookbyen.

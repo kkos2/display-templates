@@ -103,16 +103,9 @@
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
-    "key": "book-byen-form-showTeamleaders",
+    "key": "book-byen-form-showWho",
     "input": "checkbox",
-    "label": "Vis holdleder i tabel",
-    "name": "showTeamleaders",
-    "formGroupClasses": "col-md-6 mb-3"
-  },
-  {
-    "key": "book-byen-form-showUserName",
-    "input": "checkbox",
-    "label": "Vis brugernavn i tabel",
+    "label": "Vis brugernavn / holdleder i tabel",
     "name": "showUserName",
     "formGroupClasses": "col-md-6 mb-3"
   },

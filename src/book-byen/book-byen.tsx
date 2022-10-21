@@ -20,7 +20,7 @@ const formatEvents = (item: any): BookByenItem => {
     endTime: formatTime(item?.end),
     facility: item?.facility?.name,
     activity: item?.activity?.name,
-    bookingNote: item?.bookingNote,
+    bookingNote: item?.infoscreenNote,
     teamName: item?.team?.name,
     // teamleaders is an array, and i dont know whats in it
     teamleaders: item?.team?.teamleaders[0] || "",
@@ -51,8 +51,7 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
     showActivity = false,
     showBookingNote = false,
     showTeam = false,
-    showTeamleaders = false,
-    showUserName = false,
+    showWho = false,
     jsonData,
   } = content;
 
@@ -123,8 +122,7 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
               {showActivity && <td>{item.activity}</td>}
               {showBookingNote && <td>{item.bookingNote}</td>}
               {showTeam && <td>{item.teamName}</td>}
-              {showTeamleaders && <td>{item.teamleaders}</td>}
-              {showUserName && <td>{item.userName}</td>}
+              {showWho && <td>{item.teamleaders ? item.teamleaders : item.userName}</td>}
             </tr>
           );
         })}
@@ -179,15 +177,12 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
                 className="bookbyen-bookings__head"
                 style={{ backgroundColor: bgColor }}
               >
-                <th className="bookbyen-bookings__time">Tid</th>
-                {showFacility && <th>Facilitet</th>}
-                {showActivity && <th>Aktivitet</th>}
+                <th className="bookbyen-bookings__time">Hvornår</th>
+                {showFacility && <th>Hvor</th>}
+                {showActivity && <th>Hvad</th>}
                 {showBookingNote && <th>Note</th>}
                 {showTeam && <th>Hold</th>}
-                {showTeamleaders && <th>Holdleder</th>}
-                {showUserName && (
-                  <th className="bookbyen-bookings__username">Brugernavn</th>
-                )}
+                {showWho && <th>Hvem</th>}
               </tr>
             </thead>
             <tbody>
