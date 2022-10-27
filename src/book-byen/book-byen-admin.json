@@ -36,7 +36,7 @@
   {
     "key": "book-byen-form-pageIntervalTime",
     "input": "input",
-    "name": "pageIntervalTime,",
+    "name": "pageIntervalTime",
     "type": "text",
     "label": "Tid per side",
     "helpText": "Tiden angives i ms, altså 1000 = 1 sek.",
@@ -45,7 +45,7 @@
   {
     "key": "book-byen-form-postsPerPage",
     "input": "input",
-    "name": "postsPerPage,",
+    "name": "postsPerPage",
     "type": "text",
     "label": "Antal rækker per side",
     "helpText": "Angiv hvor mange rækker der skal vises på hver side.",
