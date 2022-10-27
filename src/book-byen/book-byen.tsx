@@ -55,6 +55,12 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
     jsonData,
   } = content;
 
+  // Debug to figure out posts per page issue on platform setup.
+  if (console && typeof console.log === 'function') {
+    console.log(content, [postsPerPage]);
+  }
+
+
   // ADMIN stuff start here
   const rootClasses: string[] = ["template-book-byen"];
   let itemList: any[] = [];
