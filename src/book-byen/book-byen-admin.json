@@ -34,7 +34,7 @@
     "formGroupClasses": "col-md-6"
   },
   {
-    "key": "book-byen-form-area-id",
+    "key": "book-byen-form-pageIntervalTime",
     "input": "input",
     "name": "pageIntervalTime,",
     "type": "text",
@@ -106,7 +106,7 @@
     "key": "book-byen-form-showWho",
     "input": "checkbox",
     "label": "Vis brugernavn / holdleder i tabel",
-    "name": "showUserName",
+    "name": "showWho",
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
