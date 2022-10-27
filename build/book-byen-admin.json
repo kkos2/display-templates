@@ -43,7 +43,7 @@
     "formGroupClasses": "col-md-6"
   },
   {
-    "key": "book-byen-form-area-id",
+    "key": "book-byen-form-postsPerPage",
     "input": "input",
     "name": "postsPerPage,",
     "type": "text",
