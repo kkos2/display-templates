@@ -46,6 +46,7 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
     showDayName,
     logo,
     pageIntervalTime = 10000,
+    maxPosts = undefined,
     postsPerPage = 10,
     showFacility = false,
     showActivity = false,
@@ -60,6 +61,9 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
   let itemList: any[] = [];
   try {
     itemList = JSON.parse(jsonData);
+    if (maxPosts && maxPosts > 0) {
+      itemList = itemList.slice(0, maxPosts);
+    }
   } catch (e) {
     slideDone(slide);
   }

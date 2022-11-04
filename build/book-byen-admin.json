@@ -52,6 +52,15 @@
     "formGroupClasses": "col-md-6"
   },
   {
+    "key": "book-byen-form-maxPosts",
+    "input": "input",
+    "name": "maxPosts",
+    "type": "text",
+    "label": "Mak antal rækker i alt",
+    "helpText": "Angiv hvor mange rækker der i alt skal vises. Hvis der er flere rækker end angivet vises kun de først X angivet.",
+    "formGroupClasses": "col-md-6"
+  },
+  {
     "key": "book-byen-form-header",
     "input": "input",
     "name": "header",
