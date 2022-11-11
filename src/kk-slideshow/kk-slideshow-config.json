@@ -1,0 +1,14 @@
+{
+  "title": "KK Slideshow",
+  "icon": "",
+  "id": "01FP2SNSC9VXD10ZKXQR819NS9",
+  "description": "Skabelon til slideshow af billeder med forskellige effekter",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/kk-slideshow.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/kk-slideshow-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/kk-slideshow-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

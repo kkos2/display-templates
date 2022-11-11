@@ -29,6 +29,7 @@ const Template: ComponentStory<typeof TwentyThreeVideo> = ({
     },
   };
 
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <TwentyThreeVideo {...props} />;
 };
 

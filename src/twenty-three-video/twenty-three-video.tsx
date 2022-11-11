@@ -117,6 +117,7 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({
           <iframe
             id={iframeId}
             src={`https://${videoUrl}/v.ihtml/player.html?source=site&photo%5fid=${videoList[currentVideoIndex]}&showDescriptions=0&hideBigPlay=1&showLogo=0&socialSharing=0&showBrowse=0&autoPlay=${convertedAutoplay}&showTray=${convertedShowtray}&mutedAutoPlay=${convertedMutedAutoPlay}&autoMute=${convertedAutoMute}`}
+            title="video"
             style={{
               width: "100%",
               height: "100%",

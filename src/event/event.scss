@@ -38,7 +38,6 @@
       justify-content: space-between;
 
       &__image {
-
         width: calc(100% + 10em);
         margin-top: 2em;
         margin-left: -5em;
@@ -68,16 +67,6 @@
   }
 }
 
-.layout-horizontal {
-  .event-info {
-    padding: 3em;
-  }
-
-  .event__date {
-    bottom: 2em;
-  }
-}
-
 .event-info {
   display: flex;
   flex-direction: column;
@@ -87,6 +76,16 @@
   &__top {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+.layout-horizontal {
+  .event-info {
+    padding: 3em;
+  }
+
+  .event__date {
+    bottom: 2em;
   }
 }
 

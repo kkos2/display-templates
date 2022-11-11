@@ -126,7 +126,9 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
               {showActivity && <td>{item.activity}</td>}
               {showBookingNote && <td>{item.bookingNote}</td>}
               {showTeam && <td>{item.teamName}</td>}
-              {showWho && <td>{item.teamleaders ? item.teamleaders : item.userName}</td>}
+              {showWho && (
+                <td>{item.teamleaders ? item.teamleaders : item.userName}</td>
+              )}
             </tr>
           );
         })}

@@ -15,7 +15,9 @@ const EventListItem: FC<EventListItemProps> = ({ event }) => (
       <div className="event-list-item__top">
         <h3 className="event-list-item__title">{event.title}</h3>
         <div className="event-list-item__sub-title">{event.subTitle}</div>
-        {event.host && <div className="event-list-item__host">{event.host}</div>}
+        {event.host && (
+          <div className="event-list-item__host">{event.host}</div>
+        )}
       </div>
       <div className="event-list-item__date">{event.startDate}</div>
     </div>

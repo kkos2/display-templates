@@ -2,6 +2,7 @@ import React, { FC, HTMLAttributes } from "react";
 
 const Logo: FC<HTMLAttributes<HTMLOrSVGElement>> = (props) => (
   <svg
+    // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
     version="1.1"
     id="Lag_1"

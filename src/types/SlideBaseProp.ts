@@ -17,8 +17,11 @@ export interface Slide {
  */
 export interface SlideBaseProp extends HTMLAttributes<HTMLDivElement> {
   run: string;
-  // Function called when the slide is done and should replaced by a new slide.
+  // Function called when the slide is done and it should replaced by a new
+  // slide.
+  // eslint-disable-next-line no-unused-vars
   slideDone(slide?: Slide): void;
   slide: Slide;
   content: any;
+  executionId: string;
 }

@@ -1,0 +1,100 @@
+[
+  {
+    "key": "kk-slideshow-form-header",
+    "input": "header",
+    "text": "Skabelon: Slideshow",
+    "name": "header1",
+    "formGroupClasses": "h4 mb-3"
+  },
+  {
+    "key": "kk-slideshow-form-header1",
+    "input": "header-h3",
+    "text": "Indhold",
+    "name": "header1",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "kk-slideshow-form-imageFolder",
+    "input": "input",
+    "name": "imageFolder",
+    "label": "Billede mappe"
+  },
+  {
+    "key": "kk-slideshow-form-header2",
+    "input": "header-h3",
+    "text": "Opsætning",
+    "name": "header2",
+    "formGroupClasses": "h5 mb-3"
+  },
+  {
+    "key": "kk-slideshow-form-imageDuration",
+    "input": "input",
+    "name": "imageDuration",
+    "type": "number",
+    "label": "Varighed pr. billede (i sekunder)",
+    "helpText": "Her skal du skrive varigheden pr. billede.",
+    "required": true,
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "name": "animation",
+    "key": "kk-slideshow-form-animation",
+    "input": "select",
+    "label": "Vælg animation",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "animation1",
+        "title": "Tilfældig",
+        "value": "random"
+      },
+      {
+        "key": "animation2",
+        "title": "Zoom mod midten",
+        "value": "zoom-in-middle"
+      },
+      {
+        "key": "animation3",
+        "title": "Zoom ud fra midten",
+        "value": "zoom-out-middle"
+      },
+      {
+        "key": "animation4",
+        "title": "Zoom mod tilfældigt punkt",
+        "value": "zoom-in-random"
+      },
+      {
+        "key": "animation5",
+        "title": "Zoom ud fra tilfældigt punkt",
+        "value": "zoom-out-random"
+      }
+    ]
+  },
+  {
+    "name": "transition",
+    "key": "kk-slideshow-form-transition",
+    "input": "select",
+    "label": "Vælg overgang",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "transition1",
+        "title": "Ingen overgang",
+        "value": null
+      },
+      {
+        "key": "transition2",
+        "title": "Cross fade",
+        "value": "fade"
+      }
+    ]
+  },
+  {
+    "key": "kk-slideshow-form-jsonData",
+    "input": "textarea",
+    "name": "jsonData",
+    "label": "JSON data",
+    "helpText": "Her kan du skrive JSON til slidet",
+    "formGroupClasses": "col-md"
+  }
+]
