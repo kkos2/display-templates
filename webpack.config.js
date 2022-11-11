@@ -41,6 +41,7 @@ const entry = devMode
       event: path.resolve(__dirname, "./src/event/event.tsx"),
       "event-list": path.resolve(__dirname, "./src/event-list/event-list.tsx"),
       "image-text": path.resolve(__dirname, "./src/image-text/image-text.js"),
+      "kk-slideshow": path.resolve(__dirname, "./src/kk-slideshow/kk-slideshow.tsx"),
       poster: path.resolve(__dirname, "./src/poster/poster.js"),
       rss: path.resolve(__dirname, "./src/rss/rss.js"),
       slideshow: path.resolve(__dirname, "./src/slideshow/slideshow.js"),
