@@ -70,8 +70,11 @@ const ServiceMessage: FC<ServiceMessageProps> = ({
           </div>
           <Logo className="service-message__logo" />
         </div>
-        <div className="service-message__title">{title}</div>
-        <div className="service-message__text">{text}</div>
+        <div>
+          <div className="service-message__title">{title}</div>
+          <div className="service-message__text">{text}</div>
+        </div>
+        <div></div>
       </div>
       <ThemeStyles id="template-event" css={slide?.themeData?.css} />
       <GlobalStyles />

@@ -2,6 +2,9 @@
   color: #fff;
   padding: 4rem 2rem 4rem 6rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   // Font size based on the element's ratio.
   font-size: calc(var(--width) * 0.01px);
@@ -17,6 +20,13 @@
   &__display-institution {
     font-size: 2.5em;
     font-family: "KBH Tekst", sans-serif;
+    margin: auto 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__title {
