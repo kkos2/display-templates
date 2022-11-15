@@ -11,13 +11,19 @@ export default {
   component: KkSlideshow,
   argTypes: {
     animations: {
-      options: ['random', 'zoom-in-middle', 'zoom-out-middle', 'zoom-in-random', 'zoom-out-random'],
-      control: { type: 'select' },
+      options: [
+        "random",
+        "zoom-in-middle",
+        "zoom-out-middle",
+        "zoom-in-random",
+        "zoom-out-random",
+      ],
+      control: { type: "select" },
     },
     transitions: {
-      options: [null, 'fade'],
-      control: { type: 'radio' },
-    }
+      options: [null, "fade"],
+      control: { type: "radio" },
+    },
   },
 } as ComponentMeta<typeof KkSlideshow>;
 

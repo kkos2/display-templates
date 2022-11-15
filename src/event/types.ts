@@ -26,6 +26,4 @@ export interface EventProps extends SlideBaseProp {
 export interface EventDetailsProps {
   title: string;
   subTitle: string;
-  startDate: string;
-  endDate: string;
 }

@@ -12,18 +12,11 @@ import { useDimensions } from "../kk/utils/useDimensions";
  * Event details component.
  *
  * @param {object} props Props.
- * @param {string} props.startDate The start date.
- * @param {string} props.endDate The end date.
  * @param {string} props.title The title.
  * @param {string} props.subTitle The subtitle.
  * @returns {object} The component.
  */
-const EventDetails: FC<EventDetailsProps> = ({
-  startDate,
-  endDate,
-  title,
-  subTitle,
-}) => {
+const EventDetails: FC<EventDetailsProps> = ({ title, subTitle }) => {
   return (
     <>
       <div className="event-details">
@@ -33,10 +26,6 @@ const EventDetails: FC<EventDetailsProps> = ({
         <div className="event-details__sub-title">
           <h2>{subTitle}</h2>
         </div>
-      </div>
-      <div className="event__date">
-        <span>{startDate}</span>
-        {endDate && <span>{endDate}</span>}
       </div>
     </>
   );
@@ -56,9 +45,9 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const dimensions = useDimensions(ref);
-  let layout = "horizontal";
-  if (dimensions.height > dimensions.width) {
-    layout = "vertical";
+  let layout = "vertical";
+  if (dimensions.width / dimensions.height > 0.8) {
+    layout = "horizontal";
   }
 
   // Content from content.
@@ -105,18 +94,19 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
       <>
         <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
           <div className="event-top">
-            <div className="event__host event-top__host">{host}</div>
+            <div className="event-top__text">
+              <div className="event__host event-top__host">{host}</div>
+              <div className="event__date">
+                <span>{startDate}</span>
+                {endDate && <span>{endDate}</span>}
+              </div>
+            </div>
             <Logo className="event__logo event-top__logo" />
           </div>
           <div className="event-top__image">
             <img src={image} alt="" />
           </div>
-          <EventDetails
-            title={title}
-            subTitle={subTitle}
-            startDate={startDate}
-            endDate={endDate}
-          />
+          <EventDetails title={title} subTitle={subTitle} />
         </div>
         <ThemeStyles id="template-event" css={slide?.themeData?.css} />
         <GlobalStyles />
@@ -132,15 +122,16 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
         </div>
         <div className="event-info">
           <div className="event-info__top">
-            <div className="event__host event-info__host">{host}</div>
+            <div className="event-top__text">
+              <div className="event__host event-info__host">{host}</div>
+              <div className="event__date">
+                <span>{startDate}</span>
+                {endDate && <span>{endDate}</span>}
+              </div>
+            </div>
             <Logo className="event__logo event-info__logo" />
           </div>
-          <EventDetails
-            title={title}
-            subTitle={subTitle}
-            startDate={startDate}
-            endDate={endDate}
-          />
+          <EventDetails title={title} subTitle={subTitle} />
         </div>
       </div>
       <ThemeStyles id="template-event" css={slide?.themeData?.css} />

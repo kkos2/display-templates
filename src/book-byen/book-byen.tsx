@@ -146,7 +146,7 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
       <div className="bookbyen kk-ratio-{{ratio}} kk-slide-body font-kbh">
         <div className={rootClasses.join(" ")}>
           <header className="bookbyen-top" style={{ backgroundColor: bgColor }}>
-            <div></div>
+            <div />
             <div>
               <div className="bookbyen-top__place">
                 {header && (
@@ -158,7 +158,8 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
                   <div className="bookbyen-top__time">
                     {showDayName && (
                       <>
-                        {currentDate.charAt(0).toUpperCase() + currentDate.slice(1)}
+                        {currentDate.charAt(0).toUpperCase() +
+                          currentDate.slice(1)}
                       </>
                     )}{" "}
                     {timeNow?.split(".")[0]}
