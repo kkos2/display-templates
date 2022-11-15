@@ -69,6 +69,11 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
   }
 
   const cleanEvents = itemList.map(formatEvents);
+  const currentDate = new Date().toLocaleString("da-DK", {
+    weekday: "long",
+    day: "numeric",
+    month: "short",
+  });
 
   // Makes a watch that is updated live
   const [timeNow, setTimeNow] = useState<string | null>(null);
@@ -153,14 +158,9 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
                   <div className="bookbyen-top__time">
                     {showDayName && (
                       <>
-                        {new Date().toLocaleString("da-DK", {
-                          weekday: "long",
-                          day: "numeric",
-                          month: "short",
-                        })}
+                        {currentDate.charAt(0).toUpperCase() + currentDate.slice(1)}
                       </>
-                    )}
-                    {" "}
+                    )}{" "}
                     {timeNow?.split(".")[0]}
                     <span className="bookbyen-top__time-separator">:</span>
                     {timeNow?.split(".")[1]}
