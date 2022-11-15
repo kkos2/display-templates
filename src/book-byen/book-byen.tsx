@@ -124,11 +124,11 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
               </td>
               {showFacility && <td>{item.facility}</td>}
               {showActivity && <td>{item.activity}</td>}
-              {showBookingNote && <td>{item.bookingNote}</td>}
               {showTeam && <td>{item.teamName}</td>}
               {showWho && (
                 <td>{item.teamleaders ? item.teamleaders : item.userName}</td>
               )}
+              {showBookingNote && <td>{item.bookingNote}</td>}
             </tr>
           );
         })}
@@ -141,29 +141,34 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
       <div className="bookbyen kk-ratio-{{ratio}} kk-slide-body font-kbh">
         <div className={rootClasses.join(" ")}>
           <header className="bookbyen-top" style={{ backgroundColor: bgColor }}>
-            <div className="bookbyen-top__date">
-              {showDayName && (
-                <p>
-                  {new Date().toLocaleString("da-DK", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "short",
-                  })}
-                </p>
-              )}
-              {timeNow && (
-                <div className="bookbyen-top__time">
-                  {timeNow?.split(".")[0]}{" "}
-                  <span className="bookbyen-top__time-separator">:</span>{" "}
-                  {timeNow?.split(".")[1]}
-                </div>
-              )}
+            <div></div>
+            <div>
+              <div className="bookbyen-top__place">
+                {header && (
+                  <div className="bookbyen-top__place_header">{header}</div>
+                )}
+              </div>
+              <div className="bookbyen-top__date">
+                {timeNow && (
+                  <div className="bookbyen-top__time">
+                    {showDayName && (
+                      <>
+                        {new Date().toLocaleString("da-DK", {
+                          weekday: "long",
+                          day: "numeric",
+                          month: "short",
+                        })}
+                      </>
+                    )}
+                    {" "}
+                    {timeNow?.split(".")[0]}
+                    <span className="bookbyen-top__time-separator">:</span>
+                    {timeNow?.split(".")[1]}
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="bookbyen-top__place">
-              {header && (
-                <div className="bookbyen-top__place_header">{header}</div>
-              )}
-            </div>
+
             <div className="bookbyen-top__logo">
               {logo && (
                 <img src={logo} className="bookbyen-top__logo" alt="Logo" />
@@ -186,9 +191,9 @@ const BookByen: FC<BookByenProps> = ({ slide, content, slideDone }) => {
                 <th className="bookbyen-bookings__time">Hvornår</th>
                 {showFacility && <th>Hvor</th>}
                 {showActivity && <th>Hvad</th>}
-                {showBookingNote && <th>Note</th>}
                 {showTeam && <th>Hold</th>}
                 {showWho && <th>Hvem</th>}
+                {showBookingNote && <th>Note</th>}
               </tr>
             </thead>
             <tbody>
