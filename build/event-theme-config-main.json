@@ -1,0 +1,14 @@
+{
+  "title": "Event Theme",
+  "icon": "",
+  "id": "11ARZ3NDEKTSV4RREYQ69G5FAK",
+  "description": "Skabelon til event theme.",
+  "resources": {
+    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/event-theme.js",
+    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/event-theme-admin.json",
+    "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/event-theme-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}

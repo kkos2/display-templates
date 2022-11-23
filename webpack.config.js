@@ -40,6 +40,7 @@ const entry = devMode
       contacts: path.resolve(__dirname, "./src/contacts/contacts.js"),
       event: path.resolve(__dirname, "./src/event/event.tsx"),
       "event-list": path.resolve(__dirname, "./src/event-list/event-list.tsx"),
+      "event-theme": path.resolve(__dirname, "./src/event-theme/event-theme.tsx"),
       "image-text": path.resolve(__dirname, "./src/image-text/image-text.js"),
       "kk-slideshow": path.resolve(__dirname, "./src/kk-slideshow/kk-slideshow.tsx"),
       poster: path.resolve(__dirname, "./src/poster/poster.js"),

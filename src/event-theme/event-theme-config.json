@@ -1,0 +1,14 @@
+{
+  "title": "Event Theme",
+  "icon": "",
+  "id": "11ARZ3NDEKTSV4RREYQ69G5FAK",
+  "description": "Skabelon til event theme.",
+  "resources": {
+    "component": "https://display-templates.local.itkdev.dk/build/event-theme.js",
+    "admin": "https://display-templates.local.itkdev.dk/build/event-theme-admin.json",
+    "schema": "https://display-templates.local.itkdev.dk/build/event-theme-schema.json",
+    "assets": [],
+    "options": {},
+    "content": {}
+  }
+}
