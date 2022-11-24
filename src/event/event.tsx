@@ -45,9 +45,9 @@ const Event: FC<EventProps> = ({ slide, run, content, slideDone }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const dimensions = useDimensions(ref);
-  let layout = "vertical";
-  if (dimensions.width / dimensions.height > 0.8) {
-    layout = "horizontal";
+  let layout = "horizontal";
+  if (dimensions.height / dimensions.width > 0.8) {
+    layout = "vertical";
   }
 
   // Content from content.

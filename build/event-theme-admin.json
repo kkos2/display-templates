@@ -68,19 +68,19 @@
     "label": "Farvepalette",
     "options": [
       {
-        "key": "palette1",
-        "value": "palette1",
-        "title": "Palette 1"
+        "key": "farvepar1",
+        "value": "farvepar1",
+        "title": "Farvepar 1"
       },
       {
-        "key": "palette2",
-        "value": "palette2",
-        "title": "Palette 2"
+        "key": "farvepar1",
+        "value": "farvepar1",
+        "title": "Farvepar 2"
       },
       {
-        "key": "palette3",
-        "value": "palette3",
-        "title": "Palette 3"
+        "key": "farvepar1",
+        "value": "farvepar1",
+        "title": "Farvepar 3"
       }
     ],
     "formGroupClasses": "col-md-6"
