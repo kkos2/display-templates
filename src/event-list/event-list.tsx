@@ -91,14 +91,18 @@ const EventList: FC<EventListProps> = ({ slide, content, slideDone }) => {
     };
   });
 
+  if (currentEvents.length === 0) {
+    slideDone(slide);
+    return null;
+  }
+
   if (layout === "vertical") {
     return (
       <>
         <div ref={ref} className={rootClasses.join(" ")} style={rootStyle}>
           <Logo className="event-list__logo" />
           <div className="event-list__items">
-            {currentEvents.length &&
-              currentEvents.map((event) => <EventListItem event={event} />)}
+            {currentEvents.map((event) => <EventListItem event={event} />)}
           </div>
         </div>
         <ThemeStyles id="template-event-list" css={slide?.themeData?.css} />
