@@ -37,7 +37,7 @@
     "formGroupClasses": "col-md-6 mb-3"
   },
   {
-    "name": "animation",
+    "name": "animations",
     "key": "kk-slideshow-form-animation",
     "input": "select",
     "label": "Vælg animation",
@@ -71,7 +71,7 @@
     ]
   },
   {
-    "name": "transition",
+    "name": "transitions",
     "key": "kk-slideshow-form-transition",
     "input": "select",
     "label": "Vælg overgang",

@@ -42,6 +42,9 @@ const TwentyThreeVideo: FC<TwentyThreeVideoProps> = ({
   let videoList: any[] = [];
   try {
     videoList = JSON.parse(jsonData);
+    if (!videoList.length) {
+      slideDone(slide);
+    }
   } catch (e) {
     slideDone(slide);
   }

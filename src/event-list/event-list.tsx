@@ -38,9 +38,9 @@ const EventList: FC<EventListProps> = ({ slide, content, slideDone }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dimensions = useDimensions(ref);
-  let layout = "horizontal";
-  if (dimensions.height > dimensions.width) {
-    layout = "vertical";
+  let layout = "vertical";
+  if (dimensions.width / dimensions.height > 1.2) {
+    layout = "horizontal";
   }
 
   // Content from content.

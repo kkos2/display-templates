@@ -127,7 +127,7 @@ const KkSlideshow: FC<KkSlideshowProps> = ({
 
   // Setup animation
   useEffect(() => {
-    if (animations !== null) {
+    if (animations) {
       // Adds the animation to the stylesheet. because there is an element of random, we cannot have it in the .scss file.
       const styleSheet = document.styleSheets[0];
       styleSheet.insertRule(
@@ -159,12 +159,14 @@ const KkSlideshow: FC<KkSlideshowProps> = ({
     if (run) {
       if (imageUrls.length > 0) {
         timeoutRef.current = setTimeout(() => {
-          const newIndex = index + 1;
-
+          let newIndex = index + 1;
           if (newIndex > imageUrls.length - 1) {
             // No more images to show.
             slideDone(slide);
-          } else if (fadeEnabled) {
+            newIndex = 0;
+          }
+
+          if (fadeEnabled) {
             // Fade to next image.
             setFade(true);
             setAnimationIndex(newIndex);
