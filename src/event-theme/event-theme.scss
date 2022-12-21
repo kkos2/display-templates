@@ -110,13 +110,12 @@
   }
 
   &.layout-square {
-    font-size: calc(var(--height) * 0.018px);
-
     .event-top {
       padding: 3.78rem;
 
       &__image {
-        height: 50%;
+        height: 60.41%;
+        flex-shrink: 0;
 
         img {
           width: 100%;
@@ -175,7 +174,6 @@
     display: flex;
     flex-direction: column;
     font-size: 2em;
-    max-width: 55%;
     font-family: "KBH", sans-serif;
     font-weight: bold;
     gap: 0.2em;
@@ -209,7 +207,6 @@
     &__sub-title {
       font-size: 1.4em;
       font-family: "KBH", sans-serif;
-      max-width: 55%;
       margin-bottom: 0.5em;
     }
   }

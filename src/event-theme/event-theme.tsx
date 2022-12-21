@@ -122,11 +122,11 @@ const EventTheme: FC<EventThemeProps> = ({
           </div>
           <div className="event-top">
             <div className="event-top__text">
-              <div className="event__host event-top__host">{host}</div>
+              <div className="event__host event-top__host">{subTitle}</div>
             </div>
             <EventDetails
               title={title}
-              subTitle={subTitle}
+              subTitle={host}
               startDate={startDate}
               endDate={endDate}
             />
@@ -144,12 +144,12 @@ const EventTheme: FC<EventThemeProps> = ({
         <div className="event-info">
           <div className="event-info__top">
             <div className="event-top__text">
-              <div className="event__host event-info__host">{host}</div>
+              <div className="event__host event-info__host">{subTitle}</div>
             </div>
           </div>
           <EventDetails
             title={title}
-            subTitle={subTitle}
+            subTitle={host}
             startDate={startDate}
             endDate={endDate}
           />
