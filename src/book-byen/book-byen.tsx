@@ -22,8 +22,7 @@ const formatEvents = (item: any): BookByenItem => {
     activity: item?.activity?.name,
     bookingNote: item?.infoscreenNote,
     teamName: item?.team?.name,
-    // teamleaders is an array, and i dont know whats in it
-    teamleaders: item?.team?.teamleaders[0] || "",
+    teamleaders: item?.team?.teamleaders[0]?.name || "",
     userName: item?.user?.name,
     isDeleted: item.isDeleted,
   };
