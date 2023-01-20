@@ -15,4 +15,5 @@ export interface EventListProps extends SlideBaseProp {
 
 export interface EventListItemProps {
   event: Event;
+  type: string;
 }
