@@ -72,7 +72,11 @@ const ServiceMessage: FC<ServiceMessageProps> = ({
         </div>
         <div>
           <div className="service-message__title">{title}</div>
-          <div className="service-message__text">{text}</div>
+          <div
+            className="service-message__text"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
         </div>
         <div />
       </div>
