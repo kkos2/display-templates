@@ -12,7 +12,7 @@ example content for the different templates.
 `index.html` serves a local setup for working with the templates.
 
 ```bash
-docker-compose run node npm install
+docker-compose run node yarn
 docker-compose up -d
 ```
 
@@ -47,13 +47,13 @@ Add it to `const entry = {}`:
 To build the templates for production
 
 ```bash
-npm run build
+yarn build
 ```
 
 To continually build components when files change
 
 ```bash
-npm run build-watch
+yarn build-watch
 ```
 
 The compiled files will be placed in `build/`. These should be committed to
@@ -62,17 +62,17 @@ git repository, to enable Remote Components to load them in the clients.
 ### Linting
 
 ```bash
-docker-compose run node npm run check-coding-standards
+docker-compose run node yarn check-coding-standards
 ```
 
 ```bash
-docker-compose run node npm run apply-coding-standards
+docker-compose run node yarn apply-coding-standards
 ```
 
 ### Tests
 
 Run tests
 
-```bash
-docker-compose run node npm run test-ci
+```sh
+docker-compose run node yarn test-ci
 ```

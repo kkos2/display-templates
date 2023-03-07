@@ -4,8 +4,8 @@
     "id": "01ARZ3NDEKTSV4RRFFQ69G5FAV",
     "description": "Skabelon til twenty-three-video.",
     "resources": {
-      "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video.js",
-      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video-admin.json",
+      "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video.js?ts=1678192071195",
+      "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video-admin.json?ts=1678192071195",
       "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/twenty-three-video-schema.json",
       "assets": [],
       "options": {},

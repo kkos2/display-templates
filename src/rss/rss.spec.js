@@ -14,7 +14,7 @@ test("Test that rss loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
-      executionId="test-rss"
+      executionId="1234"
     />
   );
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import { IntlProvider } from "react-intl";
+import { FormattedMessage, IntlProvider } from "react-intl";
 import BaseSlideExecution from "../base-slide-execution";
 import da from "./lang/da.json";
 import { getFirstMediaUrlFromField, ThemeStyles } from "../slide-util";
@@ -20,12 +20,17 @@ import GlobalStyles from "../GlobalStyles";
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function Calendar({ slide, content, run, slideDone, executionId }) {
   const [translations, setTranslations] = useState();
 
-  const { layout = "multiple", duration = 15000, fontSize } = content;
+  const {
+    layout = "multiple",
+    duration = 15000,
+    fontSize,
+    resourceUnavailableText,
+  } = content;
   const { feedData = [] } = slide;
 
   const classes = ["template-calendar", fontSize];
@@ -56,6 +61,18 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
     setTranslations(da);
   }, []);
 
+  const getTitle = (eventTitle) => {
+    if (!eventTitle || eventTitle === "") {
+      if (resourceUnavailableText) {
+        return resourceUnavailableText;
+      }
+
+      return <FormattedMessage id="unavailable" defaultMessage="Unavailable" />;
+    }
+
+    return eventTitle;
+  };
+
   return (
     <>
       <IntlProvider messages={translations} locale="da" defaultLocale="da">
@@ -65,6 +82,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
+            getTitle={getTitle}
           />
         )}
         {layout === "multiple" && (
@@ -73,6 +91,7 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
+            getTitle={getTitle}
           />
         )}
         {layout === "multipleDays" && (
@@ -81,11 +100,12 @@ function Calendar({ slide, content, run, slideDone, executionId }) {
             content={content}
             templateClasses={classes}
             templateRootStyle={rootStyle}
+            getTitle={getTitle}
           />
         )}
       </IntlProvider>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
       <GlobalStyles />
     </>
   );
@@ -96,9 +116,12 @@ Calendar.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     feedData: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -116,6 +139,8 @@ Calendar.propTypes = {
     layout: PropTypes.string,
     backgroundColor: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
+    fontSize: PropTypes.string,
+    resourceUnavailableText: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

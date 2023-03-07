@@ -1,4 +1,8 @@
 {
+  "globals": {
+    "jest": "readonly",
+    "JSX": "readonly"
+  },
   "plugins": ["@typescript-eslint", "jest", "react", "prettier", "only-warn"],
   "extends": [
     "airbnb",

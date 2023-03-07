@@ -1,7 +1,6 @@
 // Remove the line below when this file has been converted to Typescript.
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
@@ -16,6 +15,7 @@ import styled from "styled-components";
  * @param {Array} props.calendarEvents - The calendar events.
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
+ * @param {Function} props.getTitle - Function to get title for event.
  * @returns {string} - The component.
  */
 function CalendarSingle({
@@ -23,13 +23,9 @@ function CalendarSingle({
   calendarEvents,
   templateClasses,
   templateRootStyle,
+  getTitle,
 }) {
-  const {
-    title = "",
-    subTitle = null,
-    resourceAvailableText = null,
-    resourceUnavailableText = null,
-  } = content;
+  const { title = "", subTitle = null, resourceAvailableText = null } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
@@ -43,35 +39,35 @@ function CalendarSingle({
   };
 
   const renderSingle = (calendarEventsToRender) => {
+    const now = dayjs();
     const elements = [];
 
     if (calendarEventsToRender.length > 0) {
-      calendarEventsToRender.forEach((event) => {
-        if (elements.length < 3) {
-          elements.push(
-            <ContentItem
-              key={event.id}
-              className={
-                elements.length === 0
-                  ? "content-item single--now"
-                  : "content-item single--next"
-              }
-            >
-              <Meta>
-                {renderTimeOfDay(event.startTime)}
-                {" - "}
-                {renderTimeOfDay(event.endTime)}
-              </Meta>
-              {event?.title ?? resourceUnavailableText ?? (
-                <FormattedMessage
-                  id="unavailable"
-                  defaultMessage="Unavailable"
-                />
-              )}
-            </ContentItem>
-          );
-        }
-      });
+      calendarEventsToRender
+        .filter(
+          (e) => e.endDate > now.unix() && e.endTime <= now.endOf("day").unix()
+        )
+        .forEach((event) => {
+          if (elements.length < 3) {
+            elements.push(
+              <ContentItem
+                key={event.id}
+                className={
+                  elements.length === 0
+                    ? "content-item single--now"
+                    : "content-item single--next"
+                }
+              >
+                <Meta>
+                  {renderTimeOfDay(event.startTime)}
+                  {" - "}
+                  {renderTimeOfDay(event.endTime)}
+                </Meta>
+                {getTitle(event.title)}
+              </ContentItem>
+            );
+          }
+        });
     }
 
     return elements.concat();
@@ -152,7 +148,7 @@ CalendarSingle.defaultProps = {
 
 CalendarSingle.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
-  templateRootStyle: PropTypes.objectOf(PropTypes.any),
+  templateRootStyle: PropTypes.shape({}),
   calendarEvents: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -169,6 +165,7 @@ CalendarSingle.propTypes = {
     resourceAvailableText: PropTypes.string,
     resourceUnavailableText: PropTypes.string,
   }).isRequired,
+  getTitle: PropTypes.func.isRequired,
 };
 
 export default CalendarSingle;

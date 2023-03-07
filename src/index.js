@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
+import { createGridArea, createGrid } from "os2display-grid-generator";
 import {
   BrowserRouter,
   Link,
@@ -7,8 +8,10 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
+import PropTypes from "prop-types";
 import ImageText from "./image-text/image-text";
 import slides from "./slides";
+import screens from "./screens";
 import BookReview from "./book-review/book-review";
 import Calendar from "./calendar/calendar";
 import Contacts from "./contacts/contacts";
@@ -20,8 +23,40 @@ import IFrame from "./iframe/iframe";
 import Table from "./table/table";
 import Video from "./video/video";
 import Travel from "./travel/travel";
+import "./index.css";
 
-const renderSlide = (slide) => {
+export const renderScreen = (screen) => {
+  const gridTemplateAreas = {
+    gridTemplateAreas: createGrid(
+      screen.screenLayout.grid.columns,
+      screen.screenLayout.grid.rows
+    ),
+  };
+
+  return (
+    <div style={gridTemplateAreas} className="grid-index">
+      {screen.screenLayout.regions.map(({ id, gridArea, title }) => (
+        <div
+          key={id}
+          className="grid-element"
+          style={{ gridArea: createGridArea(gridArea) }}
+        >
+          {title}
+          <br />
+          gridarea:
+          <br />
+          <div>
+            {gridArea.map((area) => (
+              <div>{area}</div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export const renderSlide = (slide) => {
   switch (slide.type) {
     case "book-review":
       return (
@@ -148,29 +183,24 @@ const renderSlide = (slide) => {
   }
 };
 
-const Slide = () => {
-  const { slideId } = useParams();
-  const [selectedSlide, setSelectedSlide] = useState(null);
-
-  const getTheme = (slide) => {
-    fetch(slide.themeFile)
+export const Slide = ({ slide: inputSlide }) => {
+  const [slide, setSlide] = useState(inputSlide);
+  const getTheme = (s) => {
+    fetch(s.themeFile)
       .then((resp) => resp.text())
       .then((data) => {
-        const newSelectedSlide = { ...slide };
+        const newSelectedSlide = { ...s };
         newSelectedSlide.themeData = {
-          css: data,
+          cssStyles: data,
           logo: newSelectedSlide?.themeData?.logo,
         };
-        setSelectedSlide(newSelectedSlide);
+        setSlide(newSelectedSlide);
       });
   };
 
   useEffect(() => {
-    const foundSlide = slides.find((slide) => slide.id === slideId);
-    setSelectedSlide(foundSlide);
-
-    if (foundSlide?.themeFile) {
-      getTheme(foundSlide);
+    if (slide?.themeFile) {
+      getTheme(slide);
     }
 
     // Apply color scheme.
@@ -184,17 +214,44 @@ const Slide = () => {
   return (
     <div className="app">
       <div className="slide" id="SLIDE_ID">
-        {selectedSlide && renderSlide(selectedSlide)}
+        {slide && renderSlide(slide)}
       </div>
     </div>
   );
 };
 
-const Overview = () => {
+Slide.propTypes = {
+  slide: PropTypes.shape({}).isRequired,
+};
+
+export const DisplayElement = () => {
+  const { id } = useParams();
+
+  const foundSlide = slides.find((slide) => slide.id === id);
+  const foundScreen = screens.find((screen) => screen.id === id);
+  if (foundSlide) {
+    return <Slide slide={foundSlide} />;
+  }
+  if (foundScreen) {
+    return <Screen screen={foundScreen} />;
+  }
+  return "";
+};
+
+export const Screen = ({ screen }) => {
+  return <div className="app">{screen && renderScreen(screen)}</div>;
+};
+
+Screen.propTypes = {
+  screen: PropTypes.shape({}).isRequired,
+};
+
+export const Overview = () => {
   return (
     <>
       <h1>Examples</h1>
 
+      <h2>Slidetemplates</h2>
       <ul>
         {slides.map((slide) => (
           <li key={slide.id} id={slide.id}>
@@ -202,19 +259,26 @@ const Overview = () => {
           </li>
         ))}
       </ul>
+      <h2>Skærmtemplates</h2>
+      <ul>
+        {screens.map((screen) => (
+          <li key={screen.id} id={screen.id}>
+            <Link to={`/${screen.id}`}>{screen.id}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/:slideId" element={<Slide />} />
-        <Route index element={<Overview />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const container = document.getElementById("root");
+const root = createRoot(container);
 
-render(<App />, document.getElementById("root"));
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path=":id" element={<DisplayElement />} />
+      <Route index element={<Overview />} />
+    </Routes>
+  </BrowserRouter>
+);

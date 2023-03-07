@@ -16,7 +16,7 @@ import GlobalStyles from "../GlobalStyles";
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function Table({ slide, content, run, slideDone, executionId }) {
   // Content
@@ -106,7 +106,7 @@ function Table({ slide, content, run, slideDone, executionId }) {
         </ContentWrapper>
       </Wrapper>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
       <GlobalStyles />
     </>
   );
@@ -204,9 +204,12 @@ Table.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
@@ -218,6 +221,7 @@ Table.propTypes = {
     text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
     image: PropTypes.arrayOf(PropTypes.string),
+    separator: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

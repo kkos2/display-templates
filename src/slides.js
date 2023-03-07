@@ -14,16 +14,16 @@ const slides = [
     },
     content: {
       duration: 5000,
-      title: "Slide 1",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      title: "Overskriften er her",
+      text: "Dette er brødtekst lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       image: ["/v1/media/00000000000000000000000001"],
-      boxAlign: "right",
+      boxAlign: "top",
       boxMargin: false,
       shadow: true,
-      separator: true,
-      halfSize: true,
+      separator: false,
+      halfSize: false,
       reversed: false,
-      fontSize: "font-size-xs",
+      fontSize: "font-size-xl",
     },
   },
   {
@@ -38,16 +38,15 @@ const slides = [
       },
       "/v1/media/00000000000000000000000002": {
         assets: {
-          uri: "/fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/vertical.jpg",
         },
       },
     },
     content: {
       duration: 5000,
       bookText:
-        "<h1>Lorem Ipsum</h1>...Is simply <strong>dummy text</strong> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      authorText:
-        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+        "<h1>I bølgen blå</h1><p><strong>Af Hval Ocean</strong><p/><p><br/>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>",
+      authorText: "Hval Ocean",
       authorImage: ["/v1/media/00000000000000000000000001"],
       bookImage: ["/v1/media/00000000000000000000000002"],
     },
@@ -58,11 +57,41 @@ const slides = [
     themeFile: "themes/dokk1.css",
     feedData: [
       {
+        id: "uniqueEventMinusTwo",
+        title: "Cake is in the past",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().subtract(15, "minutes").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
+      {
+        id: "uniqueEventMinusOne",
+        title: "Cake is gone",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
+      {
+        id: "uniqueEvent0",
+        title: "Cake is a lie",
+        startTime: dayjs()
+          .subtract(1, "day")
+          .add(1, "hour")
+          .add(30, "minutes")
+          .unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
         id: "uniqueEvent1",
-        title: "Cake",
+        title:
+          "Dette er en meget lang titel som bliver på en linje og dotter ud",
         startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
         endTime: dayjs().add(2, "hour").unix(),
-        resourceTitle: "Det første rum",
+        resourceTitle:
+          "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
         resourceId: "M1",
       },
       {
@@ -92,13 +121,133 @@ const slides = [
       {
         id: "uniqueEvent5",
         title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent6",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent7",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent8",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent9",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent10",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent11",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent12",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent13",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent14",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent15",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent16",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent17",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent18",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent19",
+        title: "Tea",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent20",
+        title: "Tea",
         startTime: dayjs().add(1, "hour").add(1, "day").unix(),
         endTime: dayjs().add(2, "hour").add(1, "day").unix(),
         resourceTitle: null,
         resourceId: "M4",
       },
       {
-        id: "uniqueEvent6",
+        id: "uniqueEvent21",
         title: "Tea",
         startTime: dayjs().add(3, "hour").add(3, "day").unix(),
         endTime: dayjs().add(4, "hour").add(3, "day").unix(),
@@ -106,12 +255,36 @@ const slides = [
         resourceId: "M4",
       },
       {
-        id: "uniqueEvent7",
+        id: "uniqueEvent22",
         title: "Tea",
         startTime: dayjs().add(2, "hour").add(6, "day").unix(),
         endTime: dayjs().add(3, "hour").add(6, "day").unix(),
         resourceTitle: null,
         resourceId: "M4",
+      },
+      {
+        id: "uniqueEvent23",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
+      },
+      {
+        id: "uniqueEvent24",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
+      },
+      {
+        id: "uniqueEvent25",
+        title: "Tea",
+        startTime: dayjs().add(2, "hour").add(8, "day").unix(),
+        endTime: dayjs().add(3, "hour").add(8, "day").unix(),
+        resourceTitle: "Test",
+        resourceId: "M5",
       },
     ],
     mediaData: {
@@ -200,47 +373,50 @@ const slides = [
       configuration: {
         numberOfEntries: 5,
         entryDuration: 10,
+        showFeedProgress: false,
       },
     },
     feedData: {
-      title: "Ut enim ad.",
+      title: "Lorem Ipsum",
       entries: [
         {
           title: "Lorem ipsum dolor sit amet.",
-          lastModified: "2021-08-11T11:08:31.360Z",
+          lastModified: "2023-02-13T07:00:00.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Aenean scelerisque ligula ante, sed tristique tellus blandit sit amet. Vestibulum sagittis lobortis purus quis tempor. Aliquam pretium vitae risus id condimentum.",
         },
         {
-          title: "Ut enim ad minim veniam,.",
+          title:
+            "Morbi lorem augue, consequat non eros in, commodo sagittis lectus.",
           lastModified: "2021-08-12T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Quisque tortor elit, congue id sapien nec, rutrum eleifend ante. Maecenas diam tortor, eleifend ac pretium at, sagittis eget justo.",
         },
         {
-          title: "Duis aute irure dolor i.",
+          title:
+            "Nullam dui massa, malesuada eu libero tincidunt, cursus posuere mauris.",
           lastModified: "2021-08-13T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Duis volutpat orci lectus, vel fringilla tortor pharetra non. Nunc eget dui quam. Quisque non nulla et ante consequat tempor sit amet ut nisl. Donec et eros non quam aliquet porta vestibulum sodales est.",
         },
         {
-          title: "Excepteur sint occaecat cupidatat non proident.",
+          title: "Proin tempor lacinia velit, et gravida nunc faucibus eget.",
           lastModified: "2021-08-14T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Etiam lobortis diam purus, a condimentum nunc feugiat nec. Nunc porttitor tortor eget tortor fermentum, ac porttitor nulla imperdiet. Donec feugiat ipsum in purus congue semper. Cras ligula ipsum, porttitor eu neque at, interdum tincidunt tellus.",
         },
         {
-          title: "Sed ut perspiciatis unde omnis.",
+          title: "Sed ut massa eros.",
           lastModified: "2021-08-15T11:08:31.360Z",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Suspendisse a dapibus purus, ac lacinia urna. Maecenas lobortis dui in nisl feugiat ultricies. Nulla turpis dolor, pharetra eget ligula eget, porta tempus est. Suspendisse et odio ultricies, interdum turpis in, efficitur eros.",
         },
       ],
     },
     mediaData: {
       "/v1/media/00000000000000000000000001": {
         assets: {
-          uri: "/fixtures/images/mountain1.jpeg",
+          uri: "/fixtures/images/dokk1-rss-template-bg.jpg",
         },
       },
     },
@@ -276,7 +452,7 @@ const slides = [
       },
     },
     content: {
-      imageDuration: 5000,
+      imageDuration: 5,
       images: [
         "/v1/media/00000000000000000000000001",
         "/v1/media/00000000000000000000000002",
@@ -286,8 +462,8 @@ const slides = [
       logoEnabled: false,
       logoSize: "l",
       logoPosition: "bottom right",
-      transitions: "fade",
-      animations: "random",
+      transition: "fade",
+      animation: "random",
     },
   },
   {
@@ -461,8 +637,36 @@ const slides = [
   {
     id: "slide10-calendar2-multiple",
     type: "calendar",
-    themeFile: "themes/dokk1.css",
+    themeFile: "themes/bautavej.css",
     feedData: [
+      {
+        id: "uniqueEventMinusTwo",
+        title: "Cake is in the past",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().subtract(15, "minutes").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
+      {
+        id: "uniqueEventMinusOne",
+        title: "Cake is gone",
+        startTime: dayjs().subtract(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det fulde rum",
+        resourceId: "MUendelig",
+      },
+      {
+        id: "uniqueEvent0",
+        title: "Cake is a lie",
+        startTime: dayjs()
+          .subtract(1, "day")
+          .add(1, "hour")
+          .add(30, "minutes")
+          .unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
       {
         id: "uniqueEvent1",
         title: "Cake",
@@ -496,8 +700,56 @@ const slides = [
         resourceId: "M4",
       },
       {
+        id: "uniqueEvent41",
+        title: "Test",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent42",
+        title: "Test 2",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent43",
+        title: "Test 3",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent44",
+        title: "Test 4",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent45",
+        title: "Test 5",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
+        id: "uniqueEvent46",
+        title: "Test 6",
+        startTime: dayjs().add(5, "hour").unix(),
+        endTime: dayjs().add(8, "hour").unix(),
+        resourceTitle: null,
+        resourceId: "Room",
+      },
+      {
         id: "uniqueEvent5",
-        title: "Tea",
+        title: "Tea Tomorrow",
         startTime: dayjs().add(1, "hour").add(1, "day").unix(),
         endTime: dayjs().add(2, "hour").add(1, "day").unix(),
         resourceTitle: null,
@@ -505,7 +757,7 @@ const slides = [
       },
       {
         id: "uniqueEvent6",
-        title: "Tea",
+        title: "Tea Later",
         startTime: dayjs().add(3, "hour").add(3, "day").unix(),
         endTime: dayjs().add(4, "hour").add(3, "day").unix(),
         resourceTitle: null,
@@ -513,7 +765,7 @@ const slides = [
       },
       {
         id: "uniqueEvent7",
-        title: "Tea",
+        title: "Tea Later again",
         startTime: dayjs().add(2, "hour").add(6, "day").unix(),
         endTime: dayjs().add(3, "hour").add(6, "day").unix(),
         resourceTitle: null,
@@ -532,12 +784,12 @@ const slides = [
       duration: 5000,
       layout: "multiple",
       hasDateAndTime: true,
-      title: "Kalender",
+      title: "Møder i dag på Bautavej",
       subTitle: "Underoverskrift",
       resourceAvailableText: "Lokalet er frit.",
       displayHeaders: true,
       resourceUnavailableText: "Det er optaget",
-      image: ["/v1/media/00000000000000000000000001"],
+      // image: ["/v1/media/00000000000000000000000001"],
       footerText: "Se mere på localhost/events",
       dateAsBox: false,
       hideGrid: true,
@@ -550,12 +802,32 @@ const slides = [
     themeFile: "themes/dokk1.css",
     feedData: [
       {
+        id: "uniqueEvent0",
+        title: "Cake is a lie",
+        startTime: dayjs()
+          .subtract(1, "day")
+          .add(1, "hour")
+          .add(30, "minutes")
+          .unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
         id: "uniqueEvent1",
         title: "Cake",
         startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
         endTime: dayjs().add(2, "hour").unix(),
         resourceTitle: "Det første rum",
         resourceId: "M1",
+      },
+      {
+        id: "uniqueEvent51",
+        title: "Tea Tomorrow",
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
+        resourceTitle: null,
+        resourceId: "M4",
       },
       {
         id: "uniqueEvent2",
@@ -576,8 +848,8 @@ const slides = [
       {
         id: "uniqueEvent4",
         title: "Tea",
-        startTime: dayjs().add(5, "hour").unix(),
-        endTime: dayjs().add(8, "hour").unix(),
+        startTime: dayjs().add(1, "hour").add(1, "day").unix(),
+        endTime: dayjs().add(2, "hour").add(1, "day").unix(),
         resourceTitle: null,
         resourceId: "M4",
       },
@@ -733,6 +1005,184 @@ const slides = [
       time_moderate: "5-7 minutter",
       time_fast: "3-23 minutter",
       image: ["/v1/media/00000000000000000000000001"],
+    },
+  },
+  {
+    id: "slide14-image-text-multiple-images",
+    type: "image-text",
+    themeFile: "themes/dokk1.css",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000002": {
+        assets: {
+          uri: "/fixtures/images/mountain2.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000003": {
+        assets: {
+          uri: "/fixtures/images/mountain3.jpeg",
+        },
+      },
+    },
+    content: {
+      duration: 15000,
+      title: "Slide 14",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      image: [
+        "/v1/media/00000000000000000000000001",
+        "/v1/media/00000000000000000000000002",
+        "/v1/media/00000000000000000000000003",
+      ],
+      boxAlign: "right",
+      boxMargin: false,
+      shadow: true,
+      separator: true,
+      halfSize: true,
+      reversed: false,
+      fontSize: "font-size-m",
+      disableImageFade: false,
+    },
+  },
+  {
+    id: "slide15-image-text-logo",
+    type: "image-text",
+    themeFile: "themes/dokk1.css",
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      duration: 5000,
+      title: "Slide 1",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      image: ["/v1/media/00000000000000000000000001"],
+      boxAlign: "right",
+      boxMargin: false,
+      shadow: true,
+      separator: true,
+      halfSize: true,
+      reversed: false,
+      fontSize: "font-size-xs",
+      showLogo: true,
+      logoMargin: true,
+      logoSize: "logo-size-m",
+      logoPosition: "logo-position-bottom-right",
+    },
+  },
+  {
+    id: "slide16-slideshow-no-stuff",
+    type: "slideshow",
+    themeFile: "themes/dokk1.css",
+    themeData: {
+      logo: ["/v1/media/00000000000000000000000001"],
+    },
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000002": {
+        assets: {
+          uri: "/fixtures/images/mountain2.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000003": {
+        assets: {
+          uri: "/fixtures/images/mountain3.jpeg",
+        },
+      },
+      "/v1/media/00000000000000000000000004": {
+        assets: {
+          uri: "/fixtures/images/mountain4.jpeg",
+        },
+      },
+    },
+    content: {
+      imageDuration: 5000,
+      images: [
+        "/v1/media/00000000000000000000000001",
+        "/v1/media/00000000000000000000000002",
+        "/v1/media/00000000000000000000000003",
+        "/v1/media/00000000000000000000000004",
+      ],
+      transition: null,
+      animation: null,
+      showLogo: true,
+      logoMargin: true,
+      logoSize: "logo-size-l",
+      logoPosition: "logo-position-bottom-left",
+    },
+  },
+  {
+    id: "slide17-calendar-multiple-days",
+    type: "calendar",
+    feedData: [
+      {
+        id: "uniqueEvent0",
+        title: null,
+        startTime: dayjs().add(1, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(2, "hour").unix(),
+        resourceTitle: "Det tomme rum",
+        resourceId: "M0",
+      },
+      {
+        id: "uniqueEvent1",
+        title: "",
+        startTime: dayjs().add(2, "hour").add(30, "minutes").unix(),
+        endTime: dayjs().add(3, "hour").unix(),
+        resourceTitle:
+          "Dette er en meget lang ressource titel som bliver på en linje og dotter ud",
+        resourceId: "M1",
+      },
+    ],
+    content: {
+      duration: 5000,
+      layout: "multipleDays",
+      hasDateAndTime: true,
+      title: "Kalender",
+      subTitle: "Underoverskrift",
+      // resourceUnavailableText: "DEt er tAGET!!!",
+      resourceAvailableText: "Lokalet er frit.",
+      displayHeaders: true,
+      image: [],
+      footerText: "Se mere på localhost/events",
+      fontSize: "font-size-m",
+    },
+  },
+  {
+    id: "slide18-image-text-font-sizes",
+    type: "image-text",
+    themeFile: "themes/dokk1.css",
+    mediaData: {
+      "/v1/media/00000000000000000000000001": {
+        assets: {
+          uri: "/fixtures/images/mountain1.jpeg",
+        },
+      },
+    },
+    content: {
+      duration: 5000,
+      title: "Slide 123121",
+      text: "<h1>Fisk</h1><h2>Hest</h2><h3>Ræv</h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      image: ["/v1/media/00000000000000000000000001"],
+      boxAlign: "right",
+      boxMargin: false,
+      shadow: true,
+      separator: true,
+      halfSize: true,
+      reversed: false,
+      fontSize: "font-size-m",
     },
   },
 ];

@@ -1,7 +1,6 @@
 // Remove the line below when this file has been converted to Typescript.
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { Fragment, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import localeDa from "dayjs/locale/da";
@@ -16,6 +15,7 @@ import styled from "styled-components";
  * @param {Array} props.calendarEvents - The calendar events.
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
+ * @param {Function} props.getTitle - Function to get title for event.
  * @returns {string} - The component.
  */
 function CalendarMultipleDays({
@@ -23,32 +23,38 @@ function CalendarMultipleDays({
   calendarEvents,
   templateClasses,
   templateRootStyle,
+  getTitle,
 }) {
-  const {
-    title = "",
-    resourceUnavailableText = null,
-    footerText = null,
-  } = content;
+  const { title = "", footerText = null } = content;
 
   /** Imports language strings, sets localized formats. */
   useEffect(() => {
     dayjs.extend(localizedFormat);
   }, []);
 
+  /**
+   * Groups events by days and filter away events that are done.
+   *
+   * @param {Array} events Array of events.
+   * @returns {object} Events grouped by day.
+   */
   const groupEventsByDays = (events) => {
+    const now = dayjs();
     const days = {};
 
-    events.forEach((event) => {
-      const dayString = dayjs(event.startTime * 1000)
-        .locale(localeDa)
-        .format("dddd D. MMMM");
+    events
+      .filter((e) => e.endTime > now.unix())
+      .forEach((event) => {
+        const dayString = dayjs(event.startTime * 1000)
+          .locale(localeDa)
+          .format("dddd D. MMMM");
 
-      if (!Object.prototype.hasOwnProperty.call(days, dayString)) {
-        days[dayString] = [];
-      }
+        if (!Object.prototype.hasOwnProperty.call(days, dayString)) {
+          days[dayString] = [];
+        }
 
-      days[dayString].push(event);
-    });
+        days[dayString].push(event);
+      });
 
     return days;
   };
@@ -68,18 +74,11 @@ function CalendarMultipleDays({
             {days[dayString].map((event) => (
               <ColItem key={event.id} className="col-item">
                 <Time className="col-item-time">
-                  <div>{renderTimeOfDay(event.startTime)} - </div>
+                  <div>{renderTimeOfDay(event.startTime)} -</div>
                   <div>{renderTimeOfDay(event.endTime)}</div>
                 </Time>
                 <Event className="col-item-event">
-                  <div>
-                    {event.title ?? resourceUnavailableText ?? (
-                      <FormattedMessage
-                        id="unavailable"
-                        defaultMessage="Unavailable"
-                      />
-                    )}
-                  </div>
+                  <EventTitle>{getTitle(event.title)}</EventTitle>
                   <EventResourceTitle>
                     {event.resourceTitle ?? event.resourceId}
                   </EventResourceTitle>
@@ -137,13 +136,39 @@ const Title = styled.h1`
   padding: 0 var(--padding-size-base);
   font-weight: var(--font-weight-light);
   font-size: var(--h2-font-size);
+
+  @media (orientation: portrait) {
+    padding: calc(var(--padding-size-base) * 1.5)
+      calc(var(--padding-size-base) * 2) 0 calc(var(--padding-size-base) * 2);
+    font-size: calc(var(--h1-font-size) * 2);
+  }
 `;
 
 const Content = styled.div`
   grid-area: content;
   display: grid;
   grid-gap: 1px;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(5, 20%);
+  overflow: hidden;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      0deg,
+      hsla(0, 0%, 18%, 1) 0%,
+      hsla(0, 0%, 18%, 0) 100%
+    );
+    @media (orientation: portrait) {
+      height: 30px;
+    }
+  }
 
   @media (orientation: portrait) {
     grid-template-rows: repeat(1fr, auto);
@@ -158,32 +183,73 @@ const Col = styled.section`
 
 const ColTitle = styled.p`
   background-color: var(--color-grey-100);
-  padding: calc(var(--padding-size-base) * 1.5) var(--padding-size-base);
+  padding: calc(var(--padding-size-base) * 0.5) var(--padding-size-base);
   margin: 0;
   font-weight: var(--font-weight-bold);
+
+  @media (orientation: portrait) {
+    padding: calc(var(--padding-size-base) * 1.1)
+      calc(var(--padding-size-base) * 2);
+  }
 `;
 
 const ColItem = styled.article`
-  padding: var(--padding-size-base);
+  padding: calc(var(--padding-size-base) * 0.65) var(--padding-size-base);
   display: flex;
   background-color: var(--color-grey-300);
 
   &:nth-child(odd) {
     background-color: var(--color-grey-400);
   }
+
+  @media (orientation: portrait) {
+    padding: calc(var(--padding-size-base) * 0.65)
+      calc(var(--padding-size-base) * 2);
+  }
 `;
 
 const Time = styled.div`
   line-height: 1.5;
+  min-width: fit-content;
+
+  @media (orientation: portrait) {
+    div {
+      display: inline-block;
+
+      &:nth-last-of-type(1) {
+        margin-left: 5px;
+      }
+    }
+  }
 `;
 
 const Event = styled.div`
-  padding-left: calc(var(--padding-size-base) * 2);
+  padding: 0 calc(var(--padding-size-base) * 0.5) 0 var(--padding-size-base);
   line-height: 1.5;
+  max-width: 100%;
+`;
+
+const EventTitle = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+
+  @media (orientation: portrait) {
+    max-width: 740px;
+  }
 `;
 
 const EventResourceTitle = styled.div`
   opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+
+  @media (orientation: portrait) {
+    max-width: 740px;
+  }
 `;
 
 const Footer = styled.div`
@@ -192,6 +258,9 @@ const Footer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (orientation: portrait) {
+    font-size: calc(var(--font-size-base) * 2);
+  }
 `;
 
 CalendarMultipleDays.defaultProps = {
@@ -201,7 +270,7 @@ CalendarMultipleDays.defaultProps = {
 
 CalendarMultipleDays.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
-  templateRootStyle: PropTypes.objectOf(PropTypes.any),
+  templateRootStyle: PropTypes.shape({}),
   calendarEvents: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -216,8 +285,8 @@ CalendarMultipleDays.propTypes = {
     title: PropTypes.string,
     displayHeaders: PropTypes.bool,
     footerText: PropTypes.string,
-    resourceUnavailableText: PropTypes.string,
   }).isRequired,
+  getTitle: PropTypes.func.isRequired,
 };
 
 export default CalendarMultipleDays;

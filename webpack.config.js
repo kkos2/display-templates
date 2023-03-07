@@ -57,6 +57,8 @@ const entry = devMode
       travel: path.resolve(__dirname, "./src/travel/travel.js"),
     };
 
+const timestamp = new Date().getTime();
+
 const plugins = devMode
   ? [
       new HtmlWebpackPlugin({
@@ -97,6 +99,8 @@ const plugins = devMode
             transform(content) {
               return content
                 .toString()
+                .replace(".json", `.json?ts=${timestamp}`)
+                .replace(".js", `.js?ts=${timestamp}`)
                 .replace(
                   new RegExp(
                     "https://display-templates.local.itkdev.dk/build/",
@@ -118,6 +122,8 @@ const plugins = devMode
             transform(content) {
               return content
                 .toString()
+                .replace(".json", `.json?ts=${timestamp}`)
+                .replace(".js", `.js?ts=${timestamp}`)
                 .replace(
                   new RegExp(
                     "https://display-templates.local.itkdev.dk/build/",

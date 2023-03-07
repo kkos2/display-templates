@@ -30,11 +30,48 @@
     "formGroupClasses": "col-md"
   },
   {
+    "key": "image-text-form-81",
+    "input": "select",
+    "required": true,
+    "label": "Tekststørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "fontsize1",
+        "title": "xs",
+        "value": "font-size-xs"
+      },
+      {
+        "key": "fontsize2",
+        "title": "s",
+        "value": "font-size-s"
+      },
+      {
+        "key": "fontsize3",
+        "title": "m",
+        "value": "font-size-m"
+      },
+      {
+        "key": "fontsize4",
+        "title": "l",
+        "value": "font-size-lg"
+      },
+      {
+        "key": "fontsize5",
+        "title": "xl",
+        "value": "font-size-xl"
+      }
+    ],
+    "name": "fontSize"
+  },
+
+  {
     "key": "image-text-form-5",
-    "multipleImages": false,
+    "multipleImages": true,
     "input": "image",
     "name": "image",
-    "label": "Billede"
+    "label": "Billeder",
+    "helpText": "Hvis du tilføjer mere end et billede bliver de vist i (varighed / antal_billeder) sekunder hver."
   },
   {
     "key": "image-text-form-6",
@@ -85,41 +122,6 @@
     "name": "boxAlign"
   },
   {
-    "key": "image-text-form-14",
-    "input": "select",
-    "required": true,
-    "label": "Tekststørrelse",
-    "formGroupClasses": "col-md-6 mb-3",
-    "options": [
-      {
-        "key": "fontsize1",
-        "title": "xs",
-        "value": "font-size-xs"
-      },
-      {
-        "key": "fontsize2",
-        "title": "s",
-        "value": "font-size-s"
-      },
-      {
-        "key": "fontsize3",
-        "title": "m",
-        "value": "font-size-m"
-      },
-      {
-        "key": "fontsize4",
-        "title": "l",
-        "value": "font-size-l"
-      },
-      {
-        "key": "fontsize5",
-        "title": "xl",
-        "value": "font-size-xl"
-      }
-    ],
-    "name": "fontSize"
-  },
-  {
     "key": "image-text-form-9",
     "input": "checkbox",
     "label": "Margin rundt om tekst",
@@ -143,16 +145,92 @@
   {
     "key": "image-text-form-12",
     "input": "checkbox",
-    "label": "Overskriften er under teksten",
+    "label": "Alternativt layout uden tekstboks",
     "helpText": "Denne kan ikke kombineres med den animerede tekst under overskriften",
     "name": "reversed",
-    "formGroupClasses": "col-md-6"
+    "formGroupClasses": "col-md-6 mb-3"
   },
   {
     "key": "image-text-form-13",
     "input": "checkbox",
     "label": "Skyggeeffekt på tekstboksen",
     "name": "shadow",
-    "formGroupClasses": "col-md-6"
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-14",
+    "input": "checkbox",
+    "label": "Vis logo fra tema",
+    "name": "showLogo",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-15",
+    "input": "select",
+    "required": false,
+    "label": "Logostørrelse",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "logosize1",
+        "title": "s",
+        "value": "logo-size-s"
+      },
+      {
+        "key": "logosize2",
+        "title": "m",
+        "value": "logo-size-m"
+      },
+      {
+        "key": "logosize3",
+        "title": "l",
+        "value": "logo-size-l"
+      }
+    ],
+    "name": "logoSize"
+  },
+  {
+    "key": "image-text-form-16",
+    "input": "select",
+    "required": false,
+    "label": "Logoposition",
+    "formGroupClasses": "col-md-6 mb-3",
+    "options": [
+      {
+        "key": "logoposition1",
+        "title": "Top/venstre",
+        "value": "logo-position-top-left"
+      },
+      {
+        "key": "logoposition2",
+        "title": "Top/højre",
+        "value": "logo-position-top-right"
+      },
+      {
+        "key": "logoposition3",
+        "title": "Bund/venstre",
+        "value": "logo-position-bottom-left"
+      },
+      {
+        "key": "logoposition4",
+        "title": "Bund/højre",
+        "value": "logo-position-bottom-right"
+      }
+    ],
+    "name": "logoPosition"
+  },
+  {
+    "key": "image-text-form-17",
+    "input": "checkbox",
+    "label": "Margin om logo",
+    "name": "logoMargin",
+    "formGroupClasses": "col-md-6 mb-3"
+  },
+  {
+    "key": "image-text-form-18",
+    "input": "checkbox",
+    "label": "Deaktiver fade ved flere billeder",
+    "name": "disableImageFade",
+    "formGroupClasses": "col-md-6 mb-3"
   }
 ]

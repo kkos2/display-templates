@@ -21,10 +21,6 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-
-  background-size: cover;
-  background-position: center;
-
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -49,26 +45,6 @@
     &.full-screen {
       width: 100%;
       height: 100%;
-    }
-
-    &.xs {
-      font-size: var(--font-size-xs);
-    }
-
-    &.s {
-      font-size: var(--font-size-sm);
-    }
-
-    &.m {
-      font-size: var(--font-size-base);
-    }
-
-    &.l {
-      font-size: var(--font-size-lg);
-    }
-
-    &.xl {
-      font-size: var(--font-size-xl);
     }
 
     h1 {
@@ -102,6 +78,10 @@
     .box {
       box-shadow: var(--box-shadow-lg);
     }
+  }
+
+  .separator {
+    background-color: #ee0043;
   }
 
   &.animated-header {
@@ -149,6 +129,62 @@
       order: 2;
       font-size: var(--font-size-h1);
     }
+  }
+
+  .background-image {
+    z-index: -1;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .background-image-exit {
+    opacity: 1;
+  }
+
+  .background-image-exit-active {
+    opacity: 0;
+    transition: opacity 1000ms linear;
+  }
+
+  .logo {
+    position: absolute;
+    width: 10%;
+  }
+
+  .logo-size-s {
+    width: 5%;
+  }
+  .logo-size-m {
+    width: 10%;
+  }
+  .logo-size-l {
+    width: 15%;
+  }
+
+  .logo-position-top-left {
+    top: 0;
+    left: 0;
+  }
+  .logo-position-top-right {
+    top: 0;
+    right: 0;
+  }
+  .logo-position-bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+  .logo-position-bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+
+  .logo-margin {
+    margin: 1%;
   }
 }
 

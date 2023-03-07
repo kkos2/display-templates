@@ -4,8 +4,8 @@
   "id": "01FP2SNSC9VTT10ZKXQR819NS9",
   "description": "Skabelon til slideshow af billeder med forskellige effekter",
   "resources": {
-    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/kk-slideshow.js",
-    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/kk-slideshow-admin.json",
+    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/kk-slideshow.js?ts=1678192071195",
+    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/kk-slideshow-admin.json?ts=1678192071195",
     "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/kk-slideshow-schema.json",
     "assets": [],
     "options": {},

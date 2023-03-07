@@ -19,7 +19,7 @@ import GlobalStyles from "../GlobalStyles";
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function Contacts({ slide, content, run, slideDone, executionId }) {
   const { separator, duration = 15000 } = content;
@@ -98,7 +98,7 @@ function Contacts({ slide, content, run, slideDone, executionId }) {
         </ContactsWrapper>
       </Wrapper>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
       <GlobalStyles />
     </IntlProvider>
   );
@@ -187,9 +187,12 @@ Contacts.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number.isRequired,

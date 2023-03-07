@@ -18,7 +18,7 @@ import "./travel.scss";
  * @param {boolean} props.run Whether or not the slide should start running.
  * @param {Function} props.slideDone Function to invoke when the slide is done playing.
  * @param {string} props.executionId Unique id for the instance.
- * @returns {object} The component.
+ * @returns {JSX.Element} The component.
  */
 function Travel({ slide, content, run, slideDone, executionId }) {
   const {
@@ -147,14 +147,14 @@ function Travel({ slide, content, run, slideDone, executionId }) {
         )}
       </div>
 
-      <ThemeStyles id={executionId} css={slide?.themeData?.css} />
+      <ThemeStyles id={executionId} css={slide?.themeData?.cssStyles} />
     </IntlProvider>
   );
 }
 
 Travel.defaultProps = {
-  content: PropTypes.shape({
-    station: "",
+  content: {
+    station: [],
     timeFast: 0,
     timeModerate: 0,
     title: "",
@@ -164,7 +164,7 @@ Travel.defaultProps = {
     iframeTitle: "",
     numberOfJourneys: 1,
     duration: 15000,
-  }),
+  },
 };
 
 Travel.propTypes = {
@@ -172,14 +172,17 @@ Travel.propTypes = {
   slideDone: PropTypes.func.isRequired,
   slide: PropTypes.shape({
     instanceId: PropTypes.string,
-    mediaData: PropTypes.objectOf(PropTypes.any),
+    mediaData: PropTypes.shape({
+      url: PropTypes.string,
+      assets: PropTypes.shape({ uri: PropTypes.string }),
+    }),
     themeData: PropTypes.shape({
-      css: PropTypes.string,
+      cssStyles: PropTypes.string,
     }),
   }).isRequired,
   content: PropTypes.shape({
     duration: PropTypes.number,
-    station: PropTypes.arrayOf(PropTypes.any),
+    station: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string })),
     timeFast: PropTypes.string,
     timeModerate: PropTypes.string,
     title: PropTypes.string,

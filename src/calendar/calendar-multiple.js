@@ -16,19 +16,20 @@ import styled from "styled-components";
  * @param {Array} props.calendarEvents - The calendar events.
  * @param {Array} props.templateClasses - The template classes.
  * @param {object} props.templateRootStyle - The template root style.
- * @returns {string} - The component.
+ * @param {Function} props.getTitle - Function to get title for event.
+ * @returns {JSX.Element} - The component.
  */
 function CalendarMultiple({
   content,
   calendarEvents,
   templateClasses,
   templateRootStyle,
+  getTitle,
 }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const {
     title = "",
     hasDateAndTime,
-    resourceUnavailableText = null,
     displayHeaders = true,
     hideGrid = false,
     dateAsBox = false /* TODO: Add this to the configuration of the slide */,
@@ -44,6 +45,12 @@ function CalendarMultiple({
   const orderWhere = headerOrder === "whenwhatwhere" ? 3 : 2;
   const orderWhat = headerOrder === "whenwhatwhere" ? 2 : 1;
   const orderWhen = headerOrder === "whenwhatwhere" ? 1 : 3;
+  const borderStyle = {};
+  if (hideGrid) {
+    borderStyle["--border"] = 0;
+  }
+
+  let counterForOrder = 0;
 
   /**
    * Capitalize the datestring, as it starts with the weekday.
@@ -58,13 +65,12 @@ function CalendarMultiple({
   // Sort events by datetime and filter away events that are done.
   const getSortedEvents = (data) => {
     const now = dayjs();
+
     return data
       .filter((e) => {
         const startDate = dayjs(e.startTime * 1000);
 
-        return (
-          e.startTime * 1000 > now.unix() && startDate.date() === now.date()
-        );
+        return e.endTime > now.unix() && startDate.date() === now.date();
       })
       .sort((a, b) => a - b);
   };
@@ -83,12 +89,10 @@ function CalendarMultiple({
     };
   }, [hasDateAndTime]);
 
-  const borderStyle = hideGrid ? { "--border": "0" } : {};
-  let counterForOrder = 0;
   return (
     <Wrapper
       className={`calendar-multiple ${templateClasses.join(" ")}`}
-      style={templateRootStyle}
+      style={Object.assign(borderStyle, templateRootStyle)}
     >
       <Header className="header">
         <HeaderTitle className="header-title">{title}</HeaderTitle>
@@ -128,21 +132,21 @@ function CalendarMultiple({
             <ContentHeaderItem
               className="content-item"
               key={2}
-              style={(borderStyle, { order: orderWhen })}
+              style={{ order: orderWhen }}
             >
               <FormattedMessage id="when" defaultMessage="when" />
             </ContentHeaderItem>
             <ContentHeaderItem
               className="content-item"
               key={1}
-              style={(borderStyle, { order: orderWhat })}
+              style={{ order: orderWhat }}
             >
               <FormattedMessage id="what" defaultMessage="what" />
             </ContentHeaderItem>
             <ContentHeaderItem
               className="content-item"
               key={3}
-              style={(borderStyle, { order: orderWhere })}
+              style={{ order: orderWhere }}
             >
               <FormattedMessage id="where" defaultMessage="where" />
             </ContentHeaderItem>
@@ -155,9 +159,7 @@ function CalendarMultiple({
                 <Fragment key={entry.id}>
                   <ContentItem
                     className="content-item-time"
-                    style={
-                      (borderStyle, { order: counterForOrder + orderWhen })
-                    }
+                    style={{ order: counterForOrder + orderWhen }}
                   >
                     {dayjs(entry.startTime * 1000)
                       .locale(localeDa)
@@ -173,22 +175,13 @@ function CalendarMultiple({
                   </ContentItem>
                   <ContentItem
                     className="content-item-title"
-                    style={
-                      (borderStyle, { order: counterForOrder + orderWhat })
-                    }
+                    style={{ order: counterForOrder + orderWhat }}
                   >
-                    {entry.title ?? resourceUnavailableText ?? (
-                      <FormattedMessage
-                        id="unavailable"
-                        defaultMessage="Unavailable"
-                      />
-                    )}
+                    {getTitle(entry.title)}
                   </ContentItem>
                   <ContentItem
                     className="content-item-resource"
-                    style={
-                      (borderStyle, { order: counterForOrder + orderWhere })
-                    }
+                    style={{ order: counterForOrder + orderWhere }}
                   >
                     {entry.resourceTitle ?? entry.resourceId ?? ""}
                   </ContentItem>
@@ -302,7 +295,7 @@ CalendarMultiple.defaultProps = {
 
 CalendarMultiple.propTypes = {
   templateClasses: PropTypes.arrayOf(PropTypes.string),
-  templateRootStyle: PropTypes.objectOf(PropTypes.any),
+  templateRootStyle: PropTypes.shape({}),
   calendarEvents: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -322,6 +315,7 @@ CalendarMultiple.propTypes = {
     resourceUnavailableText: PropTypes.string,
     hideGrid: PropTypes.bool,
   }).isRequired,
+  getTitle: PropTypes.func.isRequired,
 };
 
 export default CalendarMultiple;

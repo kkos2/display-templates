@@ -14,7 +14,7 @@ test("Test that book review loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
-      executionId="test-book-review"
+      executionId="1234"
     />
   );
 

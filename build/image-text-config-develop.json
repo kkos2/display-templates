@@ -4,8 +4,8 @@
   "id": "01FP2SNGFN0BZQH03KCBXHKYHG",
   "description": "Mulighed for at sætte billede og tekst, med forskellige visninger.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/image-text.js",
-    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/image-text-admin.json",
+    "component": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/image-text.js?ts=1678192071195",
+    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/image-text-admin.json?ts=1678192071195",
     "schema": "https://raw.githubusercontent.com/kkos2/display-templates/kk-develop/build/image-text-schema.json",
     "assets": [],
     "options": {},

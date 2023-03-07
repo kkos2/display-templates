@@ -4,8 +4,8 @@
   "id": "01FQBJFKM0YFX1VW5K94VBSNCP",
   "description": "Skabelon til tabel.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/table.js",
-    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/table-admin.json",
+    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/table.js?ts=1678192071195",
+    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/table-admin.json?ts=1678192071195",
     "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/table-schema.json",
     "assets": [],
     "options": {},

@@ -14,7 +14,7 @@ test("Test that iframe loads", () => {
       slide={slide}
       content={slide.content}
       slideDone={() => {}}
-      executionId="test-iframe"
+      executionId="1234"
     />
   );
 
