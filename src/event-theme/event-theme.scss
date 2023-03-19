@@ -49,17 +49,21 @@
 
     .event-details {
       &__title {
-        font-size: 2em;
         margin: 0.75em 0;
 
         h1 {
+          font-size: 4em;
           margin: 0;
         }
       }
 
       &__sub-title {
         max-width: 100%;
-        font-size: 1.6em;
+
+        h2 {
+          font-size: 1.6em;
+        }
+
       }
 
       .event__date {
@@ -196,20 +200,24 @@
 
   .event-details {
     &__title {
-      font-size: 2em;
+
       font-family: "KBH", sans-serif;
       word-break: break-word;
       margin: 1.5em 0;
 
       h1 {
         margin: 0;
+        font-size: 4em;
       }
     }
 
     &__sub-title {
-      font-size: 1.4em;
       font-family: "KBH", sans-serif;
       margin-bottom: 0.5em;
+
+      h2 {
+        font-size: 2.1em;
+      }
     }
   }
 

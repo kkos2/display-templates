@@ -4,8 +4,8 @@
   "id": "01FP2SNGFN0BZFPPFKCBXHKYHG",
   "description": "Skabelon til servicemeddelelser.",
   "resources": {
-    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message.js?ts=1678192071195",
-    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message-admin.json?ts=1678192071195",
+    "component": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message.js?ts=1679250386190",
+    "admin": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message-admin.json?ts=1679250386190",
     "schema": "https://raw.githubusercontent.com/kkos2/display-templates/main/build/service-message-schema.json",
     "assets": [],
     "options": {},
