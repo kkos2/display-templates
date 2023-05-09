@@ -61,7 +61,7 @@
         max-width: 100%;
 
         h2 {
-          font-size: 1.6em;
+          font-size: 2.5em;
         }
 
       }
@@ -92,14 +92,19 @@
 
     .event-additional-info {
       top: 0;
-      right: 4em;
+      right: 2em;
       bottom: unset;
       transform: translateY(-75%);
       padding-top: 5.5em;
       padding-bottom: 1em;
-      width: 23em;
+      width: 16em;
 
+      &__title {
+        font-size: 0.9em;
+
+      }
       &__link {
+        font-size: 1.8em;
         max-width: 100%;
         width: 100%;
         text-align: right;
@@ -185,6 +190,14 @@
     gap: 0.2em;
   }
 
+  &.layout-horizontal {
+    .event-info {
+      // Move text down a line in horizontal layout.
+      padding-top: 6em;
+    }
+  }
+
+
   .event-info {
     position: relative;
     display: flex;
@@ -233,7 +246,7 @@
     &__title {
       font-size: 1.22em;
       max-width: 90%;
-      font-weight: 400;
+      font-weight: bold;
     }
 
     &__link {
