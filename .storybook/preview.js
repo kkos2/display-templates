@@ -17,6 +17,13 @@ export const parameters = {
           height: "720px",
         },
       },
+      horizontalSplit: {
+        name: "9/8",
+        styles: {
+          width: "640px",
+          height: "720px",
+        },
+      },
       landscape: {
         name: "9/16",
         styles: {

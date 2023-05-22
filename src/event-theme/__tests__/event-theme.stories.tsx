@@ -11,6 +11,12 @@ export default {
       options: ["farvepar1", "farvepar2", "farvepar3"],
       control: { type: "select" },
     },
+    startDate: {
+      control: { type: "text" },
+    },
+    endDate: {
+      control: { type: "text" },
+    },
   },
 } as ComponentMeta<typeof EventTheme>;
 
