@@ -221,7 +221,6 @@ Table.propTypes = {
     text: PropTypes.string,
     table: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
     image: PropTypes.arrayOf(PropTypes.string),
-    separator: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
 };

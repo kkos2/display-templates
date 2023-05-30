@@ -224,6 +224,10 @@ Slide.propTypes = {
   slide: PropTypes.shape({}).isRequired,
 };
 
+export const Screen = ({ screen }) => {
+  return <div className="app">{screen && renderScreen(screen)}</div>;
+};
+
 export const DisplayElement = () => {
   const { id } = useParams();
 
@@ -236,10 +240,6 @@ export const DisplayElement = () => {
     return <Screen screen={foundScreen} />;
   }
   return "";
-};
-
-export const Screen = ({ screen }) => {
-  return <div className="app">{screen && renderScreen(screen)}</div>;
 };
 
 Screen.propTypes = {
