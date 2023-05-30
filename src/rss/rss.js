@@ -36,6 +36,55 @@ function RSS({ slide, content, run, slideDone, executionId }) {
   const feedLength = Math.min(numberOfEntries, feedData?.entries?.length ?? 0);
   const imageUrl = getFirstMediaUrlFromField(slide.mediaData, image);
 
+  // Declare styled components.
+
+  const Wrapper = styled.div`
+    /* Wrapper styling */
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow: hidden;
+    padding: var(--spacer);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacer) * 3);
+
+    /* Position background from inline style */
+    background-size: cover;
+    background-position: center;
+  `;
+
+  const FeedInfo = styled.div`
+    display: flex;
+    gap: var(--spacer);
+  `;
+
+  const FeedTitle = styled.div`
+    font-size: var(--font-size-base);
+  `;
+
+  const FeedDate = styled.div`
+    font-size: var(--font-size-base);
+  `;
+
+  const FeedProgress = styled.div`
+    font-size: var(--font-size-base);
+  `;
+
+  const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer);
+  `;
+
+  const Title = styled.div`
+    font-size: var(--font-size-lg);
+  `;
+
   // Set background image.
   if (imageUrl) {
     rootStyle.backgroundImage = `url("${imageUrl}")`;
@@ -121,53 +170,6 @@ function RSS({ slide, content, run, slideDone, executionId }) {
     </>
   );
 }
-
-const Wrapper = styled.div`
-  /* Wrapper styling */
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-base);
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  overflow: hidden;
-  padding: var(--spacer);
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--spacer) * 3);
-
-  /* Position background from inline style */
-  background-size: cover;
-  background-position: center;
-`;
-
-const FeedInfo = styled.div`
-  display: flex;
-  gap: var(--spacer);
-`;
-
-const FeedTitle = styled.div`
-  font-size: var(--font-size-base);
-`;
-
-const FeedDate = styled.div`
-  font-size: var(--font-size-base);
-`;
-
-const FeedProgress = styled.div`
-  font-size: var(--font-size-base);
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacer);
-`;
-
-const Title = styled.div`
-  font-size: var(--font-size-lg);
-`;
 
 RSS.defaultProps = {
   slide: {
