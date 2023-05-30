@@ -45,9 +45,6 @@
       }
     ]
   },
-  "globals": {
-    "JSX": true
-  },
   "env": {
     "jest/globals": true,
     "browser": true
