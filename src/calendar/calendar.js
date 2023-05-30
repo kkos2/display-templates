@@ -139,7 +139,6 @@ Calendar.propTypes = {
     layout: PropTypes.string,
     backgroundColor: PropTypes.string,
     image: PropTypes.arrayOf(PropTypes.string),
-    fontSize: PropTypes.string,
     resourceUnavailableText: PropTypes.bool,
   }).isRequired,
   executionId: PropTypes.string.isRequired,
