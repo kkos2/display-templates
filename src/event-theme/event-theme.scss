@@ -34,153 +34,6 @@
     color: white;
   }
 
-  // Font size based on the element's ratio.
-  font-size: calc(var(--width) * 0.01px);
-  &.layout-vertical, &.layout-square {
-    font-size: calc(var(--height) * 0.015px);
-    display: flex;
-    flex-direction: column;
-
-    .event__host {
-      font-size: 2.5em;
-      margin-bottom: 0;
-    }
-
-
-    .event-details {
-      &__title {
-        margin: 0.5em 0;
-
-        h1 {
-          font-size: 3.5em;
-          margin: 0;
-        }
-      }
-
-      &__sub-title {
-        max-width: 100%;
-
-        h2 {
-          font-size: 2.5em;
-        }
-
-      }
-
-      .event__date {
-        max-width: 100%;
-        display: flex;
-        flex-direction: row;
-        font-size: 2.5em;
-      }
-    }
-
-    .event-top {
-      position: relative;
-      padding: 3.78em 1.5em 3.78rem;
-
-      &__image {
-        height: 60%;
-        flex-shrink: 0;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-
-    .event-additional-info {
-      top: 0;
-      right: 2em;
-      bottom: unset;
-      transform: translateY(-75%);
-      padding-top: 5.5em;
-      padding-bottom: 1em;
-      width: 16em;
-
-      &__title {
-        font-size: 0.9em;
-
-      }
-      &__link {
-        font-size: 1.8em;
-        max-width: 100%;
-        width: 100%;
-        text-align: right;
-      }
-
-      .event__logo {
-        bottom: unset;
-        right: unset;
-        top: 0;
-        left: 0;
-        transform: translateY(-18%) translateX(-18%);
-      }
-    }
-  }
-
-  &.layout-square {
-    .event-top {
-      padding: 3.78rem;
-
-      &__image {
-        height: 60.41%;
-        flex-shrink: 0;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-
-    .event-additional-info {
-      width: 25em;
-      padding-top: 5em;
-      padding-left: 5em;
-
-      &__title {
-        font-size: 1.3em;
-      }
-
-      .event__logo {
-        width: 8em;
-        height: 8em;
-        transform: translateY(-30%) translateX(-30%);
-      }
-
-    }
-  }
-
-
-  &.farvepar1 {
-    background-color: #fff606;
-
-    .event-additional-info {
-      background-color: #56e177;
-    }
-  }
-  &.farvepar2 {
-    background-color: #3eafff;
-
-    .event-additional-info {
-      background-color: #ff79d7;
-    }
-  }
-  &.farvepar3 {
-    background-color: #ff79d7;
-
-    .event-additional-info {
-      background-color: #fff606;
-    }
-
-    .event__logo {
-      color: black;
-    }
-  }
-
   .event__date {
     display: flex;
     flex-direction: column;
@@ -189,14 +42,6 @@
     font-weight: bold;
     gap: 0.2em;
   }
-
-  &.layout-horizontal {
-    .event-info {
-      // Move text down a line in horizontal layout.
-      padding-top: 6em;
-    }
-  }
-
 
   .event-info {
     position: relative;
@@ -213,7 +58,6 @@
 
   .event-details {
     &__title {
-
       font-family: "KBH", sans-serif;
       word-break: break-word;
       margin: 4em 0;
@@ -265,6 +109,156 @@
       bottom: 0;
       right: 0;
       transform: translateY(18%) translateX(18%);
+    }
+  }
+
+  &.farvepar1 {
+    background-color: #fff606;
+
+    .event-additional-info {
+      background-color: #56e177;
+    }
+  }
+  &.farvepar2 {
+    background-color: #3eafff;
+
+    .event-additional-info {
+      background-color: #ff79d7;
+    }
+  }
+  &.farvepar3 {
+    background-color: #ff79d7;
+
+    .event-additional-info {
+      background-color: #fff606;
+    }
+
+    .event__logo {
+      color: black;
+    }
+  }
+
+  // Font size based on the element's ratio.
+  font-size: calc(var(--width) * 0.01px);
+  &.layout-vertical,
+  &.layout-square {
+    font-size: calc(var(--height) * 0.015px);
+    display: flex;
+    flex-direction: column;
+
+    .event__host {
+      font-size: 2.5em;
+      margin-bottom: 0;
+    }
+
+    .event-details {
+      &__title {
+        margin: 0.5em 0;
+
+        h1 {
+          font-size: 3.5em;
+          margin: 0;
+        }
+      }
+
+      &__sub-title {
+        max-width: 100%;
+
+        h2 {
+          font-size: 2.5em;
+        }
+      }
+
+      .event__date {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        font-size: 2.5em;
+      }
+    }
+
+    .event-top {
+      position: relative;
+      padding: 3.78em 1.5em 3.78rem;
+
+      &__image {
+        height: 60%;
+        flex-shrink: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .event-additional-info {
+      top: 0;
+      right: 2em;
+      bottom: unset;
+      transform: translateY(-75%);
+      padding-top: 5.5em;
+      padding-bottom: 1em;
+      width: 16em;
+
+      &__title {
+        font-size: 0.9em;
+      }
+      &__link {
+        font-size: 1.8em;
+        max-width: 100%;
+        width: 100%;
+        text-align: right;
+      }
+
+      .event__logo {
+        bottom: unset;
+        right: unset;
+        top: 0;
+        left: 0;
+        transform: translateY(-18%) translateX(-18%);
+      }
+    }
+  }
+
+  &.layout-square {
+    .event-top {
+      padding: 3.78rem;
+
+      &__image {
+        height: 60.41%;
+        flex-shrink: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .event-additional-info {
+      width: 25em;
+      padding-top: 5em;
+      padding-left: 5em;
+
+      &__title {
+        font-size: 1.3em;
+      }
+
+      .event__logo {
+        width: 8em;
+        height: 8em;
+        transform: translateY(-30%) translateX(-30%);
+      }
+    }
+  }
+
+  &.layout-horizontal {
+    .event-info {
+      // Move text down a line in horizontal layout.
+      padding-top: 6em;
     }
   }
 }
